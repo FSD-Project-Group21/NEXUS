@@ -1,22 +1,8 @@
-//for icon open
-let icons = document.querySelectorAll(".icon-link");
-
-icons.forEach(icon => {
-    icon.addEventListener("click",function(){
-        icon.classList.add("open");
-        for(var i=0;i<icons.length;i++){
-            if(icons[i]!== icon){
-                icons[i].classList.remove("open");
-            }
-        }
-    });
-});
-
-
-// search logic 
 document.addEventListener('DOMContentLoaded', function() {
     const button = document.getElementById('categories-button');
     const content = document.getElementById('dropdown-content');
+    const input = document.querySelector('.search input[type="text"]');
+    const clearButton = document.querySelector('.search button[type="submit"]'); // Assuming you have a button with id 'clear-button'
 
     button.addEventListener('click', function() {
         content.classList.toggle('show');
@@ -27,5 +13,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!event.target.matches('#categories-button')) {
             content.classList.remove('show');
         }
+    });
+
+    // Remove placeholder when input is clicked
+    input.addEventListener('focus', function() {
+        input.removeAttribute('placeholder');
+    });
+
+    // Clear input value when clear button is clicked
+    clearButton.addEventListener('click', function() {
+        input.value = "";
+        input.setAttribute('placeholder','What are you looking for?')
     });
 });
