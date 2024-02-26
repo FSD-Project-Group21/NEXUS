@@ -1,0 +1,62 @@
+*{
+    margin:0;
+    padding: 0;
+  }
+  .directory{
+      position: fixed;
+      top:0;
+      left:100px;
+      height: 74px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+  }
+  .logo-top{
+      height: 100px;
+      width: 88px;
+  }
+  .sidebar{
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 85px;
+    height: 90%;
+  }
+  .sidebar-no-settings {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+  }
+  
+  .overall-search {
+      margin-top: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1; 
+  }
+  
+    
+  .search input[type="text"] {
+    width: 200px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .home,.search-icon,.notifications,.users,.messages,.profile{
+    height: 25px;
+    width: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  .settings{
+    height: 25px;
+    width: 25px;
+  }
+  
