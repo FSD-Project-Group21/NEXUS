@@ -12,22 +12,32 @@
         <p>Home/Search</p>
     </div>
     <div class="sidebar">
-        <img class="logo-top" src="./logos/main_logo.png">
+        <a href=""><img class="logo-top" src="./assets/logo.svg"></a>
         <div class="sidebar-no-settings">
-            <img class="home" src="./searchpage/home.png">
-            <img class="search-icon"  src="./searchpage/search.png">
-            <img class="notifications"  src="./searchpage/bell.png">
-            <img class="users"  src="./searchpage/users.png">
-            <img class="messages"  src="./searchpage/send.png">
-            <img class="profile"  src="./searchpage/profile.png">
+            <a href="#" class="icon-link open"><img class="home icon" src="./assets/home.png"></a>
+            <a href="#" class="icon-link"><img class="search-icon icon"  src="./assets/search.png"></a>
+            <a href="#" class="icon-link"><img class="notifications icon"  src="./assets/bell.png"></a>
+            <a href="#" class="icon-link"><img class="users icon"  src="./assets/users.png"></a>
+            <a href="#" class="icon-link"><img class="messages icon"  src="./assets/send.png"></a>
+            <a href="#" class="icon-link"><img class="profile icon"  src="./assets/profile.png"></a> 
         </div>
-        <img class="settings" src="./searchpage/settings.png">
+        <a href="#"><img class="settings" src="./assets/settings.png"></a>
     </div>
     <div class="overall-search">
         <div class="search">
             <input placeholder="What are you looking for?" type="text">
             <button type="submit">Go</button>
+            <div class="categories">
+                <button id="categories-button">Categories </button>
+                <div class="content" id="dropdown-content">
+                    <a href="">Graphic Design</a>
+                    <a href="">Interior Design</a>
+                    <a href="">Social Science Research</a>
+                    <a href="">Business Start-Up</a>
+                </div>
+            </div>
         </div>
     </div>
+    <script src="./js/searchPage.js"></script>
 </body>
 </html>
