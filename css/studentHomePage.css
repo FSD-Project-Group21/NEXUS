@@ -121,3 +121,4 @@ body{
  .card_large{
   grid-row-end: span var(--card_large);
  }
+ /* card hover css */
