@@ -11,6 +11,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
+    z-index: 100;
   }
   .logo-top{
     height: 100px;
@@ -23,8 +24,9 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 30px;
     width: 85px;
-    height: 90%;
+    height: 100%;
   }
   .sidebar-no-settings {
     display: flex;
@@ -66,5 +68,5 @@
     width: 100%;
   }
   .sidebar .sidebar-no-settings .open{
-    border-right: solid 2px black;
+    border-right: 2px solid black;
   }  
