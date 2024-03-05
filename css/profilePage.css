@@ -11,6 +11,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
+  z-index: 100;
 }
 .logo-top{
   height: 100px;
@@ -24,7 +25,8 @@
   justify-content: space-between;
   align-items: center;
   width: 85px;
-  height: 90%;
+  padding-bottom: 30px;
+  height: 100%;
 }
 .sidebar-no-settings {
   display: flex;
