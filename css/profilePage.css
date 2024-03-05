@@ -18,6 +18,7 @@
   width: 88px;
 }
 .sidebar{
+  background-color: #fff;
   position: fixed;
   top: 0;
   display: flex;
