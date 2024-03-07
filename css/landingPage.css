@@ -5,6 +5,7 @@
   box-sizing: border-box;
 }
 section {
+  
   height: 100vh;
   font-size: 40px;
   font-weight: 100;
@@ -127,5 +128,36 @@ section:nth-child(7) { background: #ffcc00; }
   height: 100px; /* Specific height for body */
 }
 
+section.section1{
+  background-image: url(/assets/hero-img.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.transparent-card{
+  width: 58.25rem;
+  height: 32.25rem;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 0.9rem;
+  place-items: center;
+}
+.img{
+  width: 45%;
+}
+
+.tagline{
+  text-align: center; 
+  width: 55%;
+}
+
+section.section2{
+  background-color: #ade8ff63;
+  /* background-image: url(/assets/colab-img.jpeg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 
