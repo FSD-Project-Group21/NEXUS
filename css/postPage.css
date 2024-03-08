@@ -362,7 +362,7 @@ body{
         padding: 0;
     }
 /* sideBar CSS */
-    .directory{
+.directory{
     background-color: #fff;
     position: fixed;
     top:0;
@@ -371,9 +371,9 @@ body{
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-end;
+    align-items: center;
     z-index: 100;
-    }
+}
 
 .logo-top{
 height: 100px;

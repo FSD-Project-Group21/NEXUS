@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-document.addEventListener('DOMContentLoaded', function() {
     const settingsButton = document.querySelector('.settings');
     const popupContainer = document.getElementById('popup-container');
     const popup = document.getElementById('popup');
@@ -49,4 +48,3 @@ document.addEventListener('DOMContentLoaded', function() {
             popupContainer.style.display = 'none';
         }, 300);
     });
-});
