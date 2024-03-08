@@ -5,7 +5,7 @@
   .directory{
     position: fixed;
     top:0;
-    left:100px;
+    left:85px;
     height: 74px;
     width: 100%;
     display: flex;
@@ -68,5 +68,5 @@
     width: 100%;
   }
   .sidebar .sidebar-no-settings .open{
-    border-right: solid 2px black;
+    border-right: 2px solid black;
   }  
