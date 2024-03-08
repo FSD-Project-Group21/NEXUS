@@ -6,7 +6,7 @@ cards.forEach(c => {
     let comment = c.querySelector('.comment');
     like.addEventListener('click',()=>{
         if(!like.classList.contains('liked')){
-            like.innerHTML = '<i class="fa-solid fa-heart"></i>';
+            like.innerHTML = '<i class="fa-solid fa-heart" style="color: #ff0000;"></i>';
             like.classList.add('liked');
         }else{
             like.innerHTML = '<i class="fa-regular fa-heart"></i>';
@@ -15,7 +15,7 @@ cards.forEach(c => {
     });
     save.addEventListener('click',()=>{
         if(!save.classList.contains('saved')){
-            save.innerHTML = '<i class="fa-solid fa-bookmark"></i>';
+            save.innerHTML = '<i class="fa-solid fa-bookmark" style="color: #080d96;"></i>';
             save.classList.add('saved');
         }else{
             save.innerHTML = '<i class="fa-regular fa-bookmark"></i>';
@@ -27,7 +27,7 @@ cards.forEach(c => {
             comment.innerHTML = '<i class="fa-solid fa-comment"></i>';
             comment.classList.add('commented');
         }else{
-            comment.innerHTML = '<i class="fa-regular fa-heart"></i>';
+            comment.innerHTML = '<i class="fa-regular fa-comment"></i>';
             comment.classList.remove('commented');
         }
     });
