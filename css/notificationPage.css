@@ -103,7 +103,6 @@ width: 400px;
 /* Notification CSS */
 .container{
     display: flex;
-
     flex-direction: column;
     align-items: center;
     width:100%;
