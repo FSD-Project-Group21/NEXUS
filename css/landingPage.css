@@ -154,7 +154,7 @@ height: 175px;
 }
 
 .custom-shape-divider-bottom-1709887751 .shape-fill {
-fill: #b4d4f6;
+fill: #a9d1f9;
 /* background-image: url(./colab-img.avif); */
 }
 
@@ -249,16 +249,78 @@ background-image: url(/assets/hero-bg.png);
 }
 /* section2 */
 section.section2{
-background-image: url(/assets/sec2-bg.jpg);
+background-image: url(/assets/sec2-bg.png);
 background-repeat: no-repeat;
 background-size: cover;
 display: flex;
+align-items: center;
+
 }
+section.section3{
+  background-image: url(/assets/sec3-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  
+
+  }
+  section.section4{
+    background-image: url(/assets/sec4-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    }
+    section.section5{
+      background-image: url(/assets/sec5-bg.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+
+      }
+
+      section.section6{
+        background-image: url(/assets/sec6-bg.webp);
+      background-repeat: no-repeat;
+      background-size: cover;
+      align-items: center;
+      }
 
 .colab-text, .hiring-text,.messaging-text,.post-text{
 width: 60%;
 text-align: center;
+display: flex;
+flex-direction: column;
+line-height: 45px;
+font-family: 'Google sans' ,serif;
+
 }
-.colab-animate, .hiring-animate,.messaging-animate,.post-animate{
+.animated-img1, .animated-img2, .animated-img3, .animated-img4 {
 width: 40%;
+}
+
+.colab-text,.hiring-text{
+  margin-left: 8.25rem;
+}
+.messaging-text,.post-text{
+  padding-left: 7rem;
+}
+
+.animated-img2, .animated-img4{
+  margin-left: 8.25rem;
+}
+
+.heading{
+  font-family: 'Roboto Slab',serif;
+  justify-content: start;
+ font-size: 50px;
+  padding-bottom: 30px;
+}
+p{
+  font-size: 30px;
+  height: 50%;
+  
+  text-align: left;
 }
