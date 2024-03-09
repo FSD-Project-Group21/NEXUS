@@ -1,11 +1,11 @@
-/* @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900'); */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
 body{
 	font-family: 'Poppins', sans-serif;
 	font-weight: 300;
 	line-height: 1.7;
 	color: #000000;
 	background-color: #D4EBFB;
-    background-image: url('/assets/main_bg.jpg');
+    background-image: url('/assets/login-bg.jpeg');
     background-size: 100% 100%;
 
 }
@@ -24,6 +24,9 @@ p {
 }
 h4 {
   font-weight: 600;
+}
+span{
+  color: white;
 }
 h6 span{
   padding: 0 20px;

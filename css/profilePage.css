@@ -12,11 +12,13 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
-  z-index: 100;
+  /* z-index: 100; */
 }
 .logo-top{
-  height: 100px;
-  width: 88px;
+  /* height: 100px;
+  width: 88px; */
+  width: 5.5rem; /* 88px / 16px = 5.5rem */
+  height: 6.25rem;
 }
 .sidebar{
   position: fixed;
@@ -43,17 +45,19 @@
 }
 
 .search input[type="text"] {
-  width: 200px;
-  padding: 10px;
+  width: 12.5rem;
+  padding: 0.625rem;
   border: none;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.icon{
+.icon{ 
   height: 25px;
   width: 25px;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  /* margin-top: 25px;
+  margin-bottom: 25px; */
+  margin-top: 1.5625em; /* 25px / 16px = 1.5625em */
+  margin-bottom: 1.5625em; 
 }
 .settings{
   height: 25px;
@@ -71,6 +75,45 @@
 .sidebar .sidebar-no-settings .open{
   border-right: 2px solid black;
 }  
+/* settings popup */
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  backdrop-filter: blur(5px); /* Apply blur effect to background */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  transform: scale(0.5);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#close-popup {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#close-popup:hover {
+  background-color: #0056b3;
+}
 
 /* profile page css */
 main{
@@ -79,6 +122,7 @@ main{
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url(/assets/save-bg.jpeg);
 
 }
 /* top section css */
@@ -89,7 +133,8 @@ main{
   justify-content: space-between;
   width: 95%;
   border-bottom: 2px solid black;
-  padding-bottom: 20px;
+  padding-bottom: 1.25rem;
+  padding-top: 1.25rem;
 }
 .profile-section{
   width: 40%;
@@ -259,3 +304,45 @@ main{
 .hide{
   display: none;
 }
+img{
+  width: 50%;
+  flex: 0 0 auto;
+}
+.post-text{
+  flex: 1;
+  
+  font-family: Google-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+h4{
+  font-family: "Unna", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+h5{
+  font-family: "Unna", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+.icon-content{
+  width: 73.625rem;
+  
+}
+
+.grid-container {
+  display: grid;
+  /* width: 73.625rem; */
+  grid-template-rows: repeat(4, 1fr); /* 3 rows with equal height */
+  grid-template-columns: repeat(2, 1fr); /* 3 columns with equal width */
+  gap: 1.25rem; /* Gap between grid items */
+  padding-top: 2.45rem;
+}
+
+.grid-item {
+  /* background-color: white; */
+  background-image: url(/assets/save-post-bg.jpeg);
+  border-radius: 0.6rem;
+  padding: 20px; /* Padding around grid items */
+  text-align: center; /* Center text */
+  display: flex;
+}
+

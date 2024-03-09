@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const button = document.getElementById('categories-button');
     const content = document.getElementById('dropdown-content');
     const input = document.querySelector('.search input[type="text"]');
-    const clearButton = document.querySelector('.search button[type="submit"]'); // Assuming you have a button with id 'clear-button'
+    const clearButton = document.querySelector('.search button[type="submit"]'); 
 
     button.addEventListener('click', function() {
         content.classList.toggle('show');
@@ -25,4 +25,26 @@ document.addEventListener('DOMContentLoaded', function() {
         input.value = "";
         input.setAttribute('placeholder','What are you looking for?')
     });
+
 });
+
+    const settingsButton = document.querySelector('.settings');
+    const popupContainer = document.getElementById('popup-container');
+    const popup = document.getElementById('popup');
+    const closeButton = document.getElementById('close-popup');
+
+    settingsButton.addEventListener('click', function() {
+        popupContainer.style.display = 'flex';
+        setTimeout(function() {
+            popup.style.transform = 'scale(1)';
+            popup.style.opacity = '1';
+        }, 100);
+    });
+
+    closeButton.addEventListener('click', function() {
+        popup.style.transform = 'scale(0.5)';
+        popup.style.opacity = '0';
+        setTimeout(function() {
+            popupContainer.style.display = 'none';
+        }, 300);
+    });
