@@ -2,6 +2,7 @@
     margin:0;
     padding: 0;
   }
+  
   .directory{
     position: fixed;
     top:0;
@@ -11,7 +12,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
-    z-index: 100;
+    background-color: #ffffff;
+    z-index: 1;
   }
   .logo-top{
     height: 100px;
@@ -24,9 +26,11 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 30px;
     width: 85px;
     height: 100%;
+    background-color: #ffffff;
+    z-index: 1;
+
   }
   .sidebar-no-settings {
     display: flex;
@@ -68,44 +72,176 @@
     width: 100%;
   }
   .sidebar .sidebar-no-settings .open{
-    border-right: 2px solid black;
+    border-right: solid 2px black;
   }  
-  /* Settings */
-  .popup-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+
+  .main-container{
+    background-color: #D4EBFB;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    backdrop-filter: blur(5px); /* Apply blur effect to background */
-    display: none;
+    width: 100%;
+    margin-top: 74px;
+    margin-left: 85px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align-items: center; */
+  }
+
+  .collab-header{
+    height:100px;
+    width:100%;
+    display: flex;
+    /* margin-left: 85px; */
+    /* justify-content: space-between; */
+    align-items: center;
+    justify-content: space-evenly;
+    /* background-color: aqua; */
+  }
+
+/* .collab-header-buttons {
+    position: relative;
+}
+
+.line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1;
+    height: 3px;
+    background-color: #474747;
+    transition: width 0.3s ease;
+}
+
+.btn-primary.active + .line {
+    width: 100%;
+} */
+
+.collab-header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.collab-header-buttons {
+  position: relative;
+}
+
+.btn-primary {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.line {
+  position: absolute;
+  bottom: -8px; /* Adjust the distance from the bottom as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%; /* Adjust the length of the line as needed */
+  height: 3px;
+  background-color: #454647; /* Change the color as needed */
+  transition: width 0.3s ease;
+}
+
+.btn-primary.active + .line {
+  width: 100%;
+}
+
+  .collab-header-buttons img{
+    /* display: flex;
+    gap: 20px; */
+    /* background-color: aquamarine; */
+    height: 5em;
+  }
+ 
+  .btn-primary {
+    background-color: transparent !important;
+    border: none;
+
+  }
+
+  .btn-primary img{
+    height: 3em;
+  }
+
+  .collab-container {
+    
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* background-color: #2d6f9e; */
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    /* margin-left: 85px; */
+    margin-top: 20px;
+    border-radius: 6px;
+    gap: 2rem;
   }
   
-  .popup {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 10000;
-    transform: scale(0.5);
-    opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
-  
-  #close-popup {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  #close-popup:hover {
-    background-color: #0056b3;
-  }
+ 
+.collab {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  max-width: 100%;
+  margin: 20px;
+  overflow: hidden;
+  width: 80%;
+}
+
+.collab h2 {
+  letter-spacing: 1px;
+  margin: 0px;
+}
+
+.collab h6 {
+  margin-top: 10px;
+  letter-spacing: 1px;
+  opacity: 0.6;
+  /* text-transform: uppercase; */
+}
+
+.collab img {
+  width: 96%;
+}
+
+.collab-preview {
+  background-color: #2A265F;
+  color: #fff;
+  padding: 10px;
+  max-width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.collab-info {
+  padding: 20px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-container {
+  display: flex;
+  /* justify-content: space-between; */
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.btn {
+  background-color: #2A265F;
+  border: 0;
+  border-radius: 50px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 16px;
+  padding: 7px 20px;
+  bottom: 30px;
+  right: 30px;
+  letter-spacing: 1px;
+  margin-top:5px;
+}
