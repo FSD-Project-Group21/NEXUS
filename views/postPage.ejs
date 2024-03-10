@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>NEXUS</title>
+
+    <link rel="shortcut icon" href="./assets/logo.svg" type="image/x-icon">
+   
+    <link href="./css/postPage.css" rel="stylesheet">
+    <script src="./postpage.js"></script>
+    <script src="https://kit.fontawesome.com/6953004357.js" crossorigin="anonymous"></script>
+</head>
+    <header class="header">
+
+      <a href=""><img class="logo-top" src="./assets/logo.svg"></a>
+
+  </header>
+
+  <body>
+
+    <div class="directory">
+      <p>Home/PostPage</p>
+    </div>
+  
+    <div class="sidebar">
+      <a href=""><img class="logo-top" src="./assets/logo.svg"></a>
+      <div class="sidebar-no-settings">
+        <a href="/studentHomePage" class="icon-link"><img class="home icon" src="/assets/home.png"></a>
+        <a href="/searchpage" class="icon-link"><img class="search-icon icon"  src="/assets/search.png"></a>
+        <a href="/notificationPage" class="icon-link"><img class="notifications icon"  src="/assets/bell.png"></a>
+        <a href="/collabPage" class="icon-link"><img class="users icon"  src="/assets/users.png"></a>
+        <a href="#" class="icon-link"><img class="messages icon"  src="/assets/send.png"></a>
+        <a href="/profilePage" class="icon-link open"><img class="profile icon"  src="/assets/profile.png"></a> 
+    </div>
+    
+      <a href="#"><img class="settings" src="./assets/settings.png"></a>
+      <div class="popup-container" id="popup-container">
+        <div class="popup" id="popup">
+            <h2>Settings</h2>
+            <p>This is the settings popup.</p>
+            <button id="close-popup">Close</button>
+        </div>
+    </div>
+  </div>
+
+    <div class="center">
+        <div class="post">
+            <div class="head">
+                <div class="details">
+                    <div class="image">
+                        <img src="./assets/profile-pic2.png" alt="">
+                    </div>
+                    <div class="name">&nbsp Hemanth</div>
+                </div>
+                <div class="follow"><i class="fa-thin fa-plus icon">&nbsp <span>Follow</i></div> 
+            </div>
+
+            <input type="checkbox" name="" id="like" class="btn" />
+            <input type="checkbox" name="" id="comment" class="btn" />
+            <input type="checkbox" name="" id="save" class="btn" />
+
+            <div class="content">
+                <img src="./assets/p1.png" alt="Amazon Page">
+            </div>
+            <div class="features">
+                <div class="controls">
+                  <label for="like" id="like-btn"></label>
+                  <label for="comment" id="comment-btn"></label>
+                  <label for="save" id="save-btn"></label>
+                </div>
+                <div class="liked">
+                    <div class="desc">
+                        Liked by <span>someone</span> and <span>30 others</span>
+                    </div>
+                </div>
+                    <div class="desc title">
+                        <p class="project-name">Amazon Clone</p>
+                        <p><span class="description">Description</span> <br>
+                        To add some CSS and position the button over the image, you can set the image container to a relative 
+                        position and set the button to an absolute position with a z-index higher than the image. 
+                        Adjust the . image-container width and height properties to match the size of your image.</p>
+                    </div> 
+                    <label for="comment" id="comment-btn2">View all comments </label>
+            </div>
+            <div class="post-comment">
+                <div class="head">
+                    <div class="name">
+                        Comments
+                    </div>
+                    <label for="comment" id="comment-btn3">
+                        <i class="fa-solid fa-xmark"></i>
+                    </label>
+                </div>
+
+                <div class="comments">
+
+                    <div class="comment">
+                        <img src="./assets/profile-pic.jpeg" alt="">
+                        <span>Q2.  Implement a basic
+                            calculator application with a clean User Interface of your choice based on
+                            following the MVC framework design pattern and involving EJS concept.
+                        <div class="desc">2m ago <span> Reply</span></div>
+                    </span>
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <br>
+                    <div class="comment">
+                        <img src="./assets/profile-pic2.png" alt="">
+                        <span>Q2.  Implement a basic
+                            calculator application with a clean User Interface of your choice based on
+                            following the MVC framework design pattern and involving EJS concept.
+                        <div class="desc">2m ago <span> Reply</span></div>
+                    </span>
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <br>
+                    <div class="comment">
+                        <img src="./assets/profile-pic2.png" alt="">
+                        <span>Q2.  Implement a basic
+                            calculator application with a clean User Interface of your choice based on
+                            following the MVC framework design pattern and involving EJS concept.
+                        <div class="desc">2m ago <span> Reply</span></div>
+                    </span>
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    
+                </div>
+                <div class="new-comment">
+                    <img src="./assets/profile-pic2.png" alt=""/> &nbsp
+                    <input type="text" placeholder="Add a Comment...."/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </body>
