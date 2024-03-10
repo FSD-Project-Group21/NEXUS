@@ -14,11 +14,20 @@ app.get("/", (req, res) => {
 app.get('/login', (req, res) => {
     res.render('login');
 });
+app.get('/postPage', (req, res) => {
+  res.render('postPage');
+});
 app.get('/studentHomePage', (req, res) => {
     res.render('studentHomePage');
 });
 app.get('/searchPage', (req, res) => {
     res.render('searchPage');
+});
+app.get('/hirePage', (req, res) => {
+  res.render('hirePage');
+});
+app.get('/messagePage', (req, res) => {
+  res.render('messagePage');
 });
 app.get('/notificationPage', (req, res) => {
     res.render('notificationPage');
