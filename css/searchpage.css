@@ -202,11 +202,12 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
   grid-template-rows: repeat(2, 1fr);   
-  gap: 0.85rem; 
+  gap: 1.25rem; 
   /* width: 1000%; */
    width:67rem;
   /* height:38rem; */
-  
+  padding-bottom: 1.25rem;
+  padding-top: 1.25rem;
   /* display:grid;
   grid-template-columns: 200px 200px;
   grid-row: auto auto;
@@ -231,7 +232,7 @@
   width: 70%;
 }
 .categorie:hover{
-  transform: translateY(-5px);
+  transform: translateY(-7px);
   box-shadow: 5px 5px 8px rgb(131, 129, 129);
 }
 .graphic-design,.Architecture,.data-science,.business{

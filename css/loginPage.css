@@ -4,11 +4,16 @@ body{
 	font-weight: 300;
 	line-height: 1.7;
 	color: #000000;
-	background-color: #D4EBFB;
-    background-image: url('/assets/login-bg.jpeg');
+	background-color: rgb(0,0,0,0.4);
     background-size: 100% 100%;
-
-}
+  }
+  .background-clip{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  
 a:hover {
 	text-decoration: none;
 }
@@ -26,7 +31,7 @@ h4 {
   font-weight: 600;
 }
 span{
-  color: white;
+  color: rgb(253, 249, 249);
 }
 h6 span{
   padding: 0 20px;
