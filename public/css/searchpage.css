@@ -12,7 +12,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
-  z-index: 1000000000;
+  /* z-index: 1000000000; */
 }
 .logo-top{
   height: 5.5rem; /* 88px / 16px = 5.5rem */
