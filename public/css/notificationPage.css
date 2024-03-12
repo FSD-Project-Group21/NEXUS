@@ -189,6 +189,7 @@ body{
 
 .notification-ui_dd-content {
   margin-bottom: 30px;
+  width: 60%;
 }
 
 .notification-list {
