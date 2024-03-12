@@ -278,3 +278,157 @@ p{
   
   text-align: left;
 }
+
+/* footer */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+}
+
+a {
+  transition: .3s;
+}
+
+a:hover,
+a:active,
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+.footer {
+  position: relative;
+  padding-top: 45px;
+  background: #121518;
+  font-size: 20px;
+}
+
+.footer .footer-about,
+.footer .footer-contact {
+  position: relative;
+  margin-bottom: 45px;
+  color: #cccccc;
+}
+
+.footer .footer-about h3,
+.footer .footer-contact h3 {
+  position: relative;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.footer .footer-about h3::after,
+.footer .footer-contact h3::after {
+  position: absolute;
+  content: "";
+  width: 50px;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background: #ffffff;
+}
+
+.footer .footer-about {
+  margin-bottom: 0;
+}
+
+.footer .footer-contact p {
+  margin-bottom: 8px;
+}
+
+.footer .footer-contact p i {
+  width: 25px;
+}
+
+.footer .footer-social {
+  position: relative;
+  margin-top: 15px;
+}
+
+.footer .footer-social a {
+  display: inline-block;
+}
+
+.footer .footer-social a i {
+  margin-right: 15px;
+  font-size: 18px;
+  color: #cccccc;
+}
+
+.footer .footer-social a:last-child i {
+  margin: 0;
+}
+
+.footer .footer-social a:hover i {
+  color: #0085ff;
+}
+
+
+.footer .copyright {
+  position: relative;
+  padding: 25px 0;
+  background: #000000;
+  width: 100%;
+}
+
+.footer .copyright .copy-text p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: #cccccc;
+}
+
+.footer .copyright .copy-text p a {
+  color: #cccccc;
+}
+
+.footer .copyright .copy-text p a:hover {
+  color: #0085ff;
+}
+
+.footer .copyright .copy-menu {
+  position: relative;
+  font-size: 0;
+  text-align: right;
+}
+
+.footer .copyright .copy-menu a {
+  color: #cccccc;
+  font-size: 16px;
+  font-weight: 400;
+  margin-right: 15px;
+  padding-right: 15px;
+  border-right: 1px solid rgba(255, 255, 255, .3);
+}
+
+.footer .copyright .copy-menu a:hover {
+  color: #0085ff;
+}
+
+.footer .copyright .copy-menu a:last-child {
+  margin-right: 0;
+  padding-right: 0;
+  border-right: none;
+}
+
+@media (max-width: 767.98px) {
+  .footer .copyright .copy-text,
+  .footer .copyright .copy-menu {
+      text-align: center;
+  }
+  
+  .footer .copyright .copy-text p {
+      margin-bottom: 5px;
+  }
+  
+}
+.row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
