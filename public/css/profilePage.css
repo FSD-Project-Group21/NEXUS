@@ -131,8 +131,8 @@ main{
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url(/assets/hello.jpg);
-  background-repeat: no-repeat;
+  background-image: url(/assets/hello.avif);
+  /* background-repeat: no-repeat; */
   background-size: cover;
 }
 /* top section css */
