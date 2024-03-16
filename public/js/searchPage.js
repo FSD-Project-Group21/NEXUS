@@ -48,3 +48,37 @@ document.addEventListener('DOMContentLoaded', function() {
             popupContainer.style.display = 'none';
         }, 300);
     });
+
+
+    //tiles as button
+
+const tiles = document.querySelectorAll('._tile');
+const tilesCont = document.querySelectorAll('._tile-cont');
+const cat = document.querySelector('.categories');
+
+var j ;
+tiles.forEach(tile => {
+    tile.addEventListener('click',()=>{
+        for(let i = 0;i<4;i++){
+            if(tiles[i] != tile){
+                tiles[i].classList.remove("openTile");
+            }else
+                j=i;
+        }
+        tile.classList.add("openTile")
+
+        displayCont(j);
+    });
+});
+
+
+function displayCont(j){
+    tilesCont[j].classList.remove("hide");
+    for(let i=0;i<4;i++){
+        if(i!==j){
+            tilesCont[i].classList.add("hide");
+        }
+    }
+    cat.classList.add("hide");
+}
+

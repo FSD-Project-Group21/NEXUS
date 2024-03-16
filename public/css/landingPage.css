@@ -226,21 +226,21 @@ section.section3{
     display: flex;
     align-items: center;
     }
-    section.section5{
-      background-image: url(/assets/sec5-bg.png);
-      background-repeat: no-repeat;
-      background-size: cover;
-      display: flex;
-      align-items: center;
+section.section5{
+  background-image: url(/assets/sec5-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
 
-      }
-
-      section.section6{
-        background-image: url(/assets/sec6-bg.webp);
-      background-repeat: no-repeat;
-      background-size: cover;
-      align-items: center;
-      }
+section.section6{
+  background-image: url(/assets/sec6-bg.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+  height: fit-content;
+}
 
 .colab-text, .hiring-text,.messaging-text,.post-text{
 width: 60%;
@@ -309,6 +309,7 @@ a:focus {
   position: relative;
   margin-bottom: 45px;
   color: #cccccc;
+  font-size: 20px;
 }
 
 .footer .footer-about h3,
@@ -333,7 +334,8 @@ a:focus {
 }
 
 .footer .footer-about {
-  margin-bottom: 0;
+  margin-bottom: 2%;
+
 }
 
 .footer .footer-contact p {
@@ -355,7 +357,7 @@ a:focus {
 
 .footer .footer-social a i {
   margin-right: 15px;
-  font-size: 18px;
+  font-size: 30px;
   color: #cccccc;
 }
 
@@ -431,4 +433,7 @@ a:focus {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+.footer-contact-content{
+  font-size: 20px;
 }
