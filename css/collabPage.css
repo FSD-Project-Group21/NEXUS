@@ -78,7 +78,7 @@
   .main-container{
     background-color: #D4EBFB;
     height: 100%;
-    width: 100%;
+    width: 95%;
     margin-top: 74px;
     margin-left: 85px;
     display: flex;
@@ -126,27 +126,27 @@
   position: relative;
 }
 
-.btn-primary {
-  background:none;
+/* .btn-primary {
+  background: transparent !important;
   border: none;
   cursor: pointer;
   outline: none;
-}
+} */
 
-.line {
+/* .line {
   position: absolute;
-  bottom: -8px; /* Adjust the distance from the bottom as needed */
-  left: 50%;
+  bottom: -8px; 
+  /* left: 50%;
   transform: translateX(-50%);
-  width: 0%; /* Adjust the length of the line as needed */
-  height: 3px;
-  background-color: #454647; /* Change the color as needed */
+  width: 0%; 
+  /* height: 3px;
+  background-color: #454647; 
   transition: width 0.3s ease;
 }
 
 .btn-primary.active + .line {
   width: 100%;
-}
+} */ 
 
   .collab-header-buttons img{
     /* display: flex;

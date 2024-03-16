@@ -6,7 +6,8 @@
     <title>NEXUS</title>
     <link rel="shortcut icon" href="./assets/logo.svg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/collabPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/hirerPage.css">
 </head>
 <body>
     <div class="directory">
@@ -15,6 +16,7 @@
     <div class="sidebar">
         <a href=""><img class="logo-top" src="./assets/logo.svg"></a>
         <div class="sidebar-no-settings">
+            <a href="./studentHomePage.html" class="icon-link"><img class="home icon" src="./assets/home.png"></a>
             <a href="./studentHomePage.html" class="icon-link"><img class="home icon" src="./assets/home.png"></a>
             <a href="./searchpage.html" class="icon-link"><img class="search-icon icon"  src="./assets/search.png"></a>
             <a href="./notificationPage.html" class="icon-link"><img class="notifications icon"  src="./assets/bell.png"></a>
@@ -25,9 +27,59 @@
         <a href="#"><img class="settings" src="./assets/settings.png"></a>
     </div>
     <div class="main-container">
-        Placeholder
+        <div class="wrapper">
+            <div id="search-container">
+              <input
+                type="search"
+                id="search-input"
+                placeholder="Search product name here.."
+              />
+              <button id="search">Search</button>
+            </div>
+            <div id="buttons">
+              <button class="button-value" onclick="filterProduct('all')">All</button>
+              <button class="button-value" onclick="filterProduct('Topwear')">
+                Category 1
+              </button>
+              <button class="button-value" onclick="filterProduct('Bottomwear')">
+                Category 2
+              </button>
+              <button class="button-value" onclick="filterProduct('Jacket')">
+                Category 3
+              </button>
+              <button class="button-value" onclick="filterProduct('Watch')">
+                Category 4
+              </button>
+            </div>
+            <div id="products">
+               
+            </div>
+          </div>
+          <div class="saved-hired-wrapper">
+            <div class="saved-cards-container">
+              <h2>Saved Cards</h2>
+              <div id="saved-cards"></div>
+            </div>
+            <div class="hired-cards-container">
+              <h2>Hired Cards</h2>
+              <div id="hired-cards"></div>
+            </div>
+          </div>
+
     </div>
-    <script src="./js/collabPage.js"></script>
-    <script src="https://kit.fontawesome.com/6953004357.js" crossorigin="anonymous"></script>
+
+    <!-- Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel est vel odio finibus convallis eget ut nunc.</p>
+    <div class="modal-buttons">
+      <button id="saveBtn"><i class="fa fa-bookmark"></i> Save Profile</button>
+      <button id="hireBtn">Hire Profile</button>
+    </div>
+  </div>
+</div>
+    <script src="./js/hirerPage.js"></script>
+
 </body>
 </html>
