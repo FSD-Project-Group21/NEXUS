@@ -318,9 +318,10 @@ main{
 .hide{
   display: none;
 }
-img{
+.grid-item img{
   width: 50%;
   flex: 0 0 auto;
+  object-fit: contain;
 }
 .post-text{
   flex: 1;
@@ -345,10 +346,12 @@ h5{
 .grid-container {
   display: grid;
   /* width: 73.625rem; */
-  grid-template-rows: repeat(4, 1fr); /* 3 rows with equal height */
+  grid-template-rows: repeat(4, 0.5fr); /* 3 rows with equal height */
   grid-template-columns: repeat(2, 1fr); /* 3 columns with equal width */
   gap: 2.25rem; /* Gap between grid items */
   padding-top: 2.45rem;
+  padding-bottom: 2.45rem;
+  
 }
 
 .grid-item {
@@ -358,6 +361,7 @@ h5{
   padding: 20px; /* Padding around grid items */
   text-align: center; /* Center text */
   display: flex;
+  height: 100%;
 }
 
 /* create post */
@@ -503,3 +507,120 @@ textarea {
   color: rgb(255,255,242);
 }
 
+/* posts slider */
+
+.post-cont{
+  /* background-color: #888; */
+
+  height: 65vh;
+  
+  width: 100%;
+  position: relative;
+  padding: 10%;
+}
+.post-cont h4{
+  text-align: center;
+  color: #000641;
+  padding-top: 3.125rem;
+
+}
+.slide-row{
+  display: flex;
+  width: 400%;
+  transition: 0.5s;
+}
+
+.slide-col{
+  /* width: 800px; */
+  width: 100%;
+  /* Change width to 100% for responsiveness */
+  height: 25rem;
+  position: relative;
+  /* margin: 2%; */
+}
+.user-text{
+  background:#def1f9 ;
+  /* width: 445px; */
+  width: 55%; /* Change width to 100% for responsiveness */
+  /* height: 270px; */
+  height: auto; /* Change height to auto for responsiveness */
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 0.625rem;
+  color: #071e69;
+  /* padding: 45px; */
+  padding: 1.25rem; /* Reduce padding for responsiveness */
+  box-sizing: border-box;
+  z-index: 2;
+}
+.user-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 48%;
+  
+}
+.user-img img{
+  height: 100%;
+  /* object-fit: contain; */
+  /* position: relative; */
+  border-radius: 0.625rem;
+  width: 100%;
+}
+
+.user-text p{
+  /* font-size: 18px;
+  line-height: 24px; */
+  font-size: 0.875rem; /* Reduce font size for responsiveness */
+  line-height: 1.125rem; /* Reduce line height for responsiveness */
+}
+
+.user-text h3{
+  /* margin: 35px 0 5px; */
+  margin: 0.9375rem 0 0.3125rem; /* Reduce margin for responsiveness */
+  color: #fff;
+}
+
+.slider{
+  /* width: 800px; */
+  /* gpt */
+  width: 100%;
+  height: 25rem;
+  /* position: absolute; */
+  position: relative; /* Change position to relative for responsiveness */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.indicator{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* bottom: -50px; */ 
+  /* gpt */
+  bottom: -1.875rem;
+}
+
+.next-btn{
+  display: inline-block;
+  height: 0.625rem;
+  width: 0.625rem;
+  margin: 0.25rem;
+  border-radius: 0.9375rem;
+  background: #090f79;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.active{
+  width: 2.5rem;
+}
+
+.posts{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}

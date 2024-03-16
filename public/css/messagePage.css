@@ -7,6 +7,17 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
+  .main-cont{
+    padding-bottom: 2.5%;
+    padding-top: 1%;
+    /* padding-left: 85px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(/assets/hello.avif);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
   .directory{
     background-color: #fff;
     position: fixed;
@@ -143,7 +154,7 @@
     width: 80%;
     height:  82vh;
     padding: 10px;
-    background-color: #0056b3;
+    background-color: #0c2168;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -170,7 +181,7 @@
   }
   .contacts-head{
     width: 100%;
-    background-color: #D4EBFB;
+    background-color: #dbedf3;
     padding: 1rem 1rem;
     display: flex;
     align-items: center;
@@ -492,7 +503,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #999;
+  background-color: #d1ebf4;
   color: #333;
 }
 /* add at end  */
