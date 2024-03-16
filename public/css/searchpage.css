@@ -100,7 +100,9 @@ main{
 main{
   /* margin-right: 4.68rem; */
   margin-left: 5.3125rem;
-
+}
+.bg{
+  width: 100%;
 }
 /* .html{
   background-image: url(/assets/search-img.jpeg);
