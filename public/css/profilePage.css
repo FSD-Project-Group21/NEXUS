@@ -558,7 +558,7 @@ textarea {
 .post-cont h4{
   text-align: center;
   color: #000641;
-  padding-top: 3.125rem;
+  padding-top: 2.125rem;
 
 }
 .slide-row{
@@ -580,7 +580,7 @@ textarea {
   /* width: 445px; */
   width: 55%; /* Change width to 100% for responsiveness */
   /* height: 270px; */
-  height: auto; /* Change height to auto for responsiveness */
+  height: 60%; /* Change height to auto for responsiveness */
   position: absolute;
   left: 0;
   top: 50%;
@@ -602,7 +602,7 @@ textarea {
 }
 .user-img img{
   height: 100%;
-  /* object-fit: contain; */
+  object-fit: contain;
   /* position: relative; */
   border-radius: 0.625rem;
   width: 100%;
