@@ -32,37 +32,39 @@
               <input
                 type="search"
                 id="search-input"
-                placeholder="Search product name here.."
+                placeholder="Search category name here.."
               />
               <button id="search">Search</button>
             </div>
             <div id="buttons">
-              <button class="button-value" onclick="filterProduct('all')">All</button>
-              <button class="button-value" onclick="filterProduct('Topwear')">
+              <button class="button-value" onclick="filterProduct('all')">
+                All
+              </button>
+              <button class="button-value" onclick="filterProduct('Category1')">
                 Category 1
               </button>
-              <button class="button-value" onclick="filterProduct('Bottomwear')">
+              <button class="button-value" onclick="filterProduct('Category2')">
                 Category 2
               </button>
-              <button class="button-value" onclick="filterProduct('Jacket')">
+              <button class="button-value" onclick="filterProduct('Category3')">
                 Category 3
               </button>
-              <button class="button-value" onclick="filterProduct('Watch')">
+              <button class="button-value" onclick="filterProduct('Category4')">
                 Category 4
               </button>
             </div>
-            <div id="products">
+            <div id="profile-cards">
                
             </div>
           </div>
           <div class="saved-hired-wrapper">
             <div class="saved-cards-container">
-              <h2>Saved Cards</h2>
-              <div id="saved-cards"></div>
+              <!-- <h2>Saved Cards</h2> -->
+              <!-- <div id="saved-cards"></div> -->
             </div>
             <div class="hired-cards-container">
-              <h2>Hired Cards</h2>
-              <div id="hired-cards"></div>
+              <!-- <h2>Hired Cards</h2> -->
+              <!-- <div id="hired-cards"></div> -->
             </div>
           </div>
 
@@ -72,7 +74,9 @@
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel est vel odio finibus convallis eget ut nunc.</p>
+    <div class = "student-details">
+
+    </div>
     <div class="modal-buttons">
       <button id="saveBtn"><i class="fa fa-bookmark"></i> Save Profile</button>
       <button id="hireBtn">Hire Profile</button>

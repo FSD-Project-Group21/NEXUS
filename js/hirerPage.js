@@ -1,60 +1,83 @@
-let products = {
+let profiles = {
   data: [
     {
-      studentName: "Nadhitha",
-      category: "Category 1",
+      studentName: "Profile 0",
+      category: "Category4",
       details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
       image: "./assets/profile-pic.jpeg",
+      age: 25,
+      education: "Bachelor's Degree in Computer Science",
+      skills: ["JavaScript", "HTML", "CSS", "Python"],
+      experience: "2 years of internships in software development",
+      languages: ["English", "Spanish"],
+      projectLink: "https://www.nexus.com/profiles/profile0/projects",
+      isSaved: false,
+      isHired: false,
     },
     {
-      studentName: "Nadhitha",
-      category: "Category 4",
+      studentName: "Profile 1",
+      category: "Category2",
       details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
       image: "./assets/profile-pic.jpeg",
+      age: 25,
+      education: "Bachelor's Degree in Computer Science",
+      skills: ["JavaScript", "HTML", "CSS", "Python"],
+      experience: "2 years of internships in software development",
+      languages: ["English", "Spanish"],
+      projectLink: "https://www.nexus.com/profiles/profile1/projects",
+      isSaved: false,
+      isHired: false,
     },
     {
-      studentName: "Nadhitha",
-      category: "Watch",
+      studentName: "Profile 2",
+      category: "Category1",
       details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
       image: "./assets/profile-pic.jpeg",
+      age: 25,
+      education: "Bachelor's Degree in Computer Science",
+      skills: ["JavaScript", "HTML", "CSS", "Python"],
+      experience: "2 years of internships in software development",
+      languages: ["English", "Spanish"],
+      projectLink: "https://www.nexus.com/profiles/profile2/projects",
+      isSaved: false,
+      isHired: false,
     },
     {
-      studentName: "Nadhitha",
-      category: "Topwear",
+      studentName: "Profile 3",
+      category: "Category3",
       details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
       image: "./assets/profile-pic.jpeg",
+      age: 25,
+      education: "Bachelor's Degree in Computer Science",
+      skills: ["JavaScript", "HTML", "CSS", "Python"],
+      experience: "2 years of internships in software development",
+      languages: ["English", "Spanish"],
+      projectLink: "https://www.nexus.com/profiles/profile3/projects",
+      isSaved: false,
+      isHired: false,
     },
     {
-      studentName: "Nadhitha",
-      category: "Jacket",
+      studentName: "Profile 4",
+      category: "Category1",
       details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
       image: "./assets/profile-pic.jpeg",
-    },
-    {
-      studentName: "Nadhitha",
-      category: "Bottomwear",
-      details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
-      image: "./assets/profile-pic.jpeg",
-    },
-    {
-      studentName: "Nadhitha",
-      category: "Jacket",
-      details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
-      image: "./assets/profile-pic.jpeg",
-    },
-    {
-      studentName: "Nadhitha",
-      category: "Bottomwear",
-      details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
-      image: "./assets/profile-pic.jpeg",
+      age: 25,
+      education: "Bachelor's Degree in Computer Science",
+      skills: ["JavaScript", "HTML", "CSS", "Python"],
+      experience: "2 years of internships in software development",
+      languages: ["English", "Spanish"],
+      projectLink: "https://www.nexus.com/profiles/profile3/projects",
+      isSaved: false,
+      isHired: false,
     },
   ],
 };
 
-for (let i of products.data) {
+for (let i of profiles.data) {
   // Create Card
   let card = document.createElement("div");
   card.classList.add("collab");
+  card.classList.add(i.category);
 
   // Image Container
   // let imageContainer = document.createElement("div");
@@ -86,156 +109,296 @@ for (let i of products.data) {
   infoContainer.appendChild(button);
 
   card.appendChild(infoContainer);
-  document.getElementById("products").appendChild(card);
+  document.getElementById("profile-cards").appendChild(card);
 }
-  
-  //parameter passed from button (Parameter same as category)
-  function filterProduct(value) {
-    //Button class code
-    let buttons = document.querySelectorAll(".button-value");
-    buttons.forEach((button) => {
-      //check if value equals innerText
-      if (value.toUpperCase() == button.innerText.toUpperCase()) {
-        button.classList.add("active");
-      } else {
-        button.classList.remove("active");
-      }
-    });
-  
-    //select all cards
-    let elements = document.querySelectorAll(".card");
-    //loop through all cards
-    elements.forEach((element) => {
-      //display all cards on 'all' button click
-      if (value == "all") {
+
+// Filter function
+function filterProduct(value) {
+  let buttons = document.querySelectorAll(".button-value");
+  buttons.forEach((button) => {
+    // Check if the button text is "All" or matches the specified value
+    var buttonValue = button.innerText.toUpperCase();
+    if (button.innerText.toUpperCase().split(" ").length === 2) buttonValue = button.innerText.toUpperCase().split(" ")[0] + button.innerText.toUpperCase().split(" ")[1];
+
+    if (value.toUpperCase() === buttonValue) {
+      button.classList.add("active");
+    } else {
+      button.classList.remove("active");
+    }
+  });
+
+
+  let elements = document.querySelectorAll(".collab");
+  elements.forEach((element) => {
+    if (value == "all") {
+      element.classList.remove("hide");
+    } else {
+      if (element.classList.contains(value)) {
         element.classList.remove("hide");
       } else {
-        //Check if element contains category class
-        if (element.classList.contains(value)) {
-          //display element based on category
-          element.classList.remove("hide");
-        } else {
-          //hide other elements
-          element.classList.add("hide");
-        }
+        element.classList.add("hide");
       }
-    });
-  }
-  
-  //Search button click
-  document.getElementById("search").addEventListener("click", () => {
-    //initializations
-    let searchInput = document.getElementById("search-input").value;
-    let elements = document.querySelectorAll(".product-name");
-    let cards = document.querySelectorAll(".card");
-  
-    //loop through all elements
-    elements.forEach((element, index) => {
-      //check if text includes the search value
-      if (element.innerText.includes(searchInput.toUpperCase())) {
-        //display matching card
-        cards[index].classList.remove("hide");
-      } else {
-        //hide others
-        cards[index].classList.add("hide");
-      }
-    });
+    }
   });
-  
-  //Initially display all products
-  window.onload = () => {
-    filterProduct("all");
-  };
-  
+}
+
+// Search function
+document.getElementById("search").addEventListener("click", () => {
+  let searchInput = document.getElementById("search-input").value.trim().toUpperCase();
+  let elements = document.querySelectorAll(".collab-info h2");
+  let cards = document.querySelectorAll(".collab");
+
+  elements.forEach((element, index) => {
+    let profileName = element.innerText.trim().toUpperCase();
+    if (profileName.includes(searchInput)) {
+      cards[index].classList.remove("hide");
+    } else {
+      cards[index].classList.add("hide");
+    }
+  });
+});
+
+//Initially display all profiles
+window.onload = () => {
+  filterProduct("all");
+};
+
 
 // Handle the modals (popup on-click of the "Check Out Profile Button")
 var modal = document.getElementById("myModal");
 var btns = document.querySelectorAll(".collab button");
 var span = document.getElementsByClassName("close")[0];
+var index;
 
 // When the user clicks the button, open the modal
 for (var i = 0; i < btns.length; i++) {
-  btns[i].onclick = function() {
+  btns[i].onclick = function () {
+    // Get which card got clicked
+    index = Array.from(btns).indexOf(this);
+
+    // console.log(profiles.data[index]);
+
     modal.style.display = "block";
+
+    // Populate modal content with profile details
+    populateModalContent();
   }
 }
 
+
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.onclick = function () {
   modal.style.display = "none";
+  index = null;
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
+    index = null;
   }
 }
 
+// Function to populate modal content with profile details
+function populateModalContent() {
+  // Get the modal content element
+  var modalContent = document.querySelector(".student-details");
 
+  modalContent.innerHTML = "";
 
+  // Create elements for profile details
+  var nameElement = document.createElement("h2");
+  nameElement.innerText = profiles.data[index].studentName.toUpperCase();
+  modalContent.appendChild(nameElement);
 
-// Arrays to store saved and hired cards
-let savedCards = [];
-let hiredCards = [];
+  var categoryElement = document.createElement("p");
+  categoryElement.innerText = "Category: " + profiles.data[index].category;
+  modalContent.appendChild(categoryElement);
 
-// ... (Existing code) ...
+  var detailsElement = document.createElement("p");
+  detailsElement.innerText = profiles.data[index].details;
+  modalContent.appendChild(detailsElement);
+
+  // Add additional profile details
+  var ageElement = document.createElement("p");
+  ageElement.innerText = "Age: " + profiles.data[index].age;
+  modalContent.appendChild(ageElement);
+
+  var educationElement = document.createElement("p");
+  educationElement.innerText = "Education: " + profiles.data[index].education;
+  modalContent.appendChild(educationElement);
+
+  var skillsElement = document.createElement("p");
+  skillsElement.innerText = "Skills: " + profiles.data[index].skills.join(", ");
+  modalContent.appendChild(skillsElement);
+
+  var experienceElement = document.createElement("p");
+  experienceElement.innerText = "Experience: " + profiles.data[index].experience;
+  modalContent.appendChild(experienceElement);
+
+  var languagesElement = document.createElement("p");
+  languagesElement.innerText = "Languages: " + profiles.data[index].languages.join(", ");
+  modalContent.appendChild(languagesElement);
+
+  // Update buttons based on saved/hired status
+  var saveBtn = document.getElementById("saveBtn");
+  var hireBtn = document.getElementById("hireBtn");
+
+  if (profiles.data[index].isSaved) {
+    saveBtn.style.backgroundColor = "red";
+    saveBtn.innerText = "Unsave Profile";
+  } else {
+    saveBtn.style.backgroundColor = "#4CAF50";
+    saveBtn.innerText = "Save Profile";
+  }
+
+  if (profiles.data[index].isHired) {
+    hireBtn.style.backgroundColor = "red";
+    hireBtn.innerText = "Unhire Profile";
+  } else {
+    hireBtn.style.backgroundColor = "#4CAF50";
+    hireBtn.innerText = "Hire Profile";
+  }
+}
+
 
 // Save button click event
 document.querySelectorAll("#saveBtn").forEach(function (btn) {
   btn.addEventListener("click", function (event) {
-    const clickedButton = event.target;
-    console.log("Clicked Button:", clickedButton);
+    console.log("Saved " + index);
 
-    const clickedCard = clickedButton.closest(".collab");
-    console.log("Clicked Card:", clickedCard);
-    console.log("Parent Card:", cc);
+    profiles.data[index].isSaved = !profiles.data[index].isSaved;
 
-    if (!clickedCard) {
-      alert("Could not find the card element.");
-      return;
-    }
+    updateSavedProfiles();
 
-    // Check if the card is already saved
-    const isSaved = savedCards.includes(clickedCard);
-
-    if (isSaved) {
-      alert("Card is already saved.");
-    } else {
-      // Clone the card and append it to the saved cards container
-      const savedCardClone = clickedCard.cloneNode(true);
-      document.getElementById("saved-cards").appendChild(savedCardClone);
-      savedCards.push(clickedCard);
-      alert("Card saved successfully!");
-    }
+    // Populate modal content with profile details
+    populateModalContent();
   });
 });
 
-// Hire button click event
+// Hired button click event
 document.querySelectorAll("#hireBtn").forEach(function (btn) {
   btn.addEventListener("click", function (event) {
-    const clickedButton = event.target;
-    console.log("Clicked Button:", clickedButton);
+    console.log("Hired " + index);
 
-    const clickedCard = clickedButton.closest(".collab");
-    console.log("Clicked Card:", clickedCard);
+    profiles.data[index].isHired = !profiles.data[index].isHired;
 
-    if (!clickedCard) {
-      alert("Could not find the card element.");
-      return;
-    }
+    updateHiredProfiles();
 
-    // Check if the card is already hired
-    const isHired = hiredCards.includes(clickedCard);
-
-    if (isHired) {
-      alert("Card is already hired.");
-    } else {
-      // Clone the card and append it to the hired cards container
-      const hiredCardClone = clickedCard.cloneNode(true);
-      document.getElementById("hired-cards").appendChild(hiredCardClone);
-      hiredCards.push(clickedCard);
-      alert("Card hired successfully!");
-    }
+    // Populate modal content with profile details
+    populateModalContent();
   });
 });
+
+
+function updateSavedProfiles() {
+  var cardContainer = document.getElementsByClassName("saved-cards-container");
+  cardContainer[0].innerHTML = "";
+  let h2 = document.createElement("h2");
+  h2.innerText = "Saved Profiles";
+  cardContainer[0].appendChild(h2);
+
+  let div = document.createElement("div");
+  div.setAttribute("id", "saved-cards");
+  div.innerHTML = "";
+  cardContainer[0].appendChild(div);
+
+  for (let i of profiles.data) {
+    if (i.isSaved === true) {
+      // Create Card
+      let card = document.createElement("div");
+      card.classList.add("collab");
+
+      // Image Container
+      // let imageContainer = document.createElement("div");
+      // imageContainer.classList.add("collab-preview");
+      let image = document.createElement("img");
+      image.setAttribute("src", i.image);
+      image.setAttribute("alt", "Image");
+      // imageContainer.appendChild(image);
+      // card.appendChild(imageContainer);
+      card.appendChild(image);
+
+      // Info Container
+      let infoContainer = document.createElement("div");
+      infoContainer.classList.add("collab-info");
+
+      // Product Name
+      let name = document.createElement("h2");
+      name.innerText = i.studentName.toUpperCase();
+      infoContainer.appendChild(name);
+
+      // Details
+      let details = document.createElement("h6");
+      details.innerText = i.details;
+      infoContainer.appendChild(details);
+
+      // Project Link
+      let projectLink = document.createElement("a");
+      projectLink.setAttribute("href", i.projectLink);
+      projectLink.setAttribute("target", "_blank");
+      projectLink.innerText = i.projectLink;
+      infoContainer.appendChild(projectLink);
+
+      card.appendChild(infoContainer);
+      document.getElementById("saved-cards").appendChild(card);
+    }
+  }
+}
+
+function updateHiredProfiles() {
+  var cardContainer = document.getElementsByClassName("hired-cards-container");
+  cardContainer[0].innerHTML = "";
+  let h2 = document.createElement("h2");
+  h2.innerText = "Hired Profiles";
+  cardContainer[0].appendChild(h2);
+
+  let div = document.createElement("div");
+  div.setAttribute("id", "hired-cards");
+  div.innerHTML = "";
+  cardContainer[0].appendChild(div);
+
+  document.getElementById("hired-cards").innerHTML = "";
+  for (let i of profiles.data) {
+    if (i.isHired === true) {
+      // Create Card
+      let card = document.createElement("div");
+      card.classList.add("collab");
+
+      // Image Container
+      // let imageContainer = document.createElement("div");
+      // imageContainer.classList.add("collab-preview");
+      let image = document.createElement("img");
+      image.setAttribute("src", i.image);
+      image.setAttribute("alt", "Image");
+      // imageContainer.appendChild(image);
+      // card.appendChild(imageContainer);
+      card.appendChild(image);
+
+      // Info Container
+      let infoContainer = document.createElement("div");
+      infoContainer.classList.add("collab-info");
+
+      // Product Name
+      let name = document.createElement("h2");
+      name.innerText = i.studentName.toUpperCase();
+      infoContainer.appendChild(name);
+
+      // Details
+      let details = document.createElement("h6");
+      details.innerText = i.details;
+      infoContainer.appendChild(details);
+
+      // Project Link
+      let projectLink = document.createElement("a");
+      projectLink.setAttribute("href", i.projectLink);
+      projectLink.setAttribute("target", "_blank");
+      projectLink.innerText = i.projectLink;
+      infoContainer.appendChild(projectLink);
+
+      card.appendChild(infoContainer);
+      document.getElementById("hired-cards").appendChild(card);
+    }
+  }
+}
