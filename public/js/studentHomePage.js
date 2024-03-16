@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     const settingsButton = document.querySelector('.settings');
     const popupContainer = document.getElementById('popup-container');
