@@ -288,7 +288,10 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #02507b; 
   }
-
+.send-msg{
+  background: none;
+  border: none;
+}
 .msg-requests-div{
   width: 100%;
   height: 100%;

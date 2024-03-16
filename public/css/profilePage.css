@@ -355,6 +355,7 @@ main{
 .hide{
   display: none;
 }
+
 .grid-item img{
   width: 50%;
   flex: 0 0 auto;
@@ -362,7 +363,8 @@ main{
 }
 .post-text{
   flex: 1;
-  
+  overflow: scroll;
+  padding-left: 3%;
   font-family: Google-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 h4{
@@ -535,13 +537,14 @@ textarea {
   margin: 0;
 }
 .form-for-post{
-  background-image: url(/assets/upload-form-bg.jpg);
+  /* background-image: url(/assets/upload-form-bg.jpg); */
+  background-image: url(/assets/save-post-bg.jpeg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   padding: 48px;
   border-radius: 13px;
   margin-bottom: 30px;
-  color: rgb(255,255,242);
+  color: rgb(12, 12, 12);
 }
 
 /* posts slider */
@@ -553,12 +556,12 @@ textarea {
   
   width: 100%;
   position: relative;
-  padding: 10%;
+  padding: 0 10% 10% 10%;
 }
 .post-cont h4{
   text-align: center;
   color: #000641;
-  padding-top: 3.125rem;
+  padding-top: 2.125rem;
 
 }
 .slide-row{
@@ -576,11 +579,13 @@ textarea {
   /* margin: 2%; */
 }
 .user-text{
-  background:#def1f9 ;
+  /* background:#def1f9 ; */
+  background-image: url(/assets/save-post-bg.jpeg);
+  overflow: scroll;
   /* width: 445px; */
   width: 55%; /* Change width to 100% for responsiveness */
   /* height: 270px; */
-  height: auto; /* Change height to auto for responsiveness */
+  height: 60%; /* Change height to auto for responsiveness */
   position: absolute;
   left: 0;
   top: 50%;
@@ -602,17 +607,14 @@ textarea {
 }
 .user-img img{
   height: 100%;
-  /* object-fit: contain; */
+  object-fit: contain;
   /* position: relative; */
   border-radius: 0.625rem;
   width: 100%;
 }
 
 .user-text p{
-  /* font-size: 18px;
-  line-height: 24px; */
-  font-size: 0.875rem; /* Reduce font size for responsiveness */
-  line-height: 1.125rem; /* Reduce line height for responsiveness */
+  color: #000641;
 }
 
 .user-text h3{
