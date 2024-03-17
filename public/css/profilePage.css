@@ -355,6 +355,7 @@ main{
 .hide{
   display: none;
 }
+
 .grid-item img{
   width: 50%;
   flex: 0 0 auto;
@@ -362,7 +363,8 @@ main{
 }
 .post-text{
   flex: 1;
-  
+  overflow: scroll;
+  padding-left: 3%;
   font-family: Google-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 h4{
@@ -535,13 +537,14 @@ textarea {
   margin: 0;
 }
 .form-for-post{
-  background-image: url(/assets/upload-form-bg.jpg);
+  /* background-image: url(/assets/upload-form-bg.jpg); */
+  background-image: url(/assets/save-post-bg.jpeg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   padding: 48px;
   border-radius: 13px;
   margin-bottom: 30px;
-  color: rgb(255,255,242);
+  color: rgb(12, 12, 12);
 }
 
 /* posts slider */
@@ -553,7 +556,7 @@ textarea {
   
   width: 100%;
   position: relative;
-  padding: 10%;
+  padding: 0 10% 10% 10%;
 }
 .post-cont h4{
   text-align: center;
@@ -576,7 +579,9 @@ textarea {
   /* margin: 2%; */
 }
 .user-text{
-  background:#def1f9 ;
+  /* background:#def1f9 ; */
+  background-image: url(/assets/save-post-bg.jpeg);
+  overflow: scroll;
   /* width: 445px; */
   width: 55%; /* Change width to 100% for responsiveness */
   /* height: 270px; */
@@ -609,10 +614,7 @@ textarea {
 }
 
 .user-text p{
-  /* font-size: 18px;
-  line-height: 24px; */
-  font-size: 0.875rem; /* Reduce font size for responsiveness */
-  line-height: 1.125rem; /* Reduce line height for responsiveness */
+  color: #000641;
 }
 
 .user-text h3{
@@ -660,4 +662,71 @@ textarea {
   width: 100%;
   height: 100%;
   overflow: hidden;
+}
+/* work popup */
+#popup-form{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  backdrop-filter: blur(5px); 
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999; /* Ensure the popup appears above other elements */
+  /* font-size: 20px;
+  color: red; */
+}
+
+.workup {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index:100;  /* Ensure the popup appears above other elements */
+  transform: scale(0.5);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  background-image: url('/assets/save-post-bg.jpeg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 55%;
+  height: 70%;
+  font-family: "Unna", serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#role, #description {
+  width: 100%;
+}
+
+#close-workup {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#close-workup:hover {
+  background-color: #0056b3;
+}
+.interested-form{
+  width: 78%;
+}
+#interested-form{
+  display: flex;
+  flex-direction: column;
+}
+.close-icon{
+  border: none;
+  float: right;
+}
+.interested-label{
+  padding: 3%;
 }

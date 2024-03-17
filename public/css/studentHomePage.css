@@ -4,17 +4,11 @@
   }
   body{
     background-color: #D4EBFB;
-  }
-  pin_container{
-    padding-top: 90px;
-    /* padding-left: 85px; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-image: url(/assets/hello.avif);
     /* background-repeat: no-repeat; */
-    /* background-size: cover; */
+    background-size: cover;
   }
+  
   .directory{
     background-color: #fff;
     position: fixed;

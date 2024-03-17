@@ -53,7 +53,7 @@ app.post("/signup", async (req, res) => {
     const existingUser = await collection.findOne({ mail_id: data.mail_id });
 
     if (existingUser) {
-      return res.send('User already exists. Please choose a different username.');
+      return res.send('<script>document.getElementById("SE").innerHTML = "User already exists";</script>')
     }
 
     const saltRounds = 10;
@@ -73,12 +73,12 @@ app.post("/login", async (req, res) => {
     const user = await collection.findOne({ mail_id: req.body.email });
 
     if (!user) {
-        return res.send('<script>alert("User Not Found"); window.location.href = "/";</script>');
+      return res.send('<script>document.getElementById("loginError").innerHTML = "Incorrect Username/password";</script>');
     }
 
     const isPasswordMatch = await bcrypt.compare(req.body.password, user.password);
     if (!isPasswordMatch) {
-      return res.send('<script>alert("Incorrect password"); window.location.href = "/";</script>');
+      return res.send('<script>document.getElementById("loginError").innerHTML = "Incorrect Username/assword";</script>');
     }
 
     res.render("studentHomePage"); // Redirect to home page after successful login

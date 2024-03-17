@@ -17,7 +17,7 @@
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-end;
+    align-items: center;
     z-index: 100;
     /* z-index:100; */
   }
@@ -305,10 +305,18 @@
     content: "\f004";
     color: rgb(237, 30, 34);
 }
+#save:checked ~ .features .controls
+#save-btn::before{
+    font: var(--fa-font-solid);
+    content: "\f02e";
+    color: #080d96;
+}
 
 #like:checked ~ .content::before{
     animation: scaleit 1.5s ease-out;
 }
+
+
 
 @keyframes scaleit{
     0%, 100%{

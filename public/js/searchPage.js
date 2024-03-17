@@ -82,3 +82,16 @@ function displayCont(j){
     cat.classList.add("hide");
 }
 
+const searchIcon = document.getElementById('search-icon');
+const tile = document.querySelector('.search-tile');
+
+// Add click event listener to the search icon
+searchIcon.addEventListener('click', function() {
+  // Toggle the 'open' class on the tile element
+  
+  for(let i=0;i<4;i++){
+        tilesCont[i].classList.add("hide"); 
+}
+tile.classList.toggle('open');
+  cat.classList.add("hide");
+});

@@ -2,9 +2,7 @@
     margin:0;
     padding: 0;
   }
-  body{
-    background-color: #D4EBFB;
-  }
+
   
   .directory{
     background-color: #fff;
@@ -179,8 +177,16 @@
 
 .main-cont {
   margin-top: 4.68rem;
-  margin-left: 4.0625rem;
-  padding: 50px 0;
+  margin-left: 5.19rem;
+  padding: 3.125rem 0;
+  /* padding-top: 90px; */
+  /* padding-left: 85px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(/assets/hello.avif);
+  /* background-repeat: no-repeat; */
+  background-size: cover;
 }
 
 .notify-heading{
