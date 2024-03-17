@@ -147,7 +147,7 @@
   }
   
   
-  #close-popup {
+  #close-popup, #logout {
     margin-top: 10px;
     padding: 5px 10px;
     background-color: #007bff;
@@ -157,7 +157,7 @@
     cursor: pointer;
   }
   
-  #close-popup:hover {
+  #close-popup:hover,#logout:hover {
     background-color: #0056b3;
   }
   @media (max-width:320px) {
