@@ -28,13 +28,13 @@ const wordCountSpan = document.getElementById('wordCount-projectName');
 
 projectNameInput.addEventListener('input', function() {
   const wordCount_proj= projectNameInput.value.length;
-  wordCountSpan.textContent = wordCount_proj + '/100';
+  wordCountSpan.innerText = wordCount_proj + '/100';
 });
 const descriptionInput = document.getElementById('description');
   const charCount = document.getElementById('wordCount-description');
 
   descriptionInput.addEventListener('input', function() {
-    charCount.textContent = `${this.value.length}`; // Update character count
+    charCount.innerText = `${this.value.length}`; // Update character count
   });
   document.getElementById('image').addEventListener('change', function() {
     const fileInput = this;
@@ -44,7 +44,7 @@ const descriptionInput = document.getElementById('description');
   });
   function updateFileName(input) {
     var fileName = input.files[0].name;
-    document.getElementById('fileName').textContent = fileName;
+    document.getElementById('fileName').innerText = fileName;
   }
 
 //Settings
@@ -161,6 +161,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const editit = document.getElementById('editit');
     const saveEdits = document.getElementById('Save-edits');
     const cancelEdits = document.getElementById('Cancel-edits');
+    const nameElement = document.querySelector('.Name');
+    const aboutElement = document.querySelector('.bio');
+    const imageElement = document.querySelector('.profile-picture img');
 
     edit.addEventListener('click', function() {
         editform.style.display = 'flex';
@@ -177,6 +180,38 @@ document.addEventListener('DOMContentLoaded', function() {
             editform.style.display = 'none';
         }, 300);
     });
+    saveEdits.addEventListener('click', function(event) {
+        event.preventDefault();
+        // Update name
+        const nameInput = document.getElementById('name').value;
+        if (nameInput !== '') {
+            nameElement.textContent = nameInput;
+        }
+
+        // Update about
+        const aboutInput = document.getElementById('about').value;
+        if (aboutInput !== '') {
+            aboutElement.textContent = aboutInput;
+        }
+
+        // Update profile picture (optional)
+        const imageInput = document.getElementById('pfp-img').files[0];
+        if (imageInput) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imageElement.src = e.target.result;
+            };
+            reader.readAsDataURL(imageInput);
+        }
+
+        // Hide the edit form
+        document.getElementById('edit-container').style.display = 'none';
+    });
+    function updateFileName(input) {
+        const fileName = input.files[0].name;
+        const label = input.nextElementSibling;
+        label.innerText = fileName;
+    }
 
 
     // saveEdits.addEventListener('click', function(event) {

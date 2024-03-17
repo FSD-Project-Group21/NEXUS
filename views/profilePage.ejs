@@ -69,10 +69,18 @@
     <div class="editit" id="editit">
         <h2>Edits</h2>
         <p>Edit profile here</p>
-        <div class="edit-buttons">
-          <button id="Save-edits">Save</button>
-          <button id="Cancel-edits">Cancel</button>
-        </div>
+        <from class="edit-form">
+          <label class="edit-label" for="name">Name:</label>
+          <input type="text" id="name" name="name">
+          <label class="edit-label" for="about">About:</label>
+          <textarea required id="about" name="about"></textarea>
+          <label class="edit-label" for="pfp">Profile Picture:</label>
+          <input type="file" id="pfp-img" name="image" accept="image/*" required onchange="updateFileName(this)">
+          <div class="edit-buttons">
+            <button id="Save-edits">Save</button>
+            <button id="Cancel-edits">Cancel</button>
+          </div>
+        </from>
     </div>
 </div>
 

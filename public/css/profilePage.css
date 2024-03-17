@@ -751,6 +751,7 @@ textarea {
   display: flex;
   flex-direction: row;
   gap: 0.625rem ;
+  margin-top: 2rem;
 }
 .editit {
   background-color: white;
@@ -790,4 +791,8 @@ textarea {
 .edit{
   border: none;
   background-color: inherit;
+}
+.edit-form{
+  width: 90%;
+  height: 70%;
 }
