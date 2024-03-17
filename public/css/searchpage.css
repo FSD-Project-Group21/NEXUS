@@ -357,7 +357,15 @@ main{
 .names{
   color: antiquewhite;
 }
-
+._tile{
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 10px;
+}
+._tile:hover{
+  background: none;
+  box-shadow: none;
+}
 ._tile-cont{
   background-color: #d6dce3;
   height: 100%;

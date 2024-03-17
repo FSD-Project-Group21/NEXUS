@@ -302,7 +302,7 @@ a:focus {
 .footer {
   position: relative;
   padding-top: 45px;
-  background: #121518;
+  /* background: #121518; */
   font-size: 20px;
 }
 

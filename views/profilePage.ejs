@@ -44,24 +44,32 @@
     <div class="workup" id="workup">
         <div class="interested-form">
           <form id="interested-form">
-            <div>
-              <button class="close-icon"><i class="fa-solid fa-x" style="color: #007bff;"></i></button></div>
-            <label for="role">Role:</label>
-            <input type="text" id="role" name="role">
+            <div class="close-button">
+              <button id="close-icon"><i class="fa-solid fa-x" style="color: #007bff;"></i></button></div>
+            <label class="interested-label" for="role">Role:</label>
+            <input required type="text" id="role" name="role">
 
-            <label for="resume">Resume (PDF):</label>
-            <input type="file" id="resume" name="resume">
+            <label class="interested-label" for="resume">Resume (PDF):</label>
+            <input required  type="file" id="resume" name="resume">
 
-            <label for="description">About:</label>
-            <textarea id="description" name="description"></textarea>
+            <label class="interested-label" for="description">About:</label>
+            <textarea required id="description" name="description"></textarea>
             
-            <input id="close-workup" type="submit" value="Submit">
+            <button  id="close-workup">Submit</button>
 
           </form>
         </div>
         
     </div>
   </div>
+  <div class="edit-popup" id="edit-container">
+    <div class="editit" id="editit">
+        <h2>Edits</h2>
+        <p>Edit profile here</p>
+        <button id="Save-edits">Save</button>
+        <button id="Cancel-edits">Cancel</button>
+    </div>
+</div>
 
 
 
@@ -84,7 +92,7 @@
         <div class="text-section">
           <div class="name-edit">
             <h4 class="Name">ANUSHKA SHETTY</h4>
-            <span class="edit"><i class="fa-solid fa-pen"></i></span>
+            <button  id="edit" class="edit"><i class="fa-solid fa-pen"></i></button>
           </div>
           <div class="bio">
             UNDERGRADUATE STUDENT @ IIIT Sri city <br>
@@ -276,7 +284,7 @@
         
       </div>
     </main>
-    <script src="./studentHomePage.ejs"></script>
+    <!-- <script src="./studentHomePage.ejs"></script> -->
     <script src="./js/profilePage.js"></script>
     <script src="https://kit.fontawesome.com/6953004357.js" crossorigin="anonymous"></script>
 </body>

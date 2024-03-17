@@ -111,7 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const workup = document.getElementById('workup');
     const saveButton = document.getElementById('close-workup'); // Renamed to closeButton for clarity
     const closeButton = document.getElementById('close-icon');
-    const form=document.getElementById('interested-form');
 
     checkBox.addEventListener('change', function() { // Changed the event to 'change' to listen for checkbox state changes
         if (checkBox.checked) {
@@ -134,24 +133,65 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             popupForm.style.display = 'none';
         }, 300);
+        checkBox.checked=false;
     });
-    saveButton.addEventListener('click', function() {
-        // Check if all required fields are filled
+
+    saveButton.addEventListener('click', function(event) {
+        event.preventDefault();
         const role = document.getElementById('role').value;
         const resume = document.getElementById('resume').value;
         const description = document.getElementById('description').value;
-    
-        if (role!== '' && resume!== '' && description!== '') {
+
+        if (role !== '' && resume !== '' && description !== '') {
             workup.style.transform = 'scale(0.5)';
             workup.style.opacity = '0';
             setTimeout(function() {
                 popupForm.style.display = 'none';
             }, 300);
-        } else  {
-            // Display an alert if any required field is empty
+        } else {
             console.log('Please fill in all required fields.');
         }
+        checkBox.checked=true;
     });
-    
-});
+})
+//edit form 
+document.addEventListener('DOMContentLoaded', function() {
+    const editIcon = document.getElementById('edit'); // Changed the selector to match the ID in the HTML
+    const editform = document.getElementById('edit-container');
+    const editit = document.getElementById('editit');
+    const saveEdits = document.getElementById('Save-edits'); // Renamed to closeButton for clarity
+    const cancelEdits = document.getElementById('Cancel-edits');
 
+    editIcon.addEventListener('click', function() { // Changed the event to 'change' to listen for checkbox state changes
+        
+        editform.style.display = 'flex';
+        setTimeout(function() {
+            editit.style.transform = 'scale(1)';
+            editit.style.opacity = '1';
+        }, 100);
+    });
+    cancelEdits.addEventListener('click', function() {
+        editit.style.transform = 'scale(0.5)';
+        editIcon.style.opacity = '0';
+        setTimeout(function() {
+            editform.style.display = 'none';
+        }, 300);
+    });
+
+    // saveEdits.addEventListener('click', function(event) {
+    //     event.preventDefault();
+    //     const role = document.getElementById('role').value;
+    //     const resume = document.getElementById('resume').value;
+    //     const description = document.getElementById('description').value;
+
+    //     if (role !== '' && resume !== '' && description !== '') {
+    //         workup.style.transform = 'scale(0.5)';
+    //         workup.style.opacity = '0';
+    //         setTimeout(function() {
+    //             popupForm.style.display = 'none';
+    //         }, 300);
+    //     } else {
+    //         console.log('Please fill in all required fields.');
+    //     }
+    // });
+})
