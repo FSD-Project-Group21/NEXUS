@@ -2,6 +2,11 @@
     margin:0;
     padding: 0;
   }
+  body{
+    background-image: url("../assets/hello.avif");
+    background-repeat: repeat-y;
+    background-size: cover;
+  }
   .directory{
     background-color: #fff;
     position: fixed;
@@ -163,9 +168,8 @@
   }
   /* Add blur effect to body when popup is open */
   .main-container{
-    background-color: #D4EBFB;
     height: 100%;
-    width: 100%;
+    width: 94%;
     margin-top: 74px;
     margin-left: 85px;
     padding: 0 20px 0 20px;
