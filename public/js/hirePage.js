@@ -24,105 +24,63 @@ let profiles = {
   data: [
     {
       studentName: "Nandhitha",
-      category: "Category4",
-      details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
-      image: "./assets/profile-pic.jpeg",
-      age: 25,
-      education: "Bachelor's Degree in Computer Science",
-      skills: ["JavaScript", "HTML", "CSS", "Python"],
-      experience: "2 years of internships in software development",
-      languages: ["English", "Spanish"],
-      projectLink: "https://www.nexus.com/profiles/profile0/projects",
+      category: "Data-Science",
+      details: "Analytically-driven data scientist with expertise in machine learning, statistical analysis, and data visualization. Experienced in extracting insights from complex datasets to drive informed decision-making and enhance business outcomes.  ",
+      image: "./assets/profile-pic3.png",
       isSaved: false,
       isHired: false,
     },
     {
-      studentName: "Profile 1",
-      category: "Category2",
-      details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
-      image: "./assets/profile-pic.jpeg",
-      age: 25,
-      education: "Bachelor's Degree in Computer Science",
-      skills: ["JavaScript", "HTML", "CSS", "Python"],
-      experience: "2 years of internships in software development",
-      languages: ["English", "Spanish"],
-      projectLink: "https://www.nexus.com/profiles/profile1/projects",
+      studentName: "Hemanth",
+      category: "Graphic-Design",
+      details: "Skilled UI/UX designer with a strong understanding of user-centered design principles. Proficient in wireframing, prototyping. ",
+      image: "./assets/profile-pic2.png",
       isSaved: false,
       isHired: false,
     },
     {
-      studentName: "Profile 2",
-      category: "Category1",
-      details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
-      image: "./assets/profile-pic.jpeg",
-      age: 25,
-      education: "Bachelor's Degree in Computer Science",
-      skills: ["JavaScript", "HTML", "CSS", "Python"],
-      experience: "2 years of internships in software development",
-      languages: ["English", "Spanish"],
-      projectLink: "https://www.nexus.com/profiles/profile2/projects",
+      studentName: "Shrishti",
+      category: "Business",
+      details: "Results-oriented business development manager with a proven track record of driving revenue growth and expanding market reach.",
+      image: "./assets/profile-pic4.png",
       isSaved: false,
       isHired: false,
     },
     {
-      studentName: "Profile 3",
-      category: "Category3",
-      details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
-      image: "./assets/profile-pic.jpeg",
-      age: 25,
-      education: "Bachelor's Degree in Computer Science",
-      skills: ["JavaScript", "HTML", "CSS", "Python"],
-      experience: "2 years of internships in software development",
-      languages: ["English", "Spanish"],
-      projectLink: "https://www.nexus.com/profiles/profile3/projects",
+      studentName: "Ananya",
+      category: "Architecture",
+      details: "Innovative architectural designer with a passion for sustainable design and urban revitalization. Proficient in CAD software and skilled in creating aesthetically pleasing and functional designs. ",
+      image: "./assets/profile-pic6.png",
       isSaved: false,
       isHired: false,
     },
     {
-      studentName: "Profile 4",
-      category: "Category1",
-      details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
-      image: "./assets/profile-pic.jpeg",
-      age: 25,
-      education: "Bachelor's Degree in Computer Science",
-      skills: ["JavaScript", "HTML", "CSS", "Python"],
-      experience: "2 years of internships in software development",
-      languages: ["English", "Spanish"],
-      projectLink: "https://www.nexus.com/profiles/profile3/projects",
+      studentName: "Varshitha",
+      category: "Data-Science",
+      details: "Detail-oriented data analyst with a strong background in data mining, cleaning, and interpretation. Skilled in generating actionable insights through data visualization and statistical analysis. ",
+      image: "./assets/profile-pic5.png",
       isSaved: false,
       isHired: false,
     },
     {
-      studentName: "Profile 5",
-      category: "Category4",
-      details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
-      image: "./assets/profile-pic.jpeg",
-      age: 25,
-      education: "Bachelor's Degree in Computer Science",
-      skills: ["JavaScript", "HTML", "CSS", "Python"],
-      experience: "2 years of internships in software development",
-      languages: ["English", "Spanish"],
-      projectLink: "https://www.nexus.com/profiles/profile0/projects",
+      studentName: "Maheshwari",
+      category: "Graphic-Design",
+      details: "Innovative and versatile graphic designer with a keen eye for detail and a passion for creating visually stunning designs. ",
+      image: "./assets/profile-pic4.png",
       isSaved: false,
       isHired: false,
     },{
-      studentName: "Profile 6",
-      category: "Category4",
-      details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
-      image: "./assets/profile-pic.jpeg",
-      age: 25,
-      education: "Bachelor's Degree in Computer Science",
-      skills: ["JavaScript", "HTML", "CSS", "Python"],
-      experience: "2 years of internships in software development",
-      languages: ["English", "Spanish"],
-      projectLink: "https://www.nexus.com/profiles/profile0/projects",
+      studentName: "Rupesh",
+      category: "Architecture",
+      details: "Detail-oriented project architect with a proven track record of managing large-scale architectural projects from inception to delivery. ",
+      image: "./assets/profile-pic2.png",
       isSaved: false,
       isHired: false,
     },{
-      studentName: "Profile 7",
-      category: "Category4",
-      details: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa tempora magnam nemo quibusdam ea architecto aliquam ex eaque harum saepe dolore porro at tempore reiciendis, libero ad praesentium? Rerum.",
-      image: "./assets/profile-pic.jpeg",
+      studentName: "Ravi",
+      category: "Business",
+      details: "Analytically-driven financial analyst with expertise in financial modeling, forecasting, and budgeting. Proficient in conducting in-depth financial analysis to support strategic decision-making and optimize business performance.  ",
+      image: "./assets/profile-pic2.png",
       age: 25,
       education: "Bachelor's Degree in Computer Science",
       skills: ["JavaScript", "HTML", "CSS", "Python"],
@@ -283,13 +241,13 @@ function populateModalContent() {
   modalContent.appendChild(detailsElement);
 
   // Add additional profile details
-  var ageElement = document.createElement("p");
-  ageElement.innerText = "Age: " + profiles.data[index].age;
-  modalContent.appendChild(ageElement);
+  // var ageElement = document.createElement("p");
+  // ageElement.innerText = "Age: " + profiles.data[index].age;
+  // modalContent.appendChild(ageElement);
 
-  var educationElement = document.createElement("p");
-  educationElement.innerText = "Education: " + profiles.data[index].education;
-  modalContent.appendChild(educationElement);
+  // var educationElement = document.createElement("p");
+  // educationElement.innerText = "Education: " + profiles.data[index].education;
+  // modalContent.appendChild(educationElement);
 
   var skillsElement = document.createElement("p");
   skillsElement.innerText = "Skills: " + profiles.data[index].skills.join(", ");
@@ -400,11 +358,11 @@ function updateSavedProfiles() {
       infoContainer.appendChild(details);
 
       // Project Link
-      let projectLink = document.createElement("a");
-      projectLink.setAttribute("href", i.projectLink);
-      projectLink.setAttribute("target", "_blank");
-      projectLink.innerText = i.projectLink;
-      infoContainer.appendChild(projectLink);
+      // let projectLink = document.createElement("a");
+      // projectLink.setAttribute("href", i.projectLink);
+      // projectLink.setAttribute("target", "_blank");
+      // projectLink.innerText = i.projectLink;
+      // infoContainer.appendChild(projectLink);
 
       card.appendChild(infoContainer);
       document.getElementById("saved-cards").appendChild(card);
@@ -459,11 +417,11 @@ function updateHiredProfiles() {
       infoContainer.appendChild(details);
 
       // Project Link
-      let projectLink = document.createElement("a");
-      projectLink.setAttribute("href", i.projectLink);
-      projectLink.setAttribute("target", "_blank");
-      projectLink.innerText = i.projectLink;
-      infoContainer.appendChild(projectLink);
+      // let projectLink = document.createElement("a");
+      // projectLink.setAttribute("href", i.projectLink);
+      // projectLink.setAttribute("target", "_blank");
+      // projectLink.innerText = i.projectLink;
+      // infoContainer.appendChild(projectLink);
 
       card.appendChild(infoContainer);
       document.getElementById("hired-cards").appendChild(card);
