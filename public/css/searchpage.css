@@ -268,7 +268,7 @@ main{
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-#close-popup {
+#close-popup, #logout {
   margin-top: 10px;
   padding: 5px 10px;
   background-color: #007bff;
@@ -278,7 +278,7 @@ main{
   cursor: pointer;
 }
 
-#close-popup:hover {
+#close-popup:hover,#logout:hover {
   background-color: #0056b3;
 }
 

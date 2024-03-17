@@ -2,6 +2,11 @@
     margin:0;
     padding: 0;
   }
+  body{
+    background-image: url("../assets/hello.avif");
+    background-repeat: repeat-y;
+    background-size: cover;
+  }
   .directory{
     background-color: #fff;
     position: fixed;
@@ -17,7 +22,7 @@
     padding-right:3rem;
     padding-left: 0;
     align-items: baseline;
-    z-index: 100;
+    z-index: 1;
     /* z-index:100; */
   }
   .directory a{
@@ -138,7 +143,7 @@
   }
   
   
-  #close-popup {
+  #close-popup, #logout {
     margin-top: 10px;
     padding: 5px 10px;
     background-color: #007bff;
@@ -148,7 +153,7 @@
     cursor: pointer;
   }
   
-  #close-popup:hover {
+  #close-popup:hover,#logout:hover {
     background-color: #0056b3;
   }
   @media (max-width:320px) {
@@ -163,9 +168,8 @@
   }
   /* Add blur effect to body when popup is open */
   .main-container{
-    background-color: #D4EBFB;
     height: 100%;
-    width: 100%;
+    width: 94%;
     margin-top: 74px;
     margin-left: 85px;
     display: flex;

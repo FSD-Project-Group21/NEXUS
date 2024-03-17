@@ -11,6 +11,9 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
   res.render("landingPage");
 });
+app.get('/landingPage', (req, res) => {
+  res.render('landingPage');
+});
 app.get('/login', (req, res) => {
     res.render('login');
 });

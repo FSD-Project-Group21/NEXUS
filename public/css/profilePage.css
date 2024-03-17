@@ -138,7 +138,7 @@
 }
 
 
-#close-popup {
+#close-popup, #logout {
   margin-top: 10px;
   padding: 5px 10px;
   background-color: #007bff;
@@ -148,7 +148,7 @@
   cursor: pointer;
 }
 
-#close-popup:hover {
+#close-popup:hover,#logout:hover {
   background-color: #0056b3;
 }
 @media (max-width:320px) {
@@ -751,6 +751,7 @@ textarea {
   display: flex;
   flex-direction: row;
   gap: 0.625rem ;
+  margin-top: 2rem;
 }
 .editit {
   background-color: white;
@@ -790,4 +791,8 @@ textarea {
 .edit{
   border: none;
   background-color: inherit;
+}
+.edit-form{
+  width: 90%;
+  height: 70%;
 }
