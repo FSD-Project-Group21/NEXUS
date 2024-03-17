@@ -122,7 +122,7 @@
     color: #2A265F;
     cursor: pointer;
   }
-  #profile-cards {
+  #profile-cards, #saved-hired-wrapper{
     display: grid;
     grid-template-columns: 1fr;
     grid-column-gap: 1.5em;
@@ -176,6 +176,12 @@
     letter-spacing: 1px;
     opacity: 0.6;
     /* text-transform: uppercase; */
+  }
+
+  .collab a {
+    word-wrap: break-word;
+    max-width: 100%;
+    /* display: none; */
   }
   
   .collab img {
@@ -277,12 +283,12 @@
     color: white;
   }
 
-  .saved-hired-wrapper {
+  /* .saved-hired-wrapper {
     display: flex;
     flex-direction: column;
     width: 30%;
     margin-left: 20px;
-  }
+  } */
   
   /* .saved-cards-container,
   .hired-cards-container {

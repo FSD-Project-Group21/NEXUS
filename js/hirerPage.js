@@ -359,7 +359,7 @@ function updateHiredProfiles() {
     h2.innerText = "Hired Profiles";
     cardContainer[0].appendChild(h2);
   }
-  
+
   let div = document.createElement("div");
   div.setAttribute("id", "hired-cards");
   div.innerHTML = "";
