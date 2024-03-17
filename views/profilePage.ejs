@@ -45,15 +45,15 @@
         <div class="interested-form">
           <form id="interested-form">
             <div class="close-button">
-              <button class="close-icon"><i class="fa-solid fa-x" style="color: #007bff;"></i></button></div>
+              <button id="close-icon"><i class="fa-solid fa-x" style="color: #007bff;"></i></button></div>
             <label class="interested-label" for="role">Role:</label>
-            <input type="text" id="role" name="role">
+            <input required type="text" id="role" name="role">
 
             <label class="interested-label" for="resume">Resume (PDF):</label>
-            <input type="file" id="resume" name="resume">
+            <input required  type="file" id="resume" name="resume">
 
             <label class="interested-label" for="description">About:</label>
-            <textarea id="description" name="description"></textarea>
+            <textarea required id="description" name="description"></textarea>
             
             <button  id="close-workup">Submit</button>
 
@@ -62,6 +62,14 @@
         
     </div>
   </div>
+  <div class="edit-popup" id="edit-container">
+    <div class="editit" id="editit">
+        <h2>Edits</h2>
+        <p>Edit profile here</p>
+        <button id="Save-edits">Save</button>
+        <button id="Cancel-edits">Cancel</button>
+    </div>
+</div>
 
 
 
@@ -84,7 +92,7 @@
         <div class="text-section">
           <div class="name-edit">
             <h4 class="Name">ANUSHKA SHETTY</h4>
-            <span class="edit"><i class="fa-solid fa-pen"></i></span>
+            <button  id="edit" class="edit"><i class="fa-solid fa-pen"></i></button>
           </div>
           <div class="bio">
             UNDERGRADUATE STUDENT @ IIIT Sri city <br>
