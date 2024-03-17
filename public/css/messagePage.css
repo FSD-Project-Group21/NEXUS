@@ -302,6 +302,13 @@
   justify-content: center;
   display: none;
 }
+.btn-primary{
+  background-color: #415169;
+  border: none;
+}
+.btn-primary:hover{
+  background-color: #2e394a;
+}
 .req-head{
   width: 100%;
   background-color: #D4EBFB;
