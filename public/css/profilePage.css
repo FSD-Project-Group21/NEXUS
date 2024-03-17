@@ -732,7 +732,7 @@ textarea {
 }
 
 /* edit popup */
-#edit-popup{
+#edit-container{
   position: fixed;
   top: 0;
   left: 0;
@@ -747,7 +747,11 @@ textarea {
   /* font-size: 20px;
   color: red; */
 }
-
+.edit-buttons{
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem ;
+}
 .editit {
   background-color: white;
   padding: 20px;
@@ -766,6 +770,7 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 
