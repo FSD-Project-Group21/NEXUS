@@ -312,7 +312,7 @@ main{
   grid-template-rows: repeat(2, 1fr);   
   gap: 1.25rem; 
   /* width: 1000%; */
-   width:67rem;
+   width:100%;
   /* height:38rem; */
   padding-bottom: 1.25rem;
   padding-top: 1.25rem;
@@ -324,6 +324,17 @@ main{
   align-content: center;
   justify-content: center;
   justify-items: center;
+}
+@media (max-width:769px) {
+  .categories{
+    grid-template-columns: repeat(1,1fr);
+  }
+}
+@media (max-width:426px) {
+  .categories{
+    /* grid-template-columns: repeat(1,1fr); */
+    width: 80%;
+  }
 }
 .categorie{
   background-color:inherit;
@@ -349,10 +360,7 @@ main{
   background-color: rgb(18, 18, 113);
 }
 
-/* tiless click */
-.hide{
-  display: none;
-}
+
 
 .names{
   color: antiquewhite;
@@ -376,6 +384,7 @@ main{
   padding-top: 1.25rem;
 }
 .back{
+  width: 30%;
   color: black;
   height: auto;
 }
@@ -461,4 +470,8 @@ main{
   right: 30px;
   letter-spacing: 1px;
   margin-top:5px;
+}
+/* tiless click */
+.hide{
+  display: none;
 }
