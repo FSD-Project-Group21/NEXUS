@@ -156,27 +156,28 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 //edit form 
 document.addEventListener('DOMContentLoaded', function() {
-    const editIcon = document.getElementById('edit'); // Changed the selector to match the ID in the HTML
+    const edit = document.getElementById('edit'); // Changed to match the ID in the HTML
     const editform = document.getElementById('edit-container');
     const editit = document.getElementById('editit');
-    const saveEdits = document.getElementById('Save-edits'); // Renamed to closeButton for clarity
+    const saveEdits = document.getElementById('Save-edits');
     const cancelEdits = document.getElementById('Cancel-edits');
 
-    editIcon.addEventListener('click', function() { // Changed the event to 'change' to listen for checkbox state changes
-        
+    edit.addEventListener('click', function() {
         editform.style.display = 'flex';
         setTimeout(function() {
             editit.style.transform = 'scale(1)';
             editit.style.opacity = '1';
         }, 100);
     });
+
     cancelEdits.addEventListener('click', function() {
         editit.style.transform = 'scale(0.5)';
-        editIcon.style.opacity = '0';
+        editit.style.opacity = '0';
         setTimeout(function() {
             editform.style.display = 'none';
         }, 300);
     });
+
 
     // saveEdits.addEventListener('click', function(event) {
     //     event.preventDefault();
