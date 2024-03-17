@@ -34,12 +34,15 @@
       </div>        
   </div>
   <div class="popup-container" id="popup-container">
-      <div class="popup" id="popup">
-          <h2>Settings</h2>
-          <p>This is the settings popup.</p>
-          <button id="close-popup">Close</button>
-      </div>
-  </div>
+    <div class="popup" id="popup">
+        <h2>LogOut</h2>
+        <p>Are you sure you want to log out?</p>
+        <div>
+            <a href="landingPage"><button id="logout">Yes</button></a>
+            <button id="close-popup">No</button>
+        </div>
+    </div>
+</div>
   <div class="popup-form" id="popup-form">
     <div class="workup" id="workup">
         <div class="interested-form">
@@ -66,10 +69,18 @@
     <div class="editit" id="editit">
         <h2>Edits</h2>
         <p>Edit profile here</p>
-        <div class="edit-buttons">
-          <button id="Save-edits">Save</button>
-          <button id="Cancel-edits">Cancel</button>
-        </div>
+        <from class="edit-form">
+          <label class="edit-label" for="name">Name:</label>
+          <input type="text" id="name" name="name">
+          <label class="edit-label" for="about">About:</label>
+          <textarea required id="about" name="about"></textarea>
+          <label class="edit-label" for="pfp">Profile Picture:</label>
+          <input type="file" id="pfp-img" name="image" accept="image/*" required onchange="updateFileName(this)">
+          <div class="edit-buttons">
+            <button id="Save-edits">Save</button>
+            <button id="Cancel-edits">Cancel</button>
+          </div>
+        </from>
     </div>
 </div>
 
@@ -97,11 +108,11 @@
             <button  id="edit" class="edit"><i class="fa-solid fa-pen"></i></button>
           </div>
           <div class="bio">
-            UNDERGRADUATE STUDENT @ IIIT Sri city <br>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias in qui, nesciunt neque sequi beatae id dolores facilis repellat voluptas magni ea rerum quod quos hic provident at voluptatibus nam.
-            so n so info<br>
-             about me
-          </div>
+            Business Administration Student @ University of Business Studies <br>
+            As a business student, I am passionate about understanding the dynamics of the business world and developing skills in areas such as marketing, finance, and management. I aspire to leverage my education and skills to pursue a career that allows me to make a positive impact in the business community. <br>
+            Outside of academics, I enjoy networking, attending business conferences, and staying updated with the latest trends in the business world.
+        </div>
+        
           <div class="project-collab">
             <div class="projects">
               <div class="number"><h3>6</h3></div>
