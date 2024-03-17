@@ -105,3 +105,53 @@ btn[3].onclick = function(){
     }
     this.classList.add("active");
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const checkBox = document.getElementById('toggle-checkbox'); // Changed the selector to match the ID in the HTML
+    const popupForm = document.getElementById('popup-form');
+    const workup = document.getElementById('workup');
+    const saveButton = document.getElementById('close-workup'); // Renamed to closeButton for clarity
+    const closeButton = document.getElementById('close-icon');
+    const form=document.getElementById('interested-form');
+
+    checkBox.addEventListener('change', function() { // Changed the event to 'change' to listen for checkbox state changes
+        if (checkBox.checked) {
+            popupForm.style.display = 'flex';
+            setTimeout(function() {
+                workup.style.transform = 'scale(1)';
+                workup.style.opacity = '1';
+            }, 100);
+        } else {
+            workup.style.transform = 'scale(0.5)';
+            workup.style.opacity = '0';
+            setTimeout(function() {
+                popupForm.style.display = 'none';
+            }, 300);
+        }
+    });
+    closeButton.addEventListener('click', function() {
+        workup.style.transform = 'scale(0.5)';
+        workup.style.opacity = '0';
+        setTimeout(function() {
+            popupForm.style.display = 'none';
+        }, 300);
+    });
+    saveButton.addEventListener('click', function() {
+        // Check if all required fields are filled
+        const role = document.getElementById('role').value;
+        const resume = document.getElementById('resume').value;
+        const description = document.getElementById('description').value;
+    
+        if (role!== '' && resume!== '' && description!== '') {
+            workup.style.transform = 'scale(0.5)';
+            workup.style.opacity = '0';
+            setTimeout(function() {
+                popupForm.style.display = 'none';
+            }, 300);
+        } else  {
+            // Display an alert if any required field is empty
+            console.log('Please fill in all required fields.');
+        }
+    });
+    
+});
+
