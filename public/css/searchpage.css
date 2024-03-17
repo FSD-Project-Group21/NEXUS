@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&family=RocknRoll+One&family=Short+Stack&display=swap');
 *{
   margin:0;
   padding: 0;
@@ -20,7 +21,7 @@ main{
   background-image: url(/assets/hello.avif);
   /* background-repeat: no-repeat; */
   background-size: cover;
-  border-top: 0.1875rem solid black;
+  border-top: 0.0875rem solid rgb(163, 163, 163);
 }
 .directory{
   background-color: #fff;
@@ -100,7 +101,9 @@ main{
 main{
   /* margin-right: 4.68rem; */
   margin-left: 5.3125rem;
-
+}
+.bg{
+  width: 100%;
 }
 /* .html{
   background-image: url(/assets/search-img.jpeg);
@@ -139,6 +142,35 @@ main{
   }
 }
 /* searchbar */
+.search-tile {
+  display: none; /* Initially hide the tile */
+}
+.search-tile.open {
+  display: block; /* Show the tile when open class is applied */
+}
+#search-not-found{
+  /* background-color: #201a79; */
+  /* display: flex; */
+  width: 50%;
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-30%,-30%);
+}
+.not-found-goBack{
+  position: absolute;
+  top: -2%;
+  left: -3%;
+}
+.not-found-text{
+  padding-left: 7%;
+  /* height: 50%; */
+  color: #2a7fd2;
+  font-size: 250%;
+  font-family: "RocknRoll One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 .overall-search {
     margin-top: 105px;
     display: flex;
