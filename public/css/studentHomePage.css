@@ -5,7 +5,8 @@
   body{
     background-color: #D4EBFB;
     background-image: url(/assets/hello.avif);
-
+    /* background-repeat: no-repeat; */
+    background-size: cover;
   }
   
   .directory{
