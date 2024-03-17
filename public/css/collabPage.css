@@ -254,7 +254,7 @@
 }
 
 .collab-preview {
-  background-color: #2A265F;
+  background-color: #e1f3ff;
   color: #fff;
   padding: 10px;
   max-width: 250px;
@@ -281,7 +281,7 @@
 .btn {
   background-color: #2A265F;
   border: 0;
-  border-radius: 50px;
+  border-radius: 5px;
   color: #fff;
   font-size: 16px;
   padding: 7px 20px;
