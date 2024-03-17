@@ -717,7 +717,7 @@ textarea {
   background-color: #0056b3;
 }
 .interested-form{
-  width: 70%;
+  width: 78%;
 }
 #interested-form{
   display: flex;
@@ -726,4 +726,7 @@ textarea {
 .close-icon{
   border: none;
   float: right;
+}
+.interested-label{
+  padding: 3%;
 }
