@@ -286,6 +286,14 @@
   letter-spacing: 1px;
   margin-top:5px;
 }
+
+.btn:hover{
+  color: darkblue;
+  background-color: lightblue;
+  font-style: normal;
+  
+}
+
 .collab-btn{
   background: none !important;
   border: 0;
@@ -301,4 +309,10 @@
 }
 .collab-active{
   border-bottom: 2px solid black ;
+}
+
+.status{
+  
+  font-weight: bolder;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
