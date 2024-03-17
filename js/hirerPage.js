@@ -128,7 +128,7 @@ function filterProduct(value) {
   });
 
 
-  let elements = document.querySelectorAll(".collab");
+  let elements = document.querySelectorAll("#profile-cards .collab");
   elements.forEach((element) => {
     if (value == "all") {
       element.classList.remove("hide");
@@ -295,9 +295,12 @@ document.querySelectorAll("#hireBtn").forEach(function (btn) {
 function updateSavedProfiles() {
   var cardContainer = document.getElementsByClassName("saved-cards-container");
   cardContainer[0].innerHTML = "";
-  let h2 = document.createElement("h2");
-  h2.innerText = "Saved Profiles";
-  cardContainer[0].appendChild(h2);
+  
+  if(profiles.data.some(obj => obj.isSaved === true)){
+    let h2 = document.createElement("h2");
+    h2.innerText = "Saved Profiles";
+    cardContainer[0].appendChild(h2);
+  }
 
   let div = document.createElement("div");
   div.setAttribute("id", "saved-cards");
@@ -350,10 +353,13 @@ function updateSavedProfiles() {
 function updateHiredProfiles() {
   var cardContainer = document.getElementsByClassName("hired-cards-container");
   cardContainer[0].innerHTML = "";
-  let h2 = document.createElement("h2");
-  h2.innerText = "Hired Profiles";
-  cardContainer[0].appendChild(h2);
 
+  if(profiles.data.some(obj => obj.isSaved === true)){
+    let h2 = document.createElement("h2");
+    h2.innerText = "Hired Profiles";
+    cardContainer[0].appendChild(h2);
+  }
+  
   let div = document.createElement("div");
   div.setAttribute("id", "hired-cards");
   div.innerHTML = "";
