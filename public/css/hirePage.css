@@ -168,14 +168,19 @@
     width: 100%;
     margin-top: 74px;
     margin-left: 85px;
-    padding: 0 20px 0 20px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    /* align-items: center; */
+    padding-bottom: 2.5%;
+    padding-top: 1%;
+    background-image: url(/assets/hello.avif);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .wrapper {
+    padding-left: 2%;
+    padding-right: 2%;
     width: 50%;
     margin: 0;
   }
@@ -200,12 +205,13 @@
     margin-top: 0.5em;
   }
   .button-value {
-    border: 2px solid #2A265F;
+    /* border: 2px solid #2A265F; */
     padding: 0.5em 1em;
     border-radius: 3em;
     background-color: transparent;
     color: #2A265F;
     cursor: pointer;
+    
   }
   #profile-cards, #saved-hired-wrapper{
     display: grid;
@@ -237,13 +243,16 @@
     }
   }
   
-   
+ 
+
 .collab {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
     display: flex;
-    max-width: 48em;
+    width: 100%;
+    height: 80%;
+    /* max-width: 48em; */
     margin-top: 1em;
     padding: 1em;
     border-radius: 5px;
@@ -270,7 +279,10 @@
   }
   
   .collab img {
-    height: auto;
+    height: 80%;
+    padding-right: 1%;
+    padding-top: 3%;
+    object-fit: contain;
     width: 50%;
   }
   
@@ -284,7 +296,7 @@
   }
   
   .collab-info {
-    padding: 20px;
+    /* padding: 20px; */
     position: relative;
     width: 100%;
     display: flex;
@@ -366,6 +378,10 @@
   #hireBtn {
     background-color: #4CAF50;
     color: white;
+  }
+
+  .saved-hired-wrapper{
+    width: 42%;
   }
 
   /* .saved-hired-wrapper {
