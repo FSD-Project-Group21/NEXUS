@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             popupForm.style.display = 'none';
         }, 300);
+        checkBox.checked=false;
     });
     saveButton.addEventListener('click', function() {
         // Check if all required fields are filled
@@ -147,6 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 popupForm.style.display = 'none';
             }, 300);
+            checkBox.checked=true;
         } else  {
             // Display an alert if any required field is empty
             console.log('Please fill in all required fields.');

@@ -45,17 +45,17 @@
         <div class="interested-form">
           <form id="interested-form">
             <div>
-              <button class="close-icon"><i class="fa-solid fa-x" style="color: #007bff;"></i></button></div>
+              <button id="close-icon"><i class="fa-solid fa-x" style="color: #007bff;"></i></button></div>
             <label for="role">Role:</label>
-            <input type="text" id="role" name="role">
+            <input required  type="text" id="role" name="role">
 
             <label for="resume">Resume (PDF):</label>
-            <input type="file" id="resume" name="resume">
+            <input required type="file" id="resume" name="resume">
 
             <label for="description">About:</label>
-            <textarea id="description" name="description"></textarea>
+            <textarea required id="description" name="description"></textarea>
             
-            <input id="close-workup" type="submit" value="Submit">
+            <button  id="close-workup">Submit</button>
 
           </form>
         </div>
@@ -276,7 +276,7 @@
         
       </div>
     </main>
-    <script src="./studentHomePage.ejs"></script>
+    <!-- <script src="./studentHomePage.ejs"></script> -->
     <script src="./js/profilePage.js"></script>
     <script src="https://kit.fontawesome.com/6953004357.js" crossorigin="anonymous"></script>
 </body>
