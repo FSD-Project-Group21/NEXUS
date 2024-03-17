@@ -62,7 +62,7 @@
   width: 100%;
 }
 .sidebar .sidebar-no-settings .open{
-  border-right: solid 2px black;
+  border-right: 2px solid black;
 }
 
 /* searchbar */
