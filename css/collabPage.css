@@ -98,12 +98,75 @@
     /* background-color: aqua; */
   }
 
+/* .collab-header-buttons {
+    position: relative;
+}
+
+.line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1;
+    height: 3px;
+    background-color: #474747;
+    transition: width 0.3s ease;
+}
+
+.btn-primary.active + .line {
+    width: 100%;
+} */
+
+.collab-header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.collab-header-buttons {
+  position: relative;
+}
+
+.btn-primary {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.line {
+  position: absolute;
+  bottom: -8px; /* Adjust the distance from the bottom as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%; /* Adjust the length of the line as needed */
+  height: 3px;
+  background-color: #454647; /* Change the color as needed */
+  transition: width 0.3s ease;
+}
+
+.btn-primary.active + .line {
+  width: 100%;
+}
+
   .collab-header-buttons img{
     /* display: flex;
     gap: 20px; */
     /* background-color: aquamarine; */
     height: 5em;
   }
+<<<<<<< HEAD
+=======
+ 
+  .btn-primary {
+    background-color: transparent !important;
+    border: none;
+
+  }
+
+  .btn-primary img{
+    height: 3em;
+  }
+>>>>>>> 6215aff (added collab page cards and css)
 
   .collab-container {
     
