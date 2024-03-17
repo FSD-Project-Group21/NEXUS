@@ -336,3 +336,8 @@
       width: 4rem; /* Adjust the width as needed */
   }
 }
+@media (max-width:430px) {
+  .container{
+    max-width: 90%;
+  }
+}

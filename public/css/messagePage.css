@@ -553,3 +553,11 @@
 .hide{
   display: none;
 }
+
+.declined-msg{
+  display: none;
+  margin-left: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
