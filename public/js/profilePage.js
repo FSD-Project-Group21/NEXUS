@@ -120,49 +120,39 @@ document.addEventListener('DOMContentLoaded', function() {
                     workup.style.opacity = '1';
                 }, 100);
         } else {
-          workup.style.display = 'none';
+            workup.style.transform = 'scale(0.5)';
+            workup.style.opacity = '0';
+            setTimeout(function() {
+                popupForm.style.display = 'none';
+            }, 300);
         }
-      });
-
-    // checkBox.addEventListener('change', function() { // Changed the event to 'change' to listen for checkbox state changes
-    //     if (checkBox.checked) {
-    //         popupForm.style.display = 'flex';
-    //         setTimeout(function() {
-    //             workup.style.transform = 'scale(1)';
-    //             workup.style.opacity = '1';
-    //         }, 100);
-    //     } else {
-    //         workup.style.transform = 'scale(0.5)';
-    //         workup.style.opacity = '0';
-    //         setTimeout(function() {
-    //             popupForm.style.display = 'none';
-    //         }, 300);
-    //     }
-    // });
-    closeButton.addEventListener('click', function(event) {
-        // event.preventDefault(); // Prevent the default behavior of the close button
-        workup.style.display = 'none';
     });
+    closeButton.addEventListener('click', function() {
+        workup.style.transform = 'scale(0.5)';
+        workup.style.opacity = '0';
+        setTimeout(function() {
+            popupForm.style.display = 'none';
+        }, 300);
+        checkBox.checked=false;
+    });
+    saveButton.addEventListener('click', function() {
+        // Check if all required fields are filled
+        const role = document.getElementById('role').value;
+        const resume = document.getElementById('resume').value;
+        const description = document.getElementById('description').value;
     
-    
-    // saveButton.addEventListener('click', function(event) {
-    //     event.preventDefault();
-    //     // Check if all required fields are filled
-    //     const role = document.getElementById('role').value;
-    //     const resume = document.getElementById('resume').value;
-    //     const description = document.getElementById('description').value;
-    
-    //     if (role!== '' && resume!== '' && description!== '') {
-    //         workup.style.transform = 'scale(0.5)';
-    //         workup.style.opacity = '0';
-    //         setTimeout(function() {
-    //             popupForm.style.display = 'none';
-    //         }, 300);
-    //     } else  {
-    //         // Display an alert if any required field is empty
-    //         console.log('Please fill in all required fields.');
-    //     }
-    // });
+        if (role!== '' && resume!== '' && description!== '') {
+            workup.style.transform = 'scale(0.5)';
+            workup.style.opacity = '0';
+            setTimeout(function() {
+                popupForm.style.display = 'none';
+            }, 300);
+            checkBox.checked=true;
+        } else  {
+            // Display an alert if any required field is empty
+            console.log('Please fill in all required fields.');
+        }
+    });
     
 });
 
