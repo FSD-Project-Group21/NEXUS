@@ -1,0 +1,252 @@
+*{
+  margin:0;
+  padding: 0;
+}
+body{
+  background-color: #D4EBFB;
+}
+.directory{
+  background-color: #fff;
+  position: fixed;
+  top:0;
+
+  /* left:100px; */
+  left:6.25rem;
+  /* height: 74px; */
+  height: 4.625rem;
+
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  z-index: 100;
+}
+.logo-top{
+  /* height: 100px;
+  width: 88px; */
+  width: 5.5rem; /* 88px / 16px = 5.5rem */
+  height: 6.25rem;
+}
+.sidebar{
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* width: 85px; */
+  width: 5.313em;
+  padding-bottom: 1.875rem;
+  height: 100%;
+}
+.sidebar-no-settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.sidebar-no-settings a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search input[type="text"] {
+  width: 12.5rem;
+  padding: 0.625rem;
+  border: none;
+  border-radius: 1.25rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.icon{
+
+  height: 25px;
+  width: 25px;
+  /* margin-top: 25px;
+  margin-bottom: 25px; */
+  margin-top: 1.5625em; /* 25px / 16px = 1.5625em */
+  margin-bottom: 1.5625em; 
+}
+.settings{
+  height: 25px;
+  width: 25px;
+}
+
+.sidebar a,
+.sidebar .sidebar-no-settings a :hover{
+  cursor: pointer;
+}
+
+.sidebar .sidebar-no-settings a{
+  width: 100%;
+}
+.sidebar .sidebar-no-settings .open{
+  border-right: 2px solid black;
+}
+/* profile page css */
+main{
+  margin-top: 74px;
+  margin-left: 85px;
+
+}
+.top-section{
+  height: 300px;
+  border-bottom: solid black;
+}
+.profile-section{
+  width: 50%;
+  height: 220px;
+  align-items: end;
+  margin-right: 0;
+  text-align: center;
+}
+.profile-picture{
+  /* background-image: url(images.jpeg); */
+  /* height: 100vh; */
+  margin-right: 90px;
+  background-repeat: no-repeat;
+  /* padding-left: 100px; */
+  margin-left: 210px;
+  /* margin-top: 140px; */
+  width: 180px; /* Adjust as needed */
+  height: 200px; /* Adjust as needed */
+  /* overflow: hidden; */
+  border-radius: 70%;
+}
+.circular-image {
+  width: 100%; /* Ensure the image takes up the full container */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  border-radius: 50%;
+}
+.toggle-and-text{
+  margin-left: 220px;
+  text-align: left;
+}
+
+
+
+.text-section{
+  width: 50%;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+}
+.main-header{
+  display: flex;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+  
+  /* flex-direction: column; */
+}
+
+.name-edit{
+  height: 30px;
+  font-size: 30px;
+  padding: 20px 20px 20px 0px;
+}
+.edit{
+  margin-right: 0px;
+  padding-left: 250px;
+  height: 10px;
+  width: 10px;
+}
+
+i{
+  height: 10px;
+  width: 10px;
+}
+
+.bio{
+  height: 90px;
+  text-align: left;
+  padding: 20px 20px 20px 0px;
+}
+
+.project-collab{
+  display: flex;
+  height: 90px;
+  padding-left: 70px;
+  padding-right: 100px;
+}
+.projects,.collaborations{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.all{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  justify-content: center;
+  text-transform: uppercase;
+  margin-left: 12px;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: #718096;
+  border-top-width: 1px;
+}
+/*  */
+.list-one{
+  @media (min-width: 768px) {
+    border-top-width: 1px;
+  }
+  @media (min-width: 768px) {
+    border-color: #4a5568;
+  }
+  @media (min-width: 768px) {
+    margin-top: -1px;
+  }
+  @media (min-width: 768px) {
+    color: #4a5568;
+  }
+}
+/*  */
+.anchor{
+  display: inline-block;
+  padding: 0.75rem;
+}
+
+.small-screen{
+  display: none;
+}
+
+.post, .collab, .save, .create {
+  width: 40px;
+  height: 40px;
+  
+}
+
+/* Optional: To ensure images fill the entire space */
+.img{
+  width: 40px; 
+   height: 40px;
+  /* width: auto; Maintain aspect ratio */
+  height: 100%; /* Fill the entire height of the div */
+  object-fit: cover;
+}
+
+
+.icons{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  justify-content: center;
+  
+  /* border-top-width: 1px; */
+  /* border-radius: 10%; */
+  /* width: auto; /* Maintain aspect ratio */
+  /* height: 100%; /* Fill the entire height of the div */
+  /* object-fit: cover; */ 
+}
