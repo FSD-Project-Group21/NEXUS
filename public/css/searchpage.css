@@ -108,7 +108,12 @@ main{
 /* .html{
   background-image: url(/assets/search-img.jpeg);
 } */
-
+.butn:hover{
+  color: darkblue;
+  background-color: lightblue;
+  font-style: normal;
+  
+}
 .icon{
   height: 25px;
   width: 25px;
@@ -151,7 +156,7 @@ main{
 #search-not-found{
   /* background-color: #201a79; */
   /* display: flex; */
-  width: 50%;
+  width: 44%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -434,7 +439,7 @@ main{
 }
 
 .collab-preview {
-  background-color: #2A265F;
+  /* background-color: #2A265F; */
   color: #fff;
   padding: 10px;
   max-width: 250px;
