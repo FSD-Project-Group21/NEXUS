@@ -102,12 +102,15 @@ for (let i of profiles.data) {
   // Image Container
   // let imageContainer = document.createElement("div");
   // imageContainer.classList.add("collab-preview");
+  let imgContainer = document.createElement("div");
+  imgContainer.className = "img-container";
   let image = document.createElement("img");
   image.setAttribute("src", i.image);
   image.setAttribute("alt", "Image");
   // imageContainer.appendChild(image);
   // card.appendChild(imageContainer);
-  card.appendChild(image);
+  imgContainer.appendChild(image);
+  card.appendChild(imgContainer);
 
   // Info Container
   let infoContainer = document.createElement("div");
@@ -249,17 +252,17 @@ function populateModalContent() {
   // educationElement.innerText = "Education: " + profiles.data[index].education;
   // modalContent.appendChild(educationElement);
 
-  var skillsElement = document.createElement("p");
-  skillsElement.innerText = "Skills: " + profiles.data[index].skills.join(", ");
-  modalContent.appendChild(skillsElement);
+  // var skillsElement = document.createElement("p");
+  // skillsElement.innerText = "Skills: " + profiles.data[index].skills.join(", ");
+  // modalContent.appendChild(skillsElement);
 
-  var experienceElement = document.createElement("p");
-  experienceElement.innerText = "Experience: " + profiles.data[index].experience;
-  modalContent.appendChild(experienceElement);
+  // var experienceElement = document.createElement("p");
+  // experienceElement.innerText = "Experience: " + profiles.data[index].experience;
+  // modalContent.appendChild(experienceElement);
 
-  var languagesElement = document.createElement("p");
-  languagesElement.innerText = "Languages: " + profiles.data[index].languages.join(", ");
-  modalContent.appendChild(languagesElement);
+  // var languagesElement = document.createElement("p");
+  // languagesElement.innerText = "Languages: " + profiles.data[index].languages.join(", ");
+  // modalContent.appendChild(languagesElement);
 
   // Update buttons based on saved/hired status
   var saveBtn = document.getElementById("saveBtn");
@@ -336,12 +339,15 @@ function updateSavedProfiles() {
       // Image Container
       // let imageContainer = document.createElement("div");
       // imageContainer.classList.add("collab-preview");
+      let imgContainer = document.createElement("div");
+      imgContainer.className = "img-container";
       let image = document.createElement("img");
       image.setAttribute("src", i.image);
       image.setAttribute("alt", "Image");
       // imageContainer.appendChild(image);
       // card.appendChild(imageContainer);
-      card.appendChild(image);
+      imgContainer.appendChild(image);
+      card.appendChild(imgContainer);
 
       // Info Container
       let infoContainer = document.createElement("div");
@@ -366,6 +372,8 @@ function updateSavedProfiles() {
 
       card.appendChild(infoContainer);
       document.getElementById("saved-cards").appendChild(card);
+      card.scrollIntoView();
+      card.scrollIntoView({behavior: "smooth"});
     }
   }
 }
@@ -395,12 +403,15 @@ function updateHiredProfiles() {
       // Image Container
       // let imageContainer = document.createElement("div");
       // imageContainer.classList.add("collab-preview");
+      let imgContainer = document.createElement("div");
+      imgContainer.className = "img-container";
       let image = document.createElement("img");
       image.setAttribute("src", i.image);
       image.setAttribute("alt", "Image");
       // imageContainer.appendChild(image);
       // card.appendChild(imageContainer);
-      card.appendChild(image);
+      imgContainer.appendChild(image);
+      card.appendChild(imgContainer);
 
       // Info Container
       let infoContainer = document.createElement("div");
@@ -425,6 +436,8 @@ function updateHiredProfiles() {
 
       card.appendChild(infoContainer);
       document.getElementById("hired-cards").appendChild(card);
+      card.scrollIntoView();
+      card.scrollIntoView({behavior: "smooth"});
     }
   }
 }

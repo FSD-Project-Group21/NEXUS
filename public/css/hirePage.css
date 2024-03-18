@@ -184,7 +184,7 @@
   }
 
   .wrapper {
-    padding: 2%;
+    padding: 0 2% 2% 2%;
     width: 50%;
     margin: 0;
   }
@@ -194,34 +194,47 @@
   #search-container input {
     background-color: transparent;
     width: 40%;
-    border-bottom: 3px solid #110f29;
+    height: 1rem;
+    border-radius: 5px;
+    border: 2px solid #110f29;
     padding: 1em 0.3em;
   }
   #search-container input:focus {
     border-bottom-color: #2A265F;
   }
   #search-container button {
-    padding: 1em 2em;
-    margin-left: 1em;
+    padding: 0.3rem 1rem;
+    margin-left: 1rem;
+    border: none;
     background-color: #2A265F;
     color: #ffffff;
     border-radius: 5px;
-    margin-top: 0.5em;
+    margin-top: 0.5rem;
   }
   .button-value {
     /* border: 2px solid #2A265F; */
+    border: none;
     padding: 0.5em 1em;
-    border-radius: 3em;
+    border-radius: 5px;
     background-color: transparent;
     color: #2A265F;
     cursor: pointer;
-    
+    color: #888;
+  }
+  .button-value:hover{
+    color: black;
   }
   #profile-cards, #saved-hired-wrapper{
     display: grid;
     grid-template-columns: 1fr;
     grid-column-gap: 1.5em;
     padding: 2em 0;
+    width: 100%;
+  }
+  #profile-cards{
+    padding-right: 5px;
+    height: 70vh;
+    overflow-y: scroll;
   }
   @media screen and (max-width: 720px) {
     img {
@@ -230,20 +243,17 @@
       height: 10em;
     }
     .collab {
-      max-width: 10em;
       margin-top: 1em;
     }
     #profile-cards {
-      grid-template-columns: auto auto;
-      grid-column-gap: 1em;
+      grid-template-columns: repeat(1,1fr);
+      width: 100%;
     }
     #saved-cards {
-      grid-template-columns: auto auto;
-      grid-column-gap: 1em;
+      grid-template-columns: repeat(1,1fr);
     }
     #hired-cards {
-      grid-template-columns: auto auto;
-      grid-column-gap: 1em;
+      grid-template-columns: repeat(1,1fr)o;
     }
   }
   
@@ -252,11 +262,9 @@
 .collab {
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     width: 100%;
-    height: 80%;
-    /* max-width: 48em; */
+    /* height: 80%; */
     margin-top: 1em;
     padding: 1em;
     border-radius: 5px;
@@ -285,12 +293,12 @@
     /* display: none; */
   }
   
-  .collab img {
-    height: 80%;
+  .img-container img {
+    height: 5rem;
     padding-right: 1%;
     padding-top: 3%;
     object-fit: contain;
-    width: 50%;
+    width: 5rem;
   }
   
   .collab-preview {
@@ -313,10 +321,27 @@
     /* align-items: flex-start; */
     /* justify-content: space-between; */
   }
-
+  ::-webkit-scrollbar {
+    width: 0.3rem;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #ace2ff; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d0e9f7; 
+  }
   .collab-info h6{
     height: 40%;
-    overflow: scroll;
+    overflow-y: scroll;
   }
   #saved-cards .collab .collab-info h6{
     height: 100%;
@@ -424,15 +449,84 @@
   .hired-cards-container h2 {
     margin-top: 0;
   } */
-
+  #saved-cards{
+    padding-left: 15px;
+    height: 30vh;
+    overflow-y: scroll;
+  }
+  #hired-cards{
+    padding-left: 15px;
+    height: 30vh;
+    overflow-y: scroll;
+  }
+  @media (max-width:1025px) {
+    #profile-catds{
+      height: 58vh;
+    }
+    #saved-cards{
+      height: 44vh;
+    }
+    #hired-cards{
+      height: 38vh;
+    }
+  }
+  @media (max-width:768px) {
+    .main-container{
+      flex-direction: column;
+    }
+    .wrapper{
+      width: 100%;
+    }
+    .saved-hired-wrapper{
+      width: 100%;
+    }
+    .modal-content{
+      width: 80%;
+    }
+  }
+  @media (max-width:425px) {
+    .modal-buttons{
+      flex-direction: column;
+    }
+    #hireBtn{
+      margin-top: 0.3rem;
+    }
+  }
   .saved-cards-container,
   .hired-cards-container {
     padding: 2%;
+
   }
 
+  #buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .img-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width:1025px) {
+    #buttons{
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  @media (max-width:769px) {
+    .collab{
+      flex-direction: column;
+      height: fit-content;
+    }
+  }
   .active {
-    background-color: #2A265F;
-    color: #ffffff;
+    border: none;
+    /* background-color: #2A265F; */
+    color: black;
+    border-bottom: 2px solid black;
+    border-radius: 0;
   }
   .hide {
     display: none;
