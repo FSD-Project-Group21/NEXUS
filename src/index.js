@@ -56,7 +56,7 @@ app.post("/signup", async (req, res) => {
     const existingUser = await collection.findOne({ mail_id: data.mail_id });
 
     if (existingUser) {
-      return res.send('<script>document.getElementById("SE").innerHTML = "User already exists";</script>')
+      return res.send('<script>alert("User already exists");</script>')
     }
 
     const saltRounds = 10;
@@ -76,12 +76,12 @@ app.post("/login", async (req, res) => {
     const user = await collection.findOne({ mail_id: req.body.email });
 
     if (!user) {
-      return res.send('<script>document.getElementById("loginError").innerHTML = "Incorrect Username/password";</script>');
+      return res.send('<script>alert("Wrong username/password");</script>');
     }
 
     const isPasswordMatch = await bcrypt.compare(req.body.password, user.password);
     if (!isPasswordMatch) {
-      return res.send('<script>document.getElementById("loginError").innerHTML = "Incorrect Username/assword";</script>');
+      return res.send('<script>alert("Wrong username/password");</script>');
     }
 
     res.render("studentHomePage"); // Redirect to home page after successful login
