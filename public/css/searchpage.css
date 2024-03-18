@@ -153,7 +153,7 @@ main{
   /* display: flex; */
   width: 50%;
   position: absolute;
-  top: 48%;
+  top: 50%;
   left: 50%;
   transform: translate(-30%,-30%);
 }
@@ -163,13 +163,13 @@ main{
   left: -3%;
 }
 .not-found-text{
-  padding-left: 7%;
   /* height: 50%; */
   color: #2a7fd2;
-  font-size: 250%;
-  font-family: "RocknRoll One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  font-size: 2rem;
+  margin-left: 3rem;
+  /* font-family: "RocknRoll One", sans-serif; */
+  /* font-weight: 400; */
+  /* font-style: normal; */
 }
 .overall-search {
     margin-top: 105px;
@@ -312,7 +312,7 @@ main{
   grid-template-rows: repeat(2, 1fr);   
   gap: 1.25rem; 
   /* width: 1000%; */
-   width:67rem;
+   width:55%;
   /* height:38rem; */
   padding-bottom: 1.25rem;
   padding-top: 1.25rem;
@@ -324,6 +324,17 @@ main{
   align-content: center;
   justify-content: center;
   justify-items: center;
+}
+@media (max-width:769px) {
+  .categories{
+    grid-template-columns: repeat(1,1fr);
+  }
+}
+@media (max-width:426px) {
+  .categories{
+    /* grid-template-columns: repeat(1,1fr); */
+    width: 80%;
+  }
 }
 .categorie{
   background-color:inherit;
@@ -337,7 +348,7 @@ main{
   /* height: 315%; */
 }
 .animated{
-  width: 70%;
+  width: 60%;
 }
 .categorie:hover{
   transform: translateY(-7px);
@@ -349,10 +360,7 @@ main{
   background-color: rgb(18, 18, 113);
 }
 
-/* tiless click */
-.hide{
-  display: none;
-}
+
 
 .names{
   color: antiquewhite;
@@ -376,6 +384,7 @@ main{
   padding-top: 1.25rem;
 }
 .back{
+  width: 30%;
   color: black;
   height: auto;
 }
@@ -440,6 +449,8 @@ main{
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .butn-container {
@@ -452,13 +463,14 @@ main{
 .butn {
   background-color: #201a79;
   border: 0;
-  border-radius: 50px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  /* box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2); */
   color: #f8eeee;
-  font-size: 16px;
-  padding: 7px 20px;
-  bottom: 30px;
-  right: 30px;
-  letter-spacing: 1px;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
   margin-top:5px;
+}
+/* tiless click */
+.hide{
+  display: none;
 }

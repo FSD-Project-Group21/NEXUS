@@ -302,6 +302,13 @@
   justify-content: center;
   display: none;
 }
+.btn-primary{
+  background-color: #415169;
+  border: none;
+}
+.btn-primary:hover{
+  background-color: #2e394a;
+}
 .req-head{
   width: 100%;
   background-color: #D4EBFB;
@@ -545,9 +552,19 @@
   align-items: center;
   justify-content: center;
   background-color: #d1ebf4;
+  background-image: url(/assets/cement-texture.jpg);
+  background-size: 100% 100%;
   color: #333;
 }
 /* add at end  */
 .hide{
   display: none;
+}
+
+.declined-msg{
+  display: none;
+  margin-left: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }

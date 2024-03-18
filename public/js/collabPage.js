@@ -5,7 +5,7 @@ function toggleButton(button) {
     });
 
     // Add the 'active' class to the clicked button
-    button.classList.add('active');
+    btn.classList.add('active');
 }
 const collab1 = document.querySelector('._collab1');
 const collab2 = document.querySelector('._collab2');
@@ -39,7 +39,7 @@ collab2.addEventListener('click',()=>{
     collabcont2.style.display = "flex";
 });
 
-
+//Settings
 document.addEventListener('DOMContentLoaded', function() {
     const settingsButton = document.querySelector('.settings');
     const popupContainer = document.getElementById('popup-container');

@@ -138,9 +138,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     saveButton.addEventListener('click', function(event) {
         event.preventDefault();
-        const role = document.getElementById('role').value;
+        const role = document.getElementById('category-role').value;
         const resume = document.getElementById('resume').value;
         const description = document.getElementById('description').value;
+        const roleMsg = document.getElementById('category-msg');
+        const fileMsg = document.getElementById('file-msg');
+        const abtMsg = document.getElementById('about-msg');
 
         if (role !== '' && resume !== '' && description !== '') {
             workup.style.transform = 'scale(0.5)';
@@ -151,7 +154,10 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             console.log('Please fill in all required fields.');
         }
-        checkBox.checked=true;
+        if(role.value==='' || description===''|| resume==='')
+        {
+            roleMsg.style.display='flex';
+        }
     });
 })
 //edit form 

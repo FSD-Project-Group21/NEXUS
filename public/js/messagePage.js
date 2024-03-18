@@ -144,6 +144,8 @@ function createContact(req){
     msg();
 }
 const requests = document.querySelectorAll('.reqsts');
+
+const declMsg =document.querySelector(".declined-msg");
 requests.forEach(req => {
     let a = req.querySelector('.accept-req');
     a.addEventListener('click',()=>{
@@ -157,6 +159,10 @@ requests.forEach(req => {
         let rm = req.id;
         let removeReq = document.getElementById(rm);
         removeReq.parentNode.removeChild(removeReq);
+        declMsg.style.display='flex';
+        setTimeout(function() {
+            declMsg.style.display = 'none';
+        }, 1500); 
     });
 });
 msg();

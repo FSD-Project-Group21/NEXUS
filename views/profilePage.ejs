@@ -49,16 +49,25 @@
           <form id="interested-form">
             <div class="close-button">
               <button id="close-icon"><i class="fa-solid fa-x" style="color: #000;"></i></button></div>
-            <label class="interested-label" for="role">Role:</label>
-            <input required type="text" id="role" name="role">
+              <label for="category-role">Category:</label>
+              <select id="category-role" name="category-role" required>
+                <option value="" disabled selected>Select Category</option>
+                <option value="graphic">Graphic Designer</option>
+                <option value="architecture">Architecture</option>
+                <option value="data-science">Data Science</option>
+                <option value="Buisness">Buisness</option>
+              </select>
 
             <label class="interested-label" for="resume">Resume (PDF):</label>
             <input required  type="file" id="resume" name="resume">
 
             <label class="interested-label" for="description">About:</label>
             <textarea required id="description" name="description"></textarea>
-            
+
+            <span id="category-msg">PLEASE FILL ALL THE FIELDS!</span>
+
             <button  id="close-workup">Submit</button>
+
 
           </form>
         </div>

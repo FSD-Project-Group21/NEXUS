@@ -222,12 +222,51 @@
     background-color: rgb(255, 255, 255);
     
    }
-   .card p{
-    height: 100%;
-    /* white-space: nowrap; */
-    overflow: hidden;
-    text-overflow: ellipsis;
+   .card h2{
+    font-size: 1.5rem;
    }
+   .card_small p{
+    height: 100%;
+    display: -webkit-box; 
+            -webkit-box-orient: vertical; 
+            -webkit-line-clamp: 6; 
+            overflow: hidden; 
+            text-overflow: ellipsis;
+   }
+   .card_medium p{
+    height: 100%;
+    display: -webkit-box; 
+            -webkit-box-orient: vertical; 
+            -webkit-line-clamp: 2; 
+            overflow: hidden; 
+            text-overflow: ellipsis;
+   }
+   .card_large p{
+    height: 100%;
+    display: -webkit-box; 
+            -webkit-box-orient: vertical; 
+            -webkit-line-clamp: 5; 
+            overflow: hidden; 
+            text-overflow: ellipsis;
+   }
+   ::-webkit-scrollbar {
+    width: 0.3rem;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #ace2ff; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d0e9f7; 
+  }
    .card_medium img,
    .card_large img{
     height: 100%;
@@ -299,13 +338,13 @@
   .cta:before {
     content: "";
     position: absolute;
-    top: 0;
+    top: 6px;
     left: 0;
     display: block;
     border-radius: 50px;
     background: #5c7999;
-    width: 45px;
-    height: 45px;
+    width: 2rem;
+    height: 2rem;
     transition: all 0.3s ease;
   }
   
