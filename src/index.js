@@ -15,7 +15,7 @@ app.get('/landingPage', (req, res) => {
   res.render('landingPage');
 });
 app.get('/login', (req, res) => {
-    res.render('login');
+    res.render('loginPage');
 });
 app.get('/postPage', (req, res) => {
   res.render('postPage');
