@@ -9,56 +9,43 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 </head>
 <body data-spy="scroll">
-      <nav class="nav__wrapper" id="navbar-example">
-        <ul class="nav nav-list">
-  
-        <li role="presentation" class="link">
-            <a href="#section1">
-                <div class="nav-circle">
-                    <div class="inner-circle"></div>
-                </div>
-            </a>
-        </li>
-        <li role="presentation" class="link">
-            <a href="#section2">
-                <div class="nav-circle">
-                    <div class="inner-circle"></div>
-                </div>
-            </a>
-        </li>
-        <li role="presentation" class="link">
-            <a href="#section3">
-                <div class="nav-circle">
-                    <div class="inner-circle"></div>
-                </div>
-            </a>
-        </li>
-        <li role="presentation" class="link">
-            <a href="#section4">
-                <div class="nav-circle">
-                    <div class="inner-circle"></div>
-                </div>
-            </a>
-        </li>
-        <li role="presentation" class="link">
-            <a href="#section5">
-                <div class="nav-circle">
-                    <div class="inner-circle"></div>
-                </div>
-            </a>
-        </li>
-        <li role="presentation" class="link">
-            <a href="#section6">
-                <div class="nav-circle">
-                    <div class="inner-circle"></div>
-                </div>
-            </a>
-        </li>
-  
-        </ul>
-      </nav>
+      <!-- <nav class="nav__wrapper" id="navbar-example">
+        <div class="nav nav-list">
+          
+          <a href="#section1" class="link">1
+            
+                            
+          </a>
+          <a href="#section2" class="link">2
+            
+                
+            
+        </a>
+        <a href="#section3" class="link">3
+          
+                
+          
+        </a>
+        <a href="#section4" class="link">4
+          
+                
+          
+        </a>
+        <a href="#section5" class="link">5
+          
+                
+            
+        </a>
+        <a href="#section6" class="link">6
+          
+                
+          
+        </a>
 
-      <section class="section section1 page home active" >
+        </div>
+      </nav> -->
+
+      <section class="section section1 page home active" id="section1">
 
         <div class="content" >
           <div class="desc" style="z-index: 2;">
@@ -88,7 +75,7 @@
           </svg>
         </div> -->
       </section>
-      <section class="section section2 " >
+      <section class="section section2 " id="section2">
         <div class="colab-text"> 
           <span class="heading"  style="z-index: 2;">collaboration</span>
           <p  style="z-index: 2;"><b>Synergy Zone:</b> Forge connections and create magic together. <br><br>
@@ -182,9 +169,11 @@
       </div>
       <!-- Footer End -->
       </section>
+      <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
       <div style="position: absolute;z-index: 0; top:0;left:0;width: 100%; height: 100%;" id="particles-js"></div>
       <div class="count-particles"></div>
       <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+      src="http://threejs.org/examples/js/libs/stats.min.js"></script>
       <script src="./js/particles.js"></script>
       <script src="./js/landingPage.js"></script>
   </body>
