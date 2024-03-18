@@ -54,6 +54,23 @@ const sendButton = document.querySelector('#send-comment');
 const inputComment = document.querySelector('#input-comment');
 const userProfile = document.querySelector('#user-profile');
 const comments = document.querySelector('.comments');
+inputComment.addEventListener('keypress',(e)=>{
+    if (e.key === "Enter"){
+        if(inputComment.value){
+            let newElement = document.createElement('div');
+            newElement.className = "comment";
+            let newImage = document.createElement('img');
+            newImage.src = userProfile.src;
+            newElement.appendChild(newImage);
+            let commentText = document.createElement('div');
+            commentText.className = "comment-text";
+            commentText.innerHTML = inputComment.value;
+            inputComment.value = "";
+            newElement.appendChild(commentText);
+            comments.appendChild(newElement);
+        }
+    }
+});
 sendButton.addEventListener('click',()=>{
     if(inputComment.value){
         let newElement = document.createElement('div');

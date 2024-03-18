@@ -622,7 +622,24 @@ textarea {
   margin: 0.9375rem 0 0.3125rem; /* Reduce margin for responsiveness */
   color: #fff;
 }
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ace2ff; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #d0e9f7; 
+}
 .slider{
   /* width: 800px; */
   /* gpt */
@@ -630,7 +647,7 @@ textarea {
   height: 25rem;
   /* position: absolute; */
   position: relative; /* Change position to relative for responsiveness */
-  top: 50%;
+  top: 53%;
   left: 50%;
   transform: translate(-50%,-50%);
 }

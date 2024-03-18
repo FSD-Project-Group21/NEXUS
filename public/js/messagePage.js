@@ -91,6 +91,24 @@ function msg(){
                 contactTexts[i].classList.add('hide');
             }else{
                 let send = contactTexts[j].querySelector('.send-msg');
+                let msgEnter = contactTexts[j].querySelector('#msg-input');
+                msgEnter.addEventListener('keypress',(event)=>{
+                    if (event.key === "Enter"){
+                        if(msgEnter.value !== ""){
+                            let msg = contactTexts[j].querySelector('#msg-input');
+                            let messages = contactTexts[j].querySelector('.messages');
+                            console.log(msg.value);
+                            let newElement = document.createElement('div');
+                            newElement.className = 'user1';
+                            newElement.classList.add('message');
+                            newElement.innerHTML = msg.value;
+                            messages.appendChild(newElement);
+                            newElement.scrollIntoView();
+                            newElement.scrollIntoView({behavior: "smooth"});
+                            msg.value = "";
+                        }
+                    }
+                });
                 send.addEventListener('click',()=>{
                     let msg = contactTexts[j].querySelector('#msg-input');
                     let messages = contactTexts[j].querySelector('.messages');

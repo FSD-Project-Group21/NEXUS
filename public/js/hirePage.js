@@ -126,6 +126,13 @@ for (let i of profiles.data) {
   details.innerText = i.details;
   infoContainer.appendChild(details);
 
+  // Resume
+  // let resume = document.createElement('object');
+  // resume.data = i.resume;
+  // resume.width = "800";
+  // resume.height = "500";
+  // infoContainer.appendChild(resume);
+
   // Button
   let button = document.createElement("button");
   button.textContent = "Check Out This Profile";
