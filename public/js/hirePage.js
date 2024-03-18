@@ -80,13 +80,13 @@ let profiles = {
       studentName: "Ravi",
       category: "Business",
       details: "Analytically-driven financial analyst with expertise in financial modeling, forecasting, and budgeting. Proficient in conducting in-depth financial analysis to support strategic decision-making and optimize business performance.  ",
-      image: "./assets/profile-pic2.png",
-      age: 25,
-      education: "Bachelor's Degree in Computer Science",
-      skills: ["JavaScript", "HTML", "CSS", "Python"],
-      experience: "2 years of internships in software development",
-      languages: ["English", "Spanish"],
-      projectLink: "https://www.nexus.com/profiles/profile0/projects",
+      // image: "./assets/profile-pic2.png",
+      // age: 25,
+      // education: "Bachelor's Degree in Computer Science",
+      // skills: ["JavaScript", "HTML", "CSS", "Python"],
+      // experience: "2 years of internships in software development",
+      // languages: ["English", "Spanish"],
+      // projectLink: "https://www.nexus.com/profiles/profile0/projects",
       isSaved: false,
       isHired: false,
     },
@@ -370,12 +370,17 @@ function updateSavedProfiles() {
       details.innerText = i.details;
       infoContainer.appendChild(details);
 
+      var categoryElement = document.createElement("p");
+  categoryElement.innerText = "Category: " + profiles.data[index].category;
+  infoContainer.appendChild(categoryElement);
+
       // Project Link
       // let projectLink = document.createElement("a");
       // projectLink.setAttribute("href", i.projectLink);
       // projectLink.setAttribute("target", "_blank");
       // projectLink.innerText = i.projectLink;
       // infoContainer.appendChild(projectLink);
+      
 
       card.appendChild(infoContainer);
       document.getElementById("saved-cards").appendChild(card);
@@ -433,6 +438,10 @@ function updateHiredProfiles() {
       let details = document.createElement("h6");
       details.innerText = i.details;
       infoContainer.appendChild(details);
+
+      var categoryElement = document.createElement("p");
+  categoryElement.innerText = "Category: " + profiles.data[index].category;
+  infoContainer.appendChild(categoryElement);
 
       // Project Link
       // let projectLink = document.createElement("a");
