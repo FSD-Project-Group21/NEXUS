@@ -268,14 +268,14 @@ width: 40%;
 }
 
 .colab-text,.hiring-text{
-  margin-left: 8.25rem;
+  /* margin-left: 8.25rem; */
 }
 .messaging-text,.post-text{
   padding-left: 7rem;
 }
 
 .animated-img2, .animated-img4{
-  margin-left: 8.25rem;
+  /* margin-left: 8.25rem; */
 }
 
 .heading{
