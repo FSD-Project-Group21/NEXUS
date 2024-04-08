@@ -1,12 +1,21 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const collection = require("./config");
+const createPost = require("./CreatePost"); //
+const editProfile = require("./editProfilePage"); //
+const interestForm = require("./interestedForm");
 
 const app = express();
 app.use(express.json());
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
+
+app.post('/profilePage', createPost.CreatePost); //
+
+app.post('/editprofileDets', editProfile.editprofileDets); //
+
+app.post('/interestedToWork', interestForm.interestedWorkForm ); //
 
 app.get("/", (req, res) => {
   res.render("landingPage");
