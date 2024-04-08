@@ -80,7 +80,7 @@ let profiles = {
       studentName: "Ravi",
       category: "Business",
       details: "Analytically-driven financial analyst with expertise in financial modeling, forecasting, and budgeting. Proficient in conducting in-depth financial analysis to support strategic decision-making and optimize business performance.  ",
-      // image: "./assets/profile-pic2.png",
+      image: "./assets/profile-pic2.png",
       // age: 25,
       // education: "Bachelor's Degree in Computer Science",
       // skills: ["JavaScript", "HTML", "CSS", "Python"],
@@ -100,8 +100,7 @@ for (let i of profiles.data) {
   card.classList.add(i.category);
 
   // Image Container
-  // let imageContainer = document.createElement("div");
-  // imageContainer.classList.add("collab-preview");
+  
   let imgContainer = document.createElement("div");
   imgContainer.className = "img-container";
   let image = document.createElement("img");
