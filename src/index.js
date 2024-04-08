@@ -2,7 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const collection = require("./config");
 const createPost = require("../controllers/createPostController"); //
-const editProfile = require("../controllers/editProfilePageController"); //
+const editProfile = require("../controllers/editProfileController"); //
 const interestForm = require("../controllers/interestedFormController");
 
 const app = express();
