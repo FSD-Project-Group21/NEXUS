@@ -46,7 +46,7 @@
   <div class="popup-form" id="popup-form">
     <div class="workup" id="workup">
         <div class="interested-form">
-          <form id="interested-form">
+          <form id="interested-form" method="post" action="/interestedToWork">
             <div class="close-button">
               <button id="close-icon"><i class="fa-solid fa-x" style="color: #000;"></i></button></div>
               <label for="category-role">Category:</label>
@@ -78,7 +78,7 @@
     <div class="editit" id="editit">
         <h2>Edits</h2>
         <p>Edit profile here</p>
-        <from class="edit-form">
+        <form class="edit-form" method="post" action="/editprofileDets">
           <label class="edit-label" for="name">Name:</label>
           <input type="text" id="name" name="name">
           <label class="edit-label" for="about">About:</label>
@@ -89,7 +89,7 @@
             <button id="Save-edits">Save</button>
             <button id="Cancel-edits">Cancel</button>
           </div>
-        </from>
+        </form>
     </div>
 </div>
 
@@ -274,7 +274,7 @@
         <div class="create-cont _icon-cont hide">
           <h1 class="create-post-header">Create a New Post</h1>
           <div class="form-for-post">
-            <form id="createPostForm">
+            <form id="createPostForm" method="post" action="/profilePage"> <!---->
               <label for="projectName">Project Name:</label>
               <div class="input-container">
                 <input type="text" id="projectName" name="projectName" maxlength="100" required>
@@ -287,7 +287,7 @@
               </div>
               <div class="upload-btn">
                 <label for="image"></label>
-                <input type="file" id="image" name="image" accept="image/*" required onchange="updateFileName(this)">
+                <input type="file" id="image" name="image" accept="image/*" multiple max="10" required onchange="updateFileName(this)">
               </div>
               <span id="file-name"></span>
   
