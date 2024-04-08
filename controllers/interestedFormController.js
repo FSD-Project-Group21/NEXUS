@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const editSchema = require('../models/interested_Form');
+const editSchema = require('../models/interestedFormModels');
 
 exports.interestedWorkForm = async(req,res) => {
     try{

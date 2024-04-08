@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const postSchema = require('../models/createNewPost');
+const postSchema = require('../models/createPostModels');
 
 exports.CreatePost = async(req,res) => {
     try{

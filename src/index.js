@@ -1,9 +1,9 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const collection = require("./config");
-const createPost = require("../controllers/CreatePost"); //
-const editProfile = require("../controllers/editProfilePage"); //
-const interestForm = require("../controllers/interestedForm");
+const createPost = require("../controllers/createPostController"); //
+const editProfile = require("../controllers/editProfilePageController"); //
+const interestForm = require("../controllers/interestedFormController");
 
 const app = express();
 app.use(express.json());

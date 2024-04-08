@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const editSchema = require('../models/editProfile');
+const editSchema = require('../models/editProfileModels');
 
 exports.editprofileDets = async(req,res) => {
     try{
