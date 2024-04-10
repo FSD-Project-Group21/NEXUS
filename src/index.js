@@ -8,6 +8,9 @@ const mongoose = require("mongoose");
 const createPost = require("../controllers/createPostController"); //
 const editProfile = require("../controllers/editProfileController"); //
 const interestForm = require("../controllers/interestedFormController");
+const hireProfile = require("../controllers/hireStudentCardController");
+const hiredProfile = require("../controllers/hiredCardsController");
+const savedProfile = require("../controllers/savedStudentsCardController");
 const mongoURI = 'mongodb://localhost:27017/NEXUS'
 const userModel = require('../models/studentLoginModel');
 

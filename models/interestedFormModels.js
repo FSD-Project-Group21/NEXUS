@@ -5,7 +5,7 @@ const connect = mongoose.connect("mongodb://localhost:27017/NEXUS",);
 
 // Check database connectivity
 connect.then(() => {
-  console.log(`Database connected successfully`);
+  console.log(`Database connected successfully interested`);
 }).catch(() => {
   console.log("Database connection failed");
 });
