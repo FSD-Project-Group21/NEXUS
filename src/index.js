@@ -1,15 +1,54 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
-const collection = require("./config");
+const bcryptjs = require("bcryptjs")
+const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
+const mongoose = require("mongoose");
+// const collection = require("./config");
 const createPost = require("../controllers/createPostController"); //
 const editProfile = require("../controllers/editProfileController"); //
 const interestForm = require("../controllers/interestedFormController");
+const mongoURI = 'mongodb://localhost:27017/NEXUS'
+const userModel = require('../models/studentLoginModel');
 
 const app = express();
 app.use(express.json());
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
+mongoose
+    .connect(mongoURI, {
+    // useNewUrlParser : true,
+    // useCreateIndex : true,
+    // useUnifiedTopology: true,
+    useUnifiedTopology: true,
+    })
+    .then((res)=> {
+        console.log("MongoDB Connected")
+    });
+
+    const store = new MongoDBStore({
+        uri: 'mongodb://localhost:27017/NEXUS',
+        collection: 'mysessions'
+    });
+
+  app.use(session({
+      secret:'key that will sign the cookie',
+      resave:false, // Forces the session to be saved back to the session store, even if the session was never modified during the request
+      saveUninitialized:false, //Forces a session that is "uninitialized" to be saved to the store. A session is uninitialized when it is new but not modified
+      store: store
+      })
+  );
+  const isAuth = (req,res,next) => {
+    if(req.session.isAuth){
+        next();
+    }
+    else
+    {
+        res.redirect('/login');
+    }
+}
+
 
 app.post('/profilePage', createPost.CreatePost); //
 
@@ -26,78 +65,89 @@ app.get('/landingPage', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('loginPage');
 });
-app.get('/postPage', (req, res) => {
+app.get('/postPage',isAuth, (req, res) => {
   res.render('postPage');
 });
-app.get('/studentHomePage', (req, res) => {
+app.get('/studentHomePage',isAuth, (req, res) => {
     res.render('studentHomePage');
 });
-app.get('/searchPage', (req, res) => {
+app.get('/searchPage',isAuth, (req, res) => {
     res.render('searchPage');
 });
-app.get('/hirePage', (req, res) => {
+app.get('/hirePage',isAuth, (req, res) => {
   res.render('hirePage');
 });
-app.get('/messagePage', (req, res) => {
+app.get('/messagePage',isAuth, (req, res) => {
   res.render('messagePage');
 });
-app.get('/notificationPage', (req, res) => {
+app.get('/notificationPage',isAuth, (req, res) => {
     res.render('notificationPage');
 });
-app.get('/collabPage', (req, res) => {
+app.get('/collabPage',isAuth, (req, res) => {
     res.render('collabPage');
 });
-app.get('/profilePage', (req, res) => {
+app.get('/profilePage',isAuth, (req, res) => {
     res.render('profilePage');
 });
 
+  
 
 
-app.post("/signup", async (req, res) => {
-  try {
-    const data = {
-      Full_Name: req.body.fullname,
-      Phone_number: req.body.phno,
-      mail_id: req.body.gmail,
-      password: req.body.password1,
-    };
+app.post("/login", async(req,res)=>{
+  const {gmail , password} = req.body;
 
-    const existingUser = await collection.findOne({ mail_id: data.mail_id });
+  const user = await userModel.findOne({gmail});
 
-    if (existingUser) {
-      return res.send('<script>alert("User already exists");</script>')
-    }
-
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(data.password, saltRounds);
-    data.password = hashedPassword;
-
-    await collection.create(data);
-    res.redirect("/login"); // Redirect to login page after successful signup
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Internal Server Error");
+  if(!user){
+      return res.redirect("/postPage");
   }
+  const isMatch = await bcryptjs.compare(password,user.password1);
+
+  if(!isMatch){
+      return res.redirect("/collabPage");
+  }
+
+  req.session.isAuth=true;
+  res.redirect("/studentHomePage");
 });
 
-app.post("/login", async (req, res) => {
-  try {
-    const user = await collection.findOne({ mail_id: req.body.email });
 
-    if (!user) {
-      return res.send('<script>alert("Wrong username/password");</script>');
-    }
+app.post("/signup", async(req,res)=>{
+  const {fullname , phno,gmail, password1} = req.body;
 
-    const isPasswordMatch = await bcrypt.compare(req.body.password, user.password);
-    if (!isPasswordMatch) {
-      return res.send('<script>alert("Wrong username/password");</script>');
-    }
-
-    res.render("studentHomePage"); // Redirect to home page after successful login
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Internal Server Error");
+  let user = await userModel.findOne({gmail});
+  if(user){
+      return res.redirect('/signup');
   }
+  const hashpassword= await bcryptjs.hash(password1,12);
+  user = new userModel({
+    fullname ,
+    phno,
+    gmail, 
+    password1:hashpassword
+  });
+  
+  // async function saveUser() {
+  //     try {
+  //       await user.save();
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  // saveUser();
+  user.save();
+
+  res.redirect('/login')
+
+});
+
+
+
+app.post('/logout',(req,res)=>{
+  req.session.destroy((err)=>{
+      if(err) throw err;
+      res.redirect("/")
+  });
 });
 
 const port = 5000;

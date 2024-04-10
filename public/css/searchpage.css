@@ -287,7 +287,13 @@ main{
   background-color: #0056b3;
 }
 
-
+.logout-options{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
 
 #categories-button{
   border: none;

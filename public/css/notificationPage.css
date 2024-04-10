@@ -153,6 +153,13 @@
   #close-popup:hover,#logout:hover {
     background-color: #0056b3;
   }
+  .logout-options{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+ }
   @media (max-width:320px) {
     .sidebar{
       width: 4rem;

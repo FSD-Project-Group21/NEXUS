@@ -169,7 +169,13 @@
       width: 4.25rem;
     }
   }
-  /* Add blur effect to body when popup is open */
+ .logout-options{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+ }
   
   
   
