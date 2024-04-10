@@ -20,78 +20,104 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 300);
     });
 });
-let profiles = {
-  data: [
-    {
-      studentName: "Nandhitha",
-      category: "Data-Science",
-      details: "Analytically-driven data scientist with expertise in machine learning, statistical analysis, and data visualization. Experienced in extracting insights from complex datasets to drive informed decision-making and enhance business outcomes.  ",
-      image: "./assets/profile-pic3.png",
-      isSaved: false,
-      isHired: false,
-    },
-    {
-      studentName: "Hemanth",
-      category: "Graphic-Design",
-      details: "Skilled UI/UX designer with a strong understanding of user-centered design principles. Proficient in wireframing, prototyping. ",
-      image: "./assets/profile-pic2.png",
-      isSaved: false,
-      isHired: false,
-    },
-    {
-      studentName: "Shrishti",
-      category: "Business",
-      details: "Results-oriented business development manager with a proven track record of driving revenue growth and expanding market reach.",
-      image: "./assets/profile-pic4.png",
-      isSaved: false,
-      isHired: false,
-    },
-    {
-      studentName: "Ananya",
-      category: "Architecture",
-      details: "Innovative architectural designer with a passion for sustainable design and urban revitalization. Proficient in CAD software and skilled in creating aesthetically pleasing and functional designs. ",
-      image: "./assets/profile-pic6.png",
-      isSaved: false,
-      isHired: false,
-    },
-    {
-      studentName: "Varshitha",
-      category: "Data-Science",
-      details: "Detail-oriented data analyst with a strong background in data mining, cleaning, and interpretation. Skilled in generating actionable insights through data visualization and statistical analysis. ",
-      image: "./assets/profile-pic5.png",
-      isSaved: false,
-      isHired: false,
-    },
-    {
-      studentName: "Maheshwari",
-      category: "Graphic-Design",
-      details: "Innovative and versatile graphic designer with a keen eye for detail and a passion for creating visually stunning designs. ",
-      image: "./assets/profile-pic4.png",
-      isSaved: false,
-      isHired: false,
-    },{
-      studentName: "Rupesh",
-      category: "Architecture",
-      details: "Detail-oriented project architect with a proven track record of managing large-scale architectural projects from inception to delivery. ",
-      image: "./assets/profile-pic2.png",
-      isSaved: false,
-      isHired: false,
-    },{
-      studentName: "Ravi",
-      category: "Business",
-      details: "Analytically-driven financial analyst with expertise in financial modeling, forecasting, and budgeting. Proficient in conducting in-depth financial analysis to support strategic decision-making and optimize business performance.  ",
-      image: "./assets/profile-pic2.png",
-      // age: 25,
-      // education: "Bachelor's Degree in Computer Science",
-      // skills: ["JavaScript", "HTML", "CSS", "Python"],
-      // experience: "2 years of internships in software development",
-      // languages: ["English", "Spanish"],
-      // projectLink: "https://www.nexus.com/profiles/profile0/projects",
-      isSaved: false,
-      isHired: false,
-    },
-  ],
+
+let getData = async () => {
+  try {
+      let res = await fetch("mongodb://localhost:27017/NEXUS");
+      // console.log(res);
+      let data = await res.json();
+      console.log("data", data);
+      appendData(data);
+
+  } catch (err) {
+      console.log(err);
+  }
 };
+
+getData();
+
+let profiles = {data: []}
+
+function appendData(data) {
+  
+  profiles.data = data;
+  console.log(profiles);
+}
+
+appendData(data);
+
+// let profiles = {
+//   data: [
+//     {
+//       studentName: "Nandhitha",
+//       category: "Data-Science",
+//       details: "Analytically-driven data scientist with expertise in machine learning, statistical analysis, and data visualization. Experienced in extracting insights from complex datasets to drive informed decision-making and enhance business outcomes.  ",
+//       image: "./assets/profile-pic3.png",
+//       isSaved: false,
+//       isHired: false,
+//     },
+//     {
+//       studentName: "Hemanth",
+//       category: "Graphic-Design",
+//       details: "Skilled UI/UX designer with a strong understanding of user-centered design principles. Proficient in wireframing, prototyping. ",
+//       image: "./assets/profile-pic2.png",
+//       isSaved: false,
+//       isHired: false,
+//     },
+//     {
+//       studentName: "Shrishti",
+//       category: "Business",
+//       details: "Results-oriented business development manager with a proven track record of driving revenue growth and expanding market reach.",
+//       image: "./assets/profile-pic4.png",
+//       isSaved: false,
+//       isHired: false,
+//     },
+//     {
+//       studentName: "Ananya",
+//       category: "Architecture",
+//       details: "Innovative architectural designer with a passion for sustainable design and urban revitalization. Proficient in CAD software and skilled in creating aesthetically pleasing and functional designs. ",
+//       image: "./assets/profile-pic6.png",
+//       isSaved: false,
+//       isHired: false,
+//     },
+//     {
+//       studentName: "Varshitha",
+//       category: "Data-Science",
+//       details: "Detail-oriented data analyst with a strong background in data mining, cleaning, and interpretation. Skilled in generating actionable insights through data visualization and statistical analysis. ",
+//       image: "./assets/profile-pic5.png",
+//       isSaved: false,
+//       isHired: false,
+//     },
+//     {
+//       studentName: "Maheshwari",
+//       category: "Graphic-Design",
+//       details: "Innovative and versatile graphic designer with a keen eye for detail and a passion for creating visually stunning designs. ",
+//       image: "./assets/profile-pic4.png",
+//       isSaved: false,
+//       isHired: false,
+//     },{
+//       studentName: "Rupesh",
+//       category: "Architecture",
+//       details: "Detail-oriented project architect with a proven track record of managing large-scale architectural projects from inception to delivery. ",
+//       image: "./assets/profile-pic2.png",
+//       isSaved: false,
+//       isHired: false,
+//     },{
+//       studentName: "Ravi",
+//       category: "Business",
+//       details: "Analytically-driven financial analyst with expertise in financial modeling, forecasting, and budgeting. Proficient in conducting in-depth financial analysis to support strategic decision-making and optimize business performance.  ",
+//       image: "./assets/profile-pic2.png",
+//       // age: 25,
+//       // education: "Bachelor's Degree in Computer Science",
+//       // skills: ["JavaScript", "HTML", "CSS", "Python"],
+//       // experience: "2 years of internships in software development",
+//       // languages: ["English", "Spanish"],
+//       // projectLink: "https://www.nexus.com/profiles/profile0/projects",
+//       isSaved: false,
+//       isHired: false,
+//     },
+//   ],
+// };
 
 for (let i of profiles.data) {
   // Create Card
