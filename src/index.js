@@ -21,8 +21,8 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 mongoose
     .connect(mongoURI, {
-    // useNewUrlParser : true,
-    // useCreateIndex : true,
+    useNewUrlParser : true,
+    useCreateIndex : true,
     // useUnifiedTopology: true,
     useUnifiedTopology: true,
     })
