@@ -5,12 +5,13 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const mongoose = require("mongoose");
 // const collection = require("./config");
-const createPost = require("../controllers/createPostController"); //
-const editProfile = require("../controllers/editProfileController"); //
+const createPost = require("../controllers/createPostController"); 
+const editProfile = require("../controllers/editProfileController"); 
 const interestForm = require("../controllers/interestedFormController");
 const hireProfile = require("../controllers/hireStudentCardController");
 const hiredProfile = require("../controllers/hiredCardsController");
 const savedProfile = require("../controllers/savedStudentsCardController");
+const InterestedForm = require('../models/interestedFormModels')
 const mongoURI = 'mongodb://localhost:27017/NEXUS'
 const userModel = require('../models/studentLoginModel');
 
@@ -156,4 +157,14 @@ app.post('/logout',(req,res)=>{
 const port = 5000;
 app.listen(port, () => {
   console.log(`Server is running on Port : ${port}`);
+});
+
+// Route to fetch data from MongoDB and send it as JSON
+app.get('/interested-forms', async (req, res) => {
+  try {
+    const forms = await InterestedForm.find();
+    res.json(forms);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });

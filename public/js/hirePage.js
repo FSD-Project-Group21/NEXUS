@@ -20,32 +20,60 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 300);
     });
 });
+// --------------------------------------------------------------------------------------------------------------
 
-let getData = async () => {
+// let getData = async () => {
+//   try {
+//       let res = await fetch("mongodb://localhost:27017/NEXUS");
+//       // console.log(res);
+//       let data = await res.json();
+//       console.log("data", data);
+//       appendData(data);
+
+//   } catch (err) {
+//       console.log(err);
+//   }
+// };
+
+// getData();
+
+// let profiles = {data: []}
+
+// function appendData(data) {
+  
+//   profiles.data = data;
+//   console.log(profiles);
+// }
+
+// appendData(data);
+// --------------------------------------------------------------------------------------------------------------
+// frontend.js
+var dataResults ;
+async function getData() {
   try {
-      let res = await fetch("mongodb://localhost:27017/NEXUS");
-      // console.log(res);
-      let data = await res.json();
-      console.log("data", data);
-      appendData(data);
-
+    let res = await fetch("http://localhost:5000/interested-forms"); // Update the URL to use port 5000
+    dataResults = await res.json();
+    display();
+    // handleButtonClick();
+    // filterProduct(value);
+    populateModalContent();
+     updateSavedProfiles() ;
+     updateHiredProfiles();
+    console.log("data", dataResults);
+    // appendData(dataResults.data);
   } catch (err) {
-      console.log(err);
+    console.log(err);
   }
-};
+}
+let profiles = {data: []}
+function appendData(data) {
+  profiles.data = data;
+  // console.log(profiles.data);
+}
 
 getData();
 
-let profiles = {data: []}
-
-function appendData(data) {
-  
-  profiles.data = data;
-  console.log(profiles);
-}
-
-appendData(data);
-
+// --------------------------------------------------------------------------------------------------------------
 // let profiles = {
 //   data: [
 //     {
@@ -119,7 +147,10 @@ appendData(data);
 //   ],
 // };
 
-for (let i of profiles.data) {
+// for (let i of profiles.data) 
+function display(){
+dataResults.map((i) => {
+  console.log(i);
   // Create Card
   let card = document.createElement("div");
   card.classList.add("collab");
@@ -165,7 +196,9 @@ for (let i of profiles.data) {
 
   card.appendChild(infoContainer);
   document.getElementById("profile-cards").appendChild(card);
+});
 }
+// getData();
 
 // Filter function
 function filterProduct(value) {
@@ -240,6 +273,24 @@ for (var i = 0; i < btns.length; i++) {
   }
 }
 
+// function handleButtonClick(event) {
+//   // Get which card got clicked
+//   index = Array.from(btns).indexOf(this);
+
+//   modal.style.display = "block";
+
+//   // Populate modal content with profile details
+//   populateModalContent();
+
+//   // Stop the click event from propagating further
+//   event.stopPropagation();
+// }
+
+// for (var i = 0; i < btns.length; i++) {
+//   btns[i].onclick = handleButtonClick;
+// }
+
+
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
@@ -264,15 +315,15 @@ function populateModalContent() {
 
   // Create elements for profile details
   var nameElement = document.createElement("h2");
-  nameElement.innerText = profiles.data[index].studentName.toUpperCase();
+  nameElement.innerText = dataResults.map[index].studentName.toUpperCase();
   modalContent.appendChild(nameElement);
 
   var categoryElement = document.createElement("p");
-  categoryElement.innerText = "Category: " + profiles.data[index].category;
+  categoryElement.innerText = "Category: " + dataResults.map[index].category;
   modalContent.appendChild(categoryElement);
 
   var detailsElement = document.createElement("p");
-  detailsElement.innerText = profiles.data[index].details;
+  detailsElement.innerText = dataResults.map[index].details;
   modalContent.appendChild(detailsElement);
 
   // Add additional profile details
@@ -300,7 +351,7 @@ function populateModalContent() {
   var saveBtn = document.getElementById("saveBtn");
   var hireBtn = document.getElementById("hireBtn");
 
-  if (profiles.data[index].isSaved) {
+  if (dataResults.map[index].isSaved) {
     saveBtn.style.backgroundColor = "red";
     saveBtn.innerText = "Unsave Profile";
   } else {
@@ -308,7 +359,7 @@ function populateModalContent() {
     saveBtn.innerText = "Save Profile";
   }
 
-  if (profiles.data[index].isHired) {
+  if (dataResults.map[index].isHired) {
     hireBtn.style.backgroundColor = "red";
     hireBtn.innerText = "Unhire Profile";
   } else {
@@ -323,7 +374,7 @@ document.querySelectorAll("#saveBtn").forEach(function (btn) {
   btn.addEventListener("click", function (event) {
     console.log("Saved " + index);
 
-    profiles.data[index].isSaved = !profiles.data[index].isSaved;
+    dataResults.map[index].isSaved = !dataResults.map[index].isSaved;
 
     updateSavedProfiles();
 
@@ -337,7 +388,7 @@ document.querySelectorAll("#hireBtn").forEach(function (btn) {
   btn.addEventListener("click", function (event) {
     console.log("Hired " + index);
 
-    profiles.data[index].isHired = !profiles.data[index].isHired;
+    dataResults.map[index].isHired = !dataResults.map[index].isHired;
 
     updateHiredProfiles();
 
@@ -351,7 +402,7 @@ function updateSavedProfiles() {
   var cardContainer = document.getElementsByClassName("saved-cards-container");
   cardContainer[0].innerHTML = "";
   
-  if(profiles.data.some(obj => obj.isSaved === true)){
+  if(dataResults.map.some(obj => obj.isSaved === true)){
     let h2 = document.createElement("h2");
     h2.innerText = "Saved Profiles";
     cardContainer[0].appendChild(h2);
@@ -419,7 +470,7 @@ function updateHiredProfiles() {
   var cardContainer = document.getElementsByClassName("hired-cards-container");
   cardContainer[0].innerHTML = "";
 
-  if(profiles.data.some(obj => obj.isSaved === true)){
+  if(dataResults.map.some(obj => obj.isSaved === true)){
     let h2 = document.createElement("h2");
     h2.innerText = "Hired Profiles";
     cardContainer[0].appendChild(h2);
@@ -465,7 +516,7 @@ function updateHiredProfiles() {
       infoContainer.appendChild(details);
 
       var categoryElement = document.createElement("p");
-  categoryElement.innerText = "Category: " + profiles.data[index].category;
+  categoryElement.innerText = "Category: " + dataResults.map[index].category;
   infoContainer.appendChild(categoryElement);
 
       // Project Link
