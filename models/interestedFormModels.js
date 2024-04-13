@@ -17,7 +17,7 @@ const interestedSchema = new mongoose.Schema({
     },
 
     resume: {
-        type: Array,
+        type: Buffer,
         required: true
     },
 

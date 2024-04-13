@@ -14,12 +14,17 @@ const savedProfile = require("../controllers/savedStudentsCardController");
 const InterestedForm = require('../models/interestedFormModels')
 const mongoURI = 'mongodb://localhost:27017/NEXUS'
 const userModel = require('../models/studentLoginModel');
+const cors = require('cors');
 
 const app = express();
 app.use(express.json());
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+// app.use(express.json());
+
 mongoose
     .connect(mongoURI, {
     useNewUrlParser : true,
@@ -162,8 +167,19 @@ app.listen(port, () => {
 // Route to fetch data from MongoDB and send it as JSON
 app.get('/interested-forms', async (req, res) => {
   try {
-    const forms = await InterestedForm.find();
+    const forms = await interestForm.find();
     res.json(forms);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+app.post('/interested-work', async (req, res) => {
+  try {
+    // console.log(req);
+    interestForm.interestedWorkForm(req.body,res);
+    // interestForm(req,res);
+    // res.json(forms);
+    console.log('im here');
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

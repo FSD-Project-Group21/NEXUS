@@ -3,19 +3,17 @@ const editSchema = require('../models/interestedFormModels');
 
 exports.interestedWorkForm = async(req,res) => {
     try{
-        const{
-            categoryrole,
-            resume,
-            about
-        } = req.body;
+        const categoryrole = req.categoryrole;
+        const resume = req.resume;
+        const description = req.description;
 
         const newEdit = new editSchema({
             categoryrole,
             resume,
-            about
+            description
         });
 
-        await newInterest.save();
+        await newEdit.save();
     }
     catch(error){
         console.log(error);

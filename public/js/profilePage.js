@@ -1,3 +1,4 @@
+// const { name } = require("ejs");
 const icons = document.querySelectorAll('._icon');
 const iconsCont = document.querySelectorAll('._icon-cont');
 
@@ -158,7 +159,29 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             roleMsg.style.display='flex';
         }
+        const data = {
+            categoryrole: role,
+            resume: resume,
+            description:description
+          };
+          postData(data)
+          
+          // Send the POST request using fetch
+          
     });
+    async function postData(data) {
+        fetch("http://localhost:5000/interested-work", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+          })
+            .then((response) => response.json())
+            .then((data) => console.log("Success:", data))
+            .catch((error) => console.error("Error:", error));
+    }
+        
 })
 //edit form 
 document.addEventListener('DOMContentLoaded', function() {
@@ -237,3 +260,10 @@ document.addEventListener('DOMContentLoaded', function() {
     //     }
     // });
 })
+
+
+//post data
+const workConfirm = document.getElementById('close-workup')
+workConfirm.addEventListener('click',function(){
+
+});
