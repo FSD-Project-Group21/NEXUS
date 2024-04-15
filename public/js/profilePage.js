@@ -139,12 +139,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     saveButton.addEventListener('click', function(event) {
         event.preventDefault();
+        // const studentName = document.getElementsByClassName('Name').innerText;
+        const studentName = "nanditha";
+        const img = document.getElementById('profile-main-pic');
         const role = document.getElementById('category-role').value;
         const resume = document.getElementById('resume').value;
         const description = document.getElementById('description').value;
         const roleMsg = document.getElementById('category-msg');
         const fileMsg = document.getElementById('file-msg');
         const abtMsg = document.getElementById('about-msg');
+
+        const imgSrc = img.src;
 
         if (role !== '' && resume !== '' && description !== '') {
             workup.style.transform = 'scale(0.5)';
@@ -160,9 +165,13 @@ document.addEventListener('DOMContentLoaded', function() {
             roleMsg.style.display='flex';
         }
         const data = {
-            categoryrole: role,
+            studentName:studentName,
+            category: role,
             resume: resume,
-            description:description
+            details:description,
+            image:imgSrc,
+            isSaved:false,
+            isHired:false
           };
           postData(data)
           
