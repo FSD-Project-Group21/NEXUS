@@ -11,7 +11,11 @@ connect.then(() => {
 });
 
 const interestedSchema = new mongoose.Schema({
-    categoryrole: {
+  studentName: {
+    type: String,
+    required: true
+  },
+    category: {
         type: String,
         required: true
     },
@@ -21,9 +25,21 @@ const interestedSchema = new mongoose.Schema({
         required: true
     },
 
-    description: {
-        type: String,
-        required: true
+    details: {
+      type: String,
+      required: true
+    },
+    image: {
+      type: String,
+      required: true
+    },
+    isSaved: {
+      type: Boolean,
+      default: false
+    },
+    isHired: {
+      type: Boolean,
+      default: false
     }
 });
 
