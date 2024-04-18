@@ -25,7 +25,6 @@
     padding-left: 0;
     align-items: baseline;
     z-index: 100;
-    /* z-index:100; */
   }
   .directory a{
     text-decoration: none;
@@ -415,8 +414,9 @@
     height: 70%;
     font-family: "Unna", serif;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
   }  
   #create-button {
     margin-top: 10px;
@@ -435,5 +435,41 @@
     border: none;
     float: right;
   }
+label{
+  width: 100%;
+}
+#createPostForm{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* width: 70%; */
+  margin-left: 30px;
+  margin-top:25px;
+}
+/* Updated CSS for the word count display */
+.input-container,
+.description-container {
+  position: relative;
+}
 
-  
+#wordCount-projectName,
+#wordCount-description {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 12px;
+  color: gray;
+}
+
+/* Updated CSS for the form */
+#createPostForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 30px;
+  margin-top: 25px;
+  width: 80%; /* Increase the width of the form */
+}
+.input-container input {
+  width: 100%; /* Use 100% width to fill the container */
+}
