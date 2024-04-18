@@ -139,7 +139,7 @@
       <div class="icons">
         <button class="post _icon openIcon"><img src="assets/post-icon.png" alt="post"></button>
         <button class="save _icon"><img src="assets/save-icon.png" alt="post"></button>
-        <button class="create _icon"><img src="assets/create-icon.png" alt="post"> </button>
+        <!-- <button class="create _icon"><img src="assets/create-icon.png" alt="post"> </button> -->
       </div>
       <div class="icon-content">
         
@@ -275,36 +275,7 @@
         </div>
         <div class="create-cont _icon-cont hide">
           <h1 class="create-post-header">Create a New Post</h1>
-          <div class="form-for-post">
-            <form id="createPostForm" method="post" action="/profilePage"> <!---->
-              <label for="projectName">Project Name:</label>
-              <div class="input-container">
-                <input type="text" id="projectName" name="projectName" maxlength="100" required>
-                <span id="wordCount-projectName">0/100</span>
-              </div>
-              <label for="description">Description:</label>
-              <div class="description-container">
-                <textarea id="description" name="description" rows="4" required></textarea>
-                <span id="wordCount-description">0</span>
-              </div>
-              <div class="upload-btn">
-                <label for="image"></label>
-                <input type="file" id="image" name="image" accept="image/*" multiple max="10" required onchange="updateFileName(this)">
-              </div>
-              <span id="file-name"></span>
-  
-              <label for="category">Category:</label>
-              <select id="category" name="category" required>
-                <option value="" disabled selected>Select Category</option>
-                <option value="graphic">Graphic Designer</option>
-                <option value="architecture">Architecture</option>
-                <option value="data-science">Data Science</option>
-                <option value="Buisness">Buisness</option>
-              </select>
-              <button class="create-button" type="submit">Create Post</button>
-            </form>
-          </div>
-        </div>
+                  </div>
         
       </div>
     </main>
