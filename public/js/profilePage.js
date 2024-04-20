@@ -5,7 +5,7 @@ const iconsCont = document.querySelectorAll('._icon-cont');
 var j ;
 icons.forEach(icon => {
     icon.addEventListener('click',()=>{
-        for(let i = 0;i<3;i++){
+        for(let i = 0;i<2;i++){
             if(icons[i] != icon){
                 icons[i].classList.remove("openIcon");
             }else
@@ -17,7 +17,7 @@ icons.forEach(icon => {
 });
 function displayCont(j){
     iconsCont[j].classList.remove("hide");
-    for(let i=0;i<4;i++){
+    for(let i=0;i<3;i++){
         if(i!==j){
             iconsCont[i].classList.add("hide");
         }

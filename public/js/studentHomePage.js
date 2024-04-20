@@ -58,3 +58,25 @@ cards.forEach(c => {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const button = document.getElementById('create'); // Changed the selector to match the ID in the HTML
+    const popupForm = document.getElementById('create-container');
+    const workup = document.getElementById('create-up');
+    const closeButton = document.getElementById('close-create');
+
+    button.addEventListener('click', function() { // Changed the event to 'click' to listen for button clicks
+        popupForm.style.display = 'flex';
+        setTimeout(function() {
+            workup.style.transform = 'scale(1)';
+            workup.style.opacity = '1';
+        }, 100);
+    });
+
+    closeButton.addEventListener('click', function() {
+        workup.style.transform = 'scale(0.5)';
+        workup.style.opacity = '0';
+        setTimeout(function() {
+            popupForm.style.display = 'none';
+        }, 300);
+    });
+});
