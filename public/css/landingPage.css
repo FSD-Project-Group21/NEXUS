@@ -511,3 +511,16 @@ canvas {
 #myBtn:hover{
   color: #000;
 }
+.navig {
+  /* font-size: 23px; */
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}

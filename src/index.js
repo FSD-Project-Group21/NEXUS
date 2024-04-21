@@ -74,6 +74,15 @@ app.get('/landingPage', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('loginPage');
 });
+app.get('/adminLogin', (req, res) => {
+  res.render('adminLogin');
+});
+app.get('/adminDashBoard', (req, res) => {
+  res.render('adminDashBoard');
+});
+app.get('/adminPage', (req, res) => {
+  res.render('adminPage');
+});
 app.get('/postPage',isAuth, (req, res) => {
   res.render('postPage');
 });
@@ -108,16 +117,26 @@ app.post("/login", async(req,res)=>{
   const user = await userModel.findOne({gmail});
 
   if(!user){
-      return res.redirect("/postPage");
+      return res.redirect("/login");
   }
   const isMatch = await bcryptjs.compare(password,user.password1);
 
   if(!isMatch){
-      return res.redirect("/collabPage");
+      return res.redirect("/login");
   }
 
   req.session.isAuth=true;
   res.redirect("/studentHomePage");
+});
+app.post("/adminlogin", async(req,res)=>{
+  const { gmail, password } = req.body;
+
+  if (gmail !== "nexus@gmail.com" || password !== "nexus") {
+    return res.redirect("/adminLogin");
+  }
+
+  req.session.isAuth = true;
+  res.redirect("/adminDashboard");
 });
 
 
