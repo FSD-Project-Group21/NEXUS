@@ -86,7 +86,7 @@ usp.on('connection',(socket)=>{
   })
 });
 
-app.post('/profilePage', createPost.CreatePost); //
+// app.post('/profilePage', createPost.CreatePost); //
 
 app.post('/editprofileDets', editProfile.editprofileDets); //
 
@@ -192,7 +192,7 @@ app.post("/signup", async(req,res)=>{
   saveUser();
   // user.save();
 
-  user.save();
+  // user.save();
   res.redirect('/login')
 });
 
