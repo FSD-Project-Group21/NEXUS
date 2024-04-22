@@ -51,94 +51,20 @@
                             </div>
                         </div>
                         <div class="contacts-list">
-                            <button class="contact-chat" id="contact-1" >
-                                <div class="contact">
-                                    <div class="contact-profile">
-                                        <img src="./assets/harry_styles.jpg" alt="profile">
-                                    </div>
-                                    <div class="contact-details">
-                                        <h5>Arjith</h5>
-                                        <p>I'm interested in your idea.</p>
-                                    </div>
-                                </div>
-                            </button>
-                            <button class="contact-chat" id="contact-2">
-                                <div class="contact">
-                                    <div class="contact-profile">
-                                        <img src="./assets/profile-pic2.png" alt="profile">
-                                    </div>
-                                    <div class="contact-details">
-                                        <h5>Hemanth</h5>
-                                        <p>Okay, we will look into it.</p>
-                                    </div>
-                                </div>
-                            </button>
-                            <button class="contact-chat" id="contact-3">
-                                <div class="contact">
-                                    <div class="contact-profile">
-                                        <img src="./assets/profile-pic3.png" alt="profile">
-                                    </div>
-                                    <div class="contact-details">
-                                        <h5>Varshitha</h5>
-                                        <p>Hello</p>
-                                    </div>
-                                </div>
-                            </button>
-                            <button class="contact-chat" id="contact-4">
-                                <div class="contact">
-                                    <div class="contact-profile">
-                                        <img src="./assets/profile-pic4.png" alt="profile">
-                                    </div>
-                                    <div class="contact-details">
-                                        <h5>Shrishti</h5>
-                                        <p>Up for Collab?</p>
-                                    </div>
-                                </div>
-                            </button>
-                            <button class="contact-chat" id="contact-5">
-                                <div class="contact">
-                                    <div class="contact-profile">
-                                        <img src="./assets/profile-pic5.png" alt="profile">
-                                    </div>
-                                    <div class="contact-details">
-                                        <h5>Nandhitha</h5>
-                                        <p>Think it's done.</p>
-                                    </div>
-                                </div>
-                            </button>
-                            <button class="contact-chat" id="contact-6">
-                                <div class="contact">
-                                    <div class="contact-profile">
-                                        <img src="./assets/profile-pic6.png" alt="profile">
-                                    </div>
-                                    <div class="contact-details">
-                                        <h5>Ananya</h5>
-                                        <p>Okay!</p>
-                                    </div>
-                                </div>
-                            </button>
-                            <button class="contact-chat" id="contact-7">
-                                <div class="contact">
-                                    <div class="contact-profile">
-                                        <img src="./assets/profile-pic2.png" alt="profile">
-                                    </div>
-                                    <div class="contact-details">
-                                        <h5>Anirudh</h5>
-                                        <p>Sure</p>
-                                    </div>
-                                </div>
-                            </button>
-                            <button class="contact-chat" id="contact-8">
-                                <div class="contact">
-                                    <div class="contact-profile">
-                                        <img src="./assets/profile-pic.jpeg" alt="profile">
-                                    </div>
-                                    <div class="contact-details">
-                                        <h5>Anushka</h5>
-                                        <p>Can I know more about this?</p>
-                                    </div>
-                                </div>
-                            </button>
+                            <%if(users.length>0){%>
+                                <%for(let i=0;i<users.length;i++){%>
+                                    <button class="contact-chat"  id="contact-<%=users[i]['_id']%>" data-id="<%=users[i]['_id']%>">
+                                        <div class="contact">
+                                            <div class="contact-profile">
+                                                <img src="./assets/harry_styles.jpg" alt="profile">
+                                            </div>
+                                            <div class="contact-details">
+                                                <h5><%=users[i]['fullname']%></h5>
+                                            </div>
+                                        </div>  
+                                    </button>
+                                <%}%>
+                            <%}%>
                         </div>
                     </div>
                     <div class="msg-requests-div">
@@ -261,457 +187,220 @@
                     </div>
                 </div>
             </div>
-            <div class="texts hide" id="contact-1-texts">
-                <div class="chat">
-                    <div class="chat-bar">
-                        <div class="chat-info">
-                            <div class="chat-profile">
-                                <img src="./assets/harry_styles.jpg" alt="profile">
+            <%if(users.length>0){%>
+                <%for(let i=0;i<users.length;i++){%>
+                    <div class="texts hide" id="contact-<%=users[i]['_id']%>-texts">
+                        <div class="chat">
+                            <div class="chat-bar">
+                                <div class="chat-info">
+                                    <div class="chat-profile">
+                                        <img src="./assets/harry_styles.jpg" alt="profile">
+                                    </div>
+                                    <div class="chat-details">
+                                        <div class="name">
+                                            <%=users[i]['fullname']%>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="block-user">
+                                    <i class="fa-solid fa-ban"></i>
+                                </button>
                             </div>
-                            <div class="chat-details">
-                                <div class="name">
-                                    Arjith
-                                </div>
-                                <div class="seen">
-                                    Today at 20:41
-                                </div>
+                            <div class="messages" id="chat">
+                              
                             </div>
-                        </div>
-                        <button class="block-user">
-                            <i class="fa-solid fa-ban"></i>
-                        </button>
-                    </div>
-                    <div class="messages" id="chat">
-                      <div class="time">
-                        Today at 20:41
-                      </div>
-                      <div class="message user1">
-                        Hey👋
-                      </div>
-                      <div class="message user2">
-                        Hey! 
-                      </div>
-                      <div class="message user1">
-                        Your work is truly inspiring.
-                      </div>
-                      <div class="message user2">
-                        Thank you!
-                      </div>
-                      <div class="message user1">
-                        I'm interested in your idea.
-                      </div>
-                    </div>
-                    <div id="user-blocked">
-                        <div class="user-blocked-msg">User Blocked</div>
-                    </div>
-                    <div class="input">
-                        <input id="msg-input" placeholder="Type your message here!" type="text" />
-                        <button class="send-msg"><i class="fa-regular fa-paper-plane"></i></button>
-                    </div>
-                </div>
-                <div class="block-popup" id="block-popup">
-                    <div class="block-msg-popup" id="block-msg-popup">
-                        <h5>Are you sure ? you want to block the contact</h5>
-                        <button id="yes-close-popup">Yes</button>
-                        <button id="no-close-popup">No</button>
-                    </div>
-                </div>
-            </div>
-            <div class="texts hide" id="contact-2-texts">
-                <div class="chat">
-                    <div class="chat-bar">
-                        <div class="chat-info">
-                            <div class="chat-profile">
-                                <img src="./assets/profile-pic2.png" alt="profile">
+                            <div id="user-blocked">
+                                <div class="user-blocked-msg">User Blocked</div>
                             </div>
-                            <div class="chat-details">
-                                <div class="name">
-                                    Hemanth
-                                </div>
-                                <div class="seen">
-                                    Today at 18:56
-                                </div>
+                            <div class="input">
+                                <input id="msg-input" placeholder="Type your message here!" type="text" />
+                                <button class="send-msg"><i class="fa-regular fa-paper-plane"></i></button>
                             </div>
                         </div>
-                        <button class="block-user">
-                            <i class="fa-solid fa-ban"></i>
-                        </button>
-                    </div>
-                    <div class="messages" id="chat">
-                      <div class="time">
-                        Today at 18:56
-                      </div>
-                      <div class="message user1">
-                        Hey.
-                      </div>
-                      <div class="message user2">
-                        Hello
-                      </div>
-                      <div class="message user1">
-                        There are few updates in the file,let's give it a look.
-                      </div>
-                      <div class="message user1">
-                        Tomorrow? At 11?
-                      </div>
-                      <div class="message user2">
-                        Okay,we will look into it.
-                      </div>
-                    </div>
-                    <div id="user-blocked">
-                        <div class="user-blocked-msg">User Blocked</div>
-                    </div>
-                    <div class="input">
-                        <input id="msg-input" placeholder="Type your message here!" type="text" />
-                        <button class="send-msg"><i class="fa-regular fa-paper-plane"></i></button>
-                    </div>
-                </div>
-                <div class="block-popup" id="block-popup">
-                    <div class="block-msg-popup" id="block-msg-popup">
-                        <h5>Are you sure ? you want to block the contact</h5>
-                        <button id="yes-close-popup">Yes</button>
-                        <button id="no-close-popup">No</button>
-                    </div>
-                </div>
-            </div>
-            <div class="texts hide" id="contact-3-texts">
-                <div class="chat">
-                    <div class="chat-bar">
-                        <div class="chat-info">
-                            <div class="chat-profile">
-                                <img src="./assets/profile-pic3.png" alt="profile">
-                            </div>
-                            <div class="chat-details">
-                                <div class="name">
-                                    Varshitha
-                                </div>
-                                <div class="seen">
-                                    Today at 16:41
-                                </div>
+                        <div class="block-popup" id="block-popup">
+                            <div class="block-msg-popup" id="block-msg-popup">
+                                <h5>Are you sure ? you want to block the contact</h5>
+                                <button id="yes-close-popup">Yes</button>
+                                <button id="no-close-popup">No</button>
                             </div>
                         </div>
-                        <button class="block-user">
-                            <i class="fa-solid fa-ban"></i>
-                        </button>
                     </div>
-                    <div class="messages" id="chat">
-                      <div class="time">
-                        Today at 16:41
-                      </div>
-                      <!-- <div class="message user1">
-                        
-                      </div> -->
-                      <div class="message user2">
-                        Hello 
-                      </div>
-                      <!-- <div class="message user1">
-                        
-                      </div>
-                      <div class="message user1">
-                       
-                      </div>
-                      <div class="message user2">
-                        
-                      </div> -->
-                    </div>
-                    <div id="user-blocked">
-                        <div class="user-blocked-msg">User Blocked</div>
-                    </div>
-                    <div class="input">
-                        <input id="msg-input" placeholder="Type your message here!" type="text" />
-                        <button class="send-msg"><i class="fa-regular fa-paper-plane"></i></button>
-                    </div>
-                </div>
-                <div class="block-popup" id="block-popup">
-                    <div class="block-msg-popup" id="block-msg-popup">
-                        <h5>Are you sure ? you want to block the contact</h5>
-                        <button id="yes-close-popup">Yes</button>
-                        <button id="no-close-popup">No</button>
-                    </div>
-                </div>
-            </div>
-            <div class="texts hide" id="contact-4-texts">
-                <div class="chat">
-                    <div class="chat-bar">
-                        <div class="chat-info">
-                            <div class="chat-profile">
-                                <img src="./assets/profile-pic4.png" alt="profile">
-                            </div>
-                            <div class="chat-details">
-                                <div class="name">
-                                    Shrishti
-                                </div>
-                                <div class="seen">
-                                    Today at 14:36
-                                </div>
-                            </div>
-                        </div>
-                        <button class="block-user">
-                            <i class="fa-solid fa-ban"></i>
-                        </button>
-                    </div>
-                    <div class="messages" id="chat">
-                      <div class="time">
-                        Today at 14:36
-                      </div>
-                      <div class="message user1">
-                        Hello👋
-                      </div>
-                      <div class="message user2">
-                        Hey
-                      </div>
-                      <!-- <div class="message user1">
-                       
-                      </div> -->
-                      <!-- <div class="message user1">
-                        
-                      </div> -->
-                      <div class="message user2">
-                        Up for collab?
-                      </div>
-                    </div>
-                    <div id="user-blocked">
-                        <div class="user-blocked-msg">User Blocked</div>
-                    </div>
-                    <div class="input">
-                        <input id="msg-input" placeholder="Type your message here!" type="text" />
-                        <button class="send-msg"><i class="fa-regular fa-paper-plane"></i></button>
-                    </div>
-                </div>
-                <div class="block-popup" id="block-popup">
-                    <div class="block-msg-popup" id="block-msg-popup">
-                        <h5>Are you sure ? you want to block the contact</h5>
-                        <button id="yes-close-popup">Yes</button>
-                        <button id="no-close-popup">No</button>
-                    </div>
-                </div>
-            </div>
-            <div class="texts hide" id="contact-5-texts">
-                <div class="chat">
-                    <div class="chat-bar">
-                        <div class="chat-info">
-                            <div class="chat-profile">
-                                <img src="./assets/profile-pic5.png" alt="profile">
-                            </div>
-                            <div class="chat-details">
-                                <div class="name">
-                                    Nandhitha
-                                </div>
-                                <div class="seen">
-                                    Today at 13:56
-                                </div>
-                            </div>
-                        </div>
-                        <button class="block-user">
-                            <i class="fa-solid fa-ban"></i>
-                        </button>
-                    </div>
-                    <div class="messages" id="chat">
-                      <div class="time">
-                        Today at 13:56
-                      </div>
-                      <div class="message user1">
-                        Hey
-                      </div>
-                      <div class="message user2">
-                        Yo!
-                      </div>
-                      <div class="message user1">
-                        Your work is amazing.
-                      </div>
-                      <div class="message user1">
-                        Interested in Collabration!
-                      </div>
-                      <div class="message user2">
-                        Think it's done.
-                      </div>
-                    </div>
-                    <div id="user-blocked">
-                        <div class="user-blocked-msg">User Blocked</div>
-                    </div>
-                    <div class="input">
-                        <input id="msg-input" placeholder="Type your message here!" type="text" />
-                        <button class="send-msg"><i class="fa-regular fa-paper-plane"></i></button>
-                    </div>
-                </div>
-                <div class="block-popup" id="block-popup">
-                    <div class="block-msg-popup" id="block-msg-popup">
-                        <h5>Are you sure ? you want to block the contact</h5>
-                        <button id="yes-close-popup">Yes</button>
-                        <button id="no-close-popup">No</button>
-                    </div>
-                </div>
-            </div>
-            <div class="texts hide" id="contact-6-texts">
-                <div class="chat">
-                    <div class="chat-bar">
-                        <div class="chat-info">
-                            <div class="chat-profile">
-                                <img src="./assets/profile-pic6.png" alt="profile">
-                            </div>
-                            <div class="chat-details">
-                                <div class="name">
-                                    Ananya
-                                </div>
-                                <div class="seen">
-                                    Today at 12:00
-                                </div>
-                            </div>
-                        </div>
-                        <button class="block-user">
-                            <i class="fa-solid fa-ban"></i>
-                        </button>
-                    </div>
-                    <div class="messages" id="chat">
-                      <div class="time">
-                        Today at 12:00
-                      </div>
-                      <div class="message user1">
-                        Hey
-                      </div>
-                      <div class="message user2">
-                        Hi
-                      </div>
-                      <div class="message user1">
-                        Let's work on our project today.
-                      </div>
-                      <!-- <div class="message user1">
-                      
-                      </div> -->
-                      <div class="message user2">
-                        Okay!
-                      </div>
-                    </div>
-                    <div id="user-blocked">
-                        <div class="user-blocked-msg">User Blocked</div>
-                    </div>
-                    <div class="input">
-                        <input id="msg-input" placeholder="Type your message here!" type="text" />
-                        <button class="send-msg"><i class="fa-regular fa-paper-plane"></i></button>
-                    </div>
-                </div>
-                <div class="block-popup" id="block-popup">
-                    <div class="block-msg-popup" id="block-msg-popup">
-                        <h5>Are you sure ? you want to block the contact</h5>
-                        <button id="yes-close-popup">Yes</button>
-                        <button id="no-close-popup">No</button>
-                    </div>
-                </div>
-            </div>
-            <div class="texts hide" id="contact-7-texts">
-                <div class="chat">
-                    <div class="chat-bar">
-                        <div class="chat-info">
-                            <div class="chat-profile">
-                                <img src="./assets/profile-pic2.png" alt="profile">
-                            </div>
-                            <div class="chat-details">
-                                <div class="name">
-                                    Anirudh
-                                </div>
-                                <div class="seen">
-                                    Today at 10:00
-                                </div>
-                            </div>
-                        </div>
-                        <button class="block-user">
-                            <i class="fa-solid fa-ban"></i>
-                        </button>
-                    </div>
-                    <div class="messages" id="chat">
-                      <div class="time">
-                        Today at 10:00
-                      </div>
-                      <div class="message user1">
-                        Hey
-                      </div>
-                      <div class="message user2">
-                        Hey
-                      </div>
-                      <!-- <div class="message user1">
-                        
-                      </div>
-                      <div class="message user1">
-                        
-                      </div>
-                      <div class="message user2">
-                        Sure
-                      </div> -->
-                    </div>
-                    <div id="user-blocked">
-                        <div class="user-blocked-msg">User Blocked</div>
-                    </div>
-                    <div class="input">
-                        <input id="msg-input" placeholder="Type your message here!" type="text" />
-                        <button class="send-msg"><i class="fa-regular fa-paper-plane"></i></button>
-                    </div>
-                </div>
-                <div class="block-popup" id="block-popup">
-                    <div class="block-msg-popup" id="block-msg-popup">
-                        <h5>Are you sure ? you want to block the contact</h5>
-                        <button id="yes-close-popup">Yes</button>
-                        <button id="no-close-popup">No</button>
-                    </div>
-                </div>
-            </div>
-            <div class="texts hide" id="contact-8-texts">
-                <div class="chat">
-                    <div class="chat-bar">
-                        <div class="chat-info">
-                            <div class="chat-profile">
-                                <img src="./assets/profile-pic.jpeg" alt="profile">
-                            </div>
-                            <div class="chat-details">
-                                <div class="name">
-                                    Anushka
-                                </div>
-                                <div class="seen">
-                                    Today at 8:00
-                                </div>
-                            </div>
-                        </div>
-                        <button class="block-user">
-                            <i class="fa-solid fa-ban"></i>
-                        </button>
-                    </div>
-                    <div class="messages" id="chat">
-                      <div class="time">
-                        Today at 8:00
-                      </div>
-                      <div class="message user1">
-                        Hey
-                      </div>
-                      <div class="message user2">
-                        Hey
-                      </div>
-                      <div class="message user1">
-                        I've seen your project.
-                      </div>
-                      <div class="message user1">
-                       Can I know more about this?
-                      </div>
-                      <!-- <div class="message user2">
-                        
-                      </div> -->
-                    </div>
-                    <div id="user-blocked">
-                        <div class="user-blocked-msg">User Blocked</div>
-                    </div>
-                    <div class="input">
-                        <input id="msg-input" placeholder="Type your message here!" type="text" />
-                        <button class="send-msg"><i class="fa-regular fa-paper-plane"></i></button>
-                    </div>
-                </div>
-                <div class="block-popup" id="block-popup">
-                    <div class="block-msg-popup" id="block-msg-popup">
-                        <h5>Are you sure ? you want to block the contact</h5>
-                        <button id="yes-close-popup">Yes</button>
-                        <button id="no-close-popup">No</button>
-                    </div>
-                </div>
-            </div>
+                <%}%>
+            <%}%>
         </div>
     </div>
 </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var sender_id = '<%=currUserId%>';
+        var socket = io('/user-namespace',{
+            auth:{
+                token:'<%=currUserId%>',
+            }
+        });
+        var receiver_id,j ;
+        const contacts = document.querySelectorAll(".contact-chat");
+        const contactTexts = document.querySelectorAll(".texts");
+        const startingChat = document.querySelector(".starting-chat");
+        contacts.forEach(c => {
+            c.addEventListener('click',()=>{
+                var userId = c.dataset.id;
+                receiver_id = userId;
+                console.log(userId);
+                startingChat.style.display = "none";
+                for(let i = 0;i<contacts.length;i++){
+                    if(contacts[i] == c)
+                        j=i;
+                }
+                displayCont(j);
+            });
+        });
+        function blockContact(user){
+            const blockUser = user.querySelector('.block-user');
+            const blockContainer = user.querySelector('#block-popup');
+            const blockPopup = user.querySelector('#block-msg-popup');
+            const confirmYes = user.querySelector('#yes-close-popup');
+            const confirmNo = user.querySelector('#no-close-popup');
+            const userBlocked = user.querySelector('#user-blocked');
+            const msgInput = user.querySelector('#msg-input');
+
+            blockUser.addEventListener('click', function() {
+                blockContainer.style.display = 'flex';
+                setTimeout(function() {
+                    blockPopup.style.transform = 'scale(1)';
+                    blockPopup.style.opacity = '1';
+                }, 100);
+            });
+
+            confirmNo.addEventListener('click', function() {
+                blockPopup.style.transform = 'scale(0.5)';
+                blockPopup.style.opacity = '0';
+                setTimeout(function() {
+                    blockContainer.style.display = 'none';
+                }, 300);
+            });
+            confirmYes.addEventListener('click', function() {
+                blockPopup.style.transform = 'scale(0.5)';
+                blockPopup.style.opacity = '0';
+                blockContainer.style.display = 'none';
+                userBlocked.style.display = "flex";
+                msgInput.disabled = "true";
+            });
+        }
+        // var messages;
+        function displayCont(j){
+            contactTexts[j].classList.remove('hide');
+            socket.emit('loadOldChats',{sender_id:sender_id,receiver_id:receiver_id});
+            blockContact(contactTexts[j]);
+            for(let i=0;i<contactTexts.length;i++){
+                if(i!==j){
+                    console.log(i);
+                    contactTexts[i].classList.add('hide');
+                }else{
+                    let send = contactTexts[j].querySelector('.send-msg');
+                    let msgEnter = contactTexts[j].querySelector('#msg-input');
+                    msgEnter.addEventListener('keypress',(event)=>{
+                        if (event.key === "Enter"){
+                            if(msgEnter.value !== ""){
+                                let msg = contactTexts[j].querySelector('#msg-input');
+                                messages = contactTexts[j].querySelector('.messages');
+                                console.log(msg.value);
+                                let message = msg.value;
+                                const data = {
+                                    sender_id:sender_id,
+                                    receiver_id:receiver_id,
+                                    message:message
+                                };
+                                console.log(data);
+                                sendMsg(data);
+                                msg.value = "";
+                            }
+                        }
+                    });
+                    send.addEventListener('click',()=>{
+                        let msg = contactTexts[j].querySelector('#msg-input');
+                        let messages = contactTexts[j].querySelector('.messages');
+                        if(msg.value !== ""){
+                            console.log(msg.value);
+                            let message = msg.value;
+                            const data = {
+                                sender_id:sender_id,
+                                receiver_id:receiver_id,
+                                message:message
+                            };
+                            console.log(data);
+                            sendMsg(data);
+                            msg.value = "";
+                        }
+                    })
+                }
+            }
+        }
+        async function sendMsg(data) {
+            fetch("http://localhost:5000/save-chat", {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Success:", data)
+                // messages = contactTexts[j].querySelector('.messages');
+                console.log(receiver_id);
+                let openedchat = document.getElementById(`contact-${receiver_id}-texts`);
+                let messages = openedchat.querySelector('.messages');
+                let newElement = document.createElement('div');
+                newElement.className = 'user1';
+                newElement.classList.add('message');
+                newElement.innerHTML = data.msg;
+                messages.appendChild(newElement);
+                newElement.scrollIntoView();
+                newElement.scrollIntoView({behavior: "smooth"});
+                let messageDetails = {
+                    sender_id:sender_id,
+                    receiver_id:receiver_id,
+                    message:data.msg
+                }
+                socket.emit('newChat',messageDetails);
+            })
+            .catch((error) => console.error("Error:", error));
+        }
+        socket.on('loadNewChat',(messageDetails)=>{
+            if(sender_id===messageDetails.receiver_id && receiver_id===messageDetails.sender_id){
+                console.log(messageDetails);
+                let openedchat = document.getElementById(`contact-${messageDetails.sender_id}-texts`);
+                let messages = openedchat.querySelector('.messages');
+                let newElement = document.createElement('div');
+                newElement.className = 'user2';
+                newElement.classList.add('message');
+                newElement.innerHTML = messageDetails.message;
+                messages.appendChild(newElement);
+                newElement.scrollIntoView();
+                newElement.scrollIntoView({behavior: "smooth"});
+            }
+        });
+
+        socket.on('loadChatshelper',(data)=>{
+            let openChatBox = document.getElementById(`contact-${data.receiver_id}-texts`);
+            let messages = openChatBox.querySelector('.messages');
+            var chats = data.chats;
+            for(let i=0;i<chats.length;i++){
+                let newElement = document.createElement('div');
+                if(chats[i].sender_id===sender_id&&chats[i].receiver_id===receiver_id){
+                    newElement.className = 'user1';
+                }else{
+                    newElement.className = 'user2';
+                }
+                newElement.classList.add('message');
+                newElement.innerHTML = chats[i].message;
+                messages.appendChild(newElement);
+                newElement.scrollIntoView();
+                newElement.scrollIntoView({behavior: "smooth"});
+            }
+        })
+    </script>
     <script src="./js/messagePage.js"></script>
     <script src="https://kit.fontawesome.com/6953004357.js" crossorigin="anonymous"></script>
 </body>

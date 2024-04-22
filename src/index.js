@@ -14,9 +14,18 @@ const savedProfile = require("../controllers/savedStudentsCardController");
 const InterestedForm = require('../models/interestedFormModels')
 const mongoURI = 'mongodb://localhost:27017/NEXUS'
 const userModel = require('../models/studentLoginModel');
+const userController = require('../controllers/messageUserController');
 const cors = require('cors');
+const ejs = require('ejs');
+const Chat = require('../models/chatModel');
 
 const app = express();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
+var usp = io.of('/user-namespace');
+
+
+
 app.use(express.json());
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -45,7 +54,8 @@ mongoose
       secret:'key that will sign the cookie',
       resave:false, // Forces the session to be saved back to the session store, even if the session was never modified during the request
       saveUninitialized:false, //Forces a session that is "uninitialized" to be saved to the store. A session is uninitialized when it is new but not modified
-      store: store
+      store: store,
+      userId:0
       })
   );
   const isAuth = (req,res,next) => {
@@ -56,8 +66,29 @@ mongoose
     {
         res.redirect('/login');
     }
-}
-
+  }
+  // const User = (req,res,next) => {
+  //   req.session.User = 
+  //   next();
+  // }
+  usp.on('connection',(socket)=>{
+    console.log("User connected");
+    console.log(socket.handshake.auth.token);
+    userId = socket.handshake.auth.token;
+    socket.on('disconnect',()=>{
+      console.log('user disconnected');
+    });
+    socket.on('newChat',(messageDetails)=>{
+      socket.broadcast.emit('loadNewChat',messageDetails);
+    });
+    socket.on('loadOldChats',async (data)=>{
+      var chats=await Chat.find({$or:[
+        {sender_id:data.sender_id,receiver_id:data.receiver_id},
+        {sender_id:data.receiver_id,receiver_id:data.sender_id}
+      ]});
+      socket.emit('loadChatshelper',{chats:chats,receiver_id:data.receiver_id});
+    })
+  });
 
 app.post('/profilePage', createPost.CreatePost); //
 
@@ -86,9 +117,7 @@ app.get('/searchPage',isAuth, (req, res) => {
 app.get('/hirePage',isAuth, (req, res) => {
   res.render('hirePage');
 });
-app.get('/messagePage',isAuth, (req, res) => {
-  res.render('messagePage');
-});
+
 app.get('/notificationPage',isAuth, (req, res) => {
     res.render('notificationPage');
 });
@@ -115,8 +144,9 @@ app.post("/login", async(req,res)=>{
   if(!isMatch){
       return res.redirect("/collabPage");
   }
-
+  
   req.session.isAuth=true;
+  req.session.userId = user._id;
   res.redirect("/studentHomePage");
 });
 
@@ -135,21 +165,15 @@ app.post("/signup", async(req,res)=>{
     gmail, 
     password1:hashpassword
   });
-  
-  // async function saveUser() {
-  //     try {
-  //       await user.save();
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-  // saveUser();
   user.save();
-
   res.redirect('/login')
-
 });
 
+app.get('/messagePage',isAuth, async(req, res) => {
+  const users = await userModel.find({_id:{$nin:[req.session.userId]}});
+  const currUserId = req.session.userId;
+  res.render('messagePage',{users,currUserId});
+});
 
 
 app.post('/logout',(req,res)=>{
@@ -160,7 +184,7 @@ app.post('/logout',(req,res)=>{
 });
 
 const port = 5000;
-app.listen(port, () => {
+http.listen(port, () => {
   console.log(`Server is running on Port : ${port}`);
 });
 
@@ -181,6 +205,15 @@ app.post('/interested-work', async (req, res) => {
     // res.json(forms);
     console.log('im here');
   } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+//messaging - save
+app.post('/save-chat',async (req,res)=>{
+  try{
+    userController.saveChat(req,res);
+  }catch(error){
     res.status(500).json({ message: error.message });
   }
 });
