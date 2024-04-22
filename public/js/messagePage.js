@@ -69,64 +69,7 @@ function msg(){
             msgInput.disabled = "true";
         });
     }
-    const contacts = document.querySelectorAll(".contact-chat");
-    const contactTexts = document.querySelectorAll(".texts");
-    const startingChat = document.querySelector(".starting-chat");
-    contacts.forEach(c => {
-        c.addEventListener('click',()=>{
-            startingChat.style.display = "none";
-            for(let i = 0;i<contacts.length;i++){
-                if(contacts[i] == c)
-                    j=i;
-            }
-            displayCont(j);
-        });
-    });
-    function displayCont(j){
-        contactTexts[j].classList.remove('hide');
-        blockContact(contactTexts[j]);
-        for(let i=0;i<contactTexts.length;i++){
-            if(i!==j){
-                console.log(i);
-                contactTexts[i].classList.add('hide');
-            }else{
-                let send = contactTexts[j].querySelector('.send-msg');
-                let msgEnter = contactTexts[j].querySelector('#msg-input');
-                msgEnter.addEventListener('keypress',(event)=>{
-                    if (event.key === "Enter"){
-                        if(msgEnter.value !== ""){
-                            let msg = contactTexts[j].querySelector('#msg-input');
-                            let messages = contactTexts[j].querySelector('.messages');
-                            console.log(msg.value);
-                            let newElement = document.createElement('div');
-                            newElement.className = 'user1';
-                            newElement.classList.add('message');
-                            newElement.innerHTML = msg.value;
-                            messages.appendChild(newElement);
-                            newElement.scrollIntoView();
-                            newElement.scrollIntoView({behavior: "smooth"});
-                            msg.value = "";
-                        }
-                    }
-                });
-                send.addEventListener('click',()=>{
-                    let msg = contactTexts[j].querySelector('#msg-input');
-                    let messages = contactTexts[j].querySelector('.messages');
-                    if(msg.value !== ""){
-                        console.log(msg.value);
-                        let newElement = document.createElement('div');
-                        newElement.className = 'user1';
-                        newElement.classList.add('message');
-                        newElement.innerHTML = msg.value;
-                        messages.appendChild(newElement);
-                        newElement.scrollIntoView();
-                        newElement.scrollIntoView({behavior: "smooth"});
-                    }
-                    msg.value = "";
-                })
-            }
-        }
-    }
+    
 }
 // message request accept decline
 function createContact(req){

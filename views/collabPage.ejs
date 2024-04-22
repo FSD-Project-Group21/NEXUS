@@ -38,6 +38,35 @@
       </div>
     </div>
   </div>
+  <div class="colab-form" id="colab-form">
+    <div class="colabup" id="colabup">
+        <div class="colabb-form">
+          <h3>Send Colab Request</h3>
+          <form id="colabb-form" method="post" action="/interestedToWork">
+            <div class="close-colab">
+              <button id="closec-icon"><i class="fa-solid fa-x" style="color: #000;"></i></button></div>
+              <label class="edit-label" for="name">Name:</label>
+              <input type="text" id="name" name="name">
+              <label for="category-role">Category:</label>
+              <select id="category-role" name="category-role" required>
+                <option value="" disabled selected>Select Category</option>
+                <option value="graphic">Graphic Designer</option>
+                <option value="architecture">Architecture</option>
+                <option value="data-science">Data Science</option>
+                <option value="Buisness">Buisness</option>
+              </select>
+
+            <label class="interested-label" for="description">About:</label>
+            <textarea required id="description" name="description"></textarea>
+
+            <button  id="send-req">Send Request</button>
+
+
+          </form>
+        </div>
+        
+    </div>
+  </div>
    <div class="main-container">
         <div class="collab-header">
           <div class="collab-header-buttons">
@@ -281,6 +310,7 @@
             </div>
           </div>
     </div>
+    <button class="create-new" id="create-new"><i class="fa-solid fa-plus"></i> </button>
     <script src="./js/collabPage.js"></script>
     <script src="https://kit.fontawesome.com/6953004357.js" crossorigin="anonymous"></script>
 </body>
