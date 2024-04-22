@@ -4,7 +4,7 @@ const bcryptjs = require("bcryptjs")
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const mongoose = require("mongoose");
-// const collection = require("./config");
+// const collection = require("./config"); 
 const createPost = require("../controllers/createPostController"); 
 const editProfile = require("../controllers/editProfileController"); 
 const interestForm = require("../controllers/interestedFormController");
@@ -59,7 +59,7 @@ mongoose
 }
 
 
-app.post('/profilePage', createPost.CreatePost); //
+app.post('/createStudentHomePage', createPost.createStudentHomePage); //
 
 app.post('/editprofileDets', editProfile.editprofileDets); //
 
