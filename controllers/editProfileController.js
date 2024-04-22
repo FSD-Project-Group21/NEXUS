@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const editSchema = require('../models/editProfileModels');
+const newbio = require('../models/studentLoginModel');
 
 exports.editprofileDets = async(req,res) => {
     try{
@@ -8,14 +9,15 @@ exports.editprofileDets = async(req,res) => {
             about,
             image
         } = req.body;
+        console.log('Hi');
+        console.log(req.session.userId);
+        const client = await newbio.findOne({ _id: req.session.userId });
+        client.name = name;
+        client.about = about;
+        client.image = image;
 
-        const newEdit = new editSchema({
-            name,
-            about,
-            image
-        });
-
-        await newEdit.save();
+        await client.updateOne();
+    
     }
     catch(error){
         console.log(error);

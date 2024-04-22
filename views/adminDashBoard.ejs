@@ -6,23 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NEXUS Admin Dashboard</title>
   <link rel="stylesheet" href="./css/adminDashBoard.css">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+  
 </head>
 <body>
   <header>
     <h1>Admin Dashboard</h1>
   </header>
   <nav>
-    <div class="nav-bar">
-      <a href="#project-management">Project Management</a>
-      <a href="#user-management">User Management</a>
-      <a href="#collaboration-hub">Collaboration Hub</a>
+    <div class="section">
+      <button class="project-management _icon openIcon">Project Management</button>
+      <button class="user-management _icon">User Management</button>
+      <button class="collaboration-hub _icon">Collaboration Hub</button>
+      <button class="connection-hub _icon">Connection Hub</button>
+      <button class="employment-platform _icon">Employment Platform</button>
+      <button class="settings _icon">Settings</button>
+      <!-- <a href="#project-management"></a> -->
+      <!-- <a href="#user-management">User Management</a> -->
+      <!-- <a href="#collaboration-hub">Collaboration Hub</a>
       <a href="#connection-hub">Connection Hub</a>
       <a href="#employment-platform">Employment Platform</a>
-      <a href="#settings">Settings</a>
+      <a href="#settings">Settings</a> -->
     </div>
   </nav>
-  <section id="project-management">
-    <h2>Project Management</h2>
+  <div class="icon-content">
+  <div class="project-management _icon-cont ">
+    <div class="heading"><h2>Project Management</h2></div>
     <table>
         <thead>
           <tr>
@@ -50,10 +59,10 @@
           </tr>
         </tbody>
         </table>
-      </section>
-  <section id="user-management">
+      </div>
+  <div class="user-management _icon-cont hide">
     <section id="user-management">
-            <h2>User Management</h2>
+      <div class="heading"> <h2>User Management</h2></div>
             <%if(users.length>0){%>
             <table>
                 <thead>
@@ -85,9 +94,10 @@
             <%}%>
     </section>
     
-  </section>    
-  <section id="collaboration-hub">
-    <h2>Collaboration Hub</h2><h3>Collaboration Groups</h3>
+  </div>    
+  <div class="collaboration-hub _icon-cont hide">
+    <div class="heading"><h2>Collaboration Hub</h2></div>
+    <div class="sub-heading"><h3>Collaboration Groups</h3></div>
     <table>
       <thead>
         <tr>
@@ -119,10 +129,10 @@
         <!-- Add more group rows as needed -->
       </tbody>
     </table>
-  </section>
-  <section id="connection-hub">
-    <h2>Connection Hub</h2>
-    <h3>Connections</h3>
+  </div>
+  <div class="connection-hub _icon-cont hide">
+    <div class="heading"><h2>Connection Hub</h2></div>
+    <div class="sub-heading"><h3>Connections</h3></div>
     <table>
       <thead>
         <tr>
@@ -149,10 +159,12 @@
         <!-- Add more connection rows as needed -->
       </tbody>
     </table>
-  </section>
-  <section id="employment-platform">
-    <h2>Employment Platform</h2>
-    <h3>Job Postings</h3>
+  </div>
+  <div class="employment-platform _icon-cont hide">
+    <div class="heading">
+    <h2>
+      Employment Platform</h2></div>
+      <div class="sub-heading"><h3>Job Postings</h3></div>
     <table>
       <thead>
         <tr>
@@ -184,10 +196,10 @@
         <!-- Add more job posting rows as needed -->
       </tbody>
     </table>
-  </section>
-  <section id="settings">
-    <h2>Settings</h2>
-    <h3>Admin Account Settings</h3>
+  </div>
+  <div class="settings _icon-cont hide">
+    <div class="heading"> <h2>Settings</h2></div>
+    <div class="sub-heading"> <h3>Admin Account Settings</h3></div>
     <label for="username">Username:</label>
     <input type="text" id="username" value="Nexus" disabled> 
     <label for="password">Current Password:</label>
@@ -198,7 +210,8 @@
     <form action="/logout" method="post">
         <button>Logout</button>
     </form>
-  </section>
+  </div>
+</div>
   <script src="./js/adminDashBoard.js"></script>
 </body>
 </html>

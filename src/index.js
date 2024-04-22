@@ -92,7 +92,7 @@ usp.on('connection',(socket)=>{
 
 // app.post('/profilePage', createPost.CreatePost); //
 
-app.post('/editprofileDets', editProfile.editprofileDets); //
+app.post('/editprofileDets', function(req,res,next) {console.log('Hello'); next();}, editProfile.editprofileDets); //
 
 app.post('/interestedToWork', interestForm.interestedWorkForm ); //
 
@@ -181,7 +181,9 @@ app.post("/signup", async(req,res)=>{
     fullname ,
     phno,
     gmail, 
-    password1:hashpassword
+    password1:hashpassword,
+    about: "",
+    image: "profile_img.png"
   });
   
   async function saveUser() {

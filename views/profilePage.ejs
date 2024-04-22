@@ -78,7 +78,7 @@
     <div class="editit" id="editit">
         <h2>Edits</h2>
         <p>Edit profile here</p>
-        <form class="edit-form" method="post" action="/editprofileDets">
+        <form class="edit-form" action="/editprofileDets" method="post">
           <label class="edit-label" for="name">Name:</label>
           <input type="text" id="name" name="name">
           <label class="edit-label" for="about">About:</label>
@@ -86,8 +86,8 @@
           <label class="edit-label" for="pfp">Profile Picture:</label>
           <input type="file" id="pfp-img" name="image" accept="image/*" required onchange="updateFileName(this)">
           <div class="edit-buttons">
-            <button id="Save-edits">Save</button>
-            <button id="Cancel-edits">Cancel</button>
+            <button type="submit" id="Save-edits">Save</button>
+            <button type="button" id="Cancel-edits">Cancel</button>
           </div>
         </form>
     </div>
@@ -273,9 +273,9 @@
           </div>
           
         </div>
-        <div class="create-cont _icon-cont hide">
+        <!-- <div class="create-cont _icon-cont hide">
           <h1 class="create-post-header">Create a New Post</h1>
-                  </div>
+                  </div> -->
         
       </div>
     </main>
