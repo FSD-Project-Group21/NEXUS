@@ -77,8 +77,9 @@ app.get('/login', (req, res) => {
 app.get('/adminLogin', (req, res) => {
   res.render('adminLogin');
 });
-app.get('/adminDashBoard', (req, res) => {
-  res.render('adminDashBoard');
+app.get('/adminDashBoard', async(req, res) => {
+  const users = await userModel.find({});
+  res.render('adminDashBoard',{users});
 });
 app.get('/adminPage', (req, res) => {
   res.render('adminPage');
@@ -145,7 +146,7 @@ app.post("/signup", async(req,res)=>{
 
   let user = await userModel.findOne({gmail});
   if(user){
-      return res.redirect('/signup');
+      return res.redirect('/login');
   }
   const hashpassword= await bcryptjs.hash(password1,12);
   user = new userModel({
@@ -155,15 +156,15 @@ app.post("/signup", async(req,res)=>{
     password1:hashpassword
   });
   
-  // async function saveUser() {
-  //     try {
-  //       await user.save();
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-  // saveUser();
-  user.save();
+  async function saveUser() {
+      try {
+        await user.save();
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  saveUser();
+  // user.save();
 
   res.redirect('/login')
 
@@ -203,3 +204,5 @@ app.post('/interested-work', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+
