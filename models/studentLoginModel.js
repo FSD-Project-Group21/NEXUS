@@ -14,7 +14,6 @@ const userSchema = new Schema({
     phno:{
         type: String,
         required: true,
-        // unique:true
     },
     password1: {
         type: String,

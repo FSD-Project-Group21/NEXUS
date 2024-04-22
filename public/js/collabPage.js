@@ -85,3 +85,232 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 300);
     });
 });
+
+
+
+let sendCollab = {
+    data: [
+      {
+        title: "Nandhitha",
+        details: "Analytically-driven data scientist with expertise in machine learning, statistical analysis, and data visualization. Experienced in extracting insights from complex datasets to drive informed decision-making and enhance business outcomes.  ",
+        image: "./assets/profile-pic3.png",
+        status: "Accepted"
+      },
+      {
+        title: "Nandhitha",
+        details: "Analytically-driven data scientist with expertise in machine learning, statistical analysis, and data visualization. Experienced in extracting insights from complex datasets to drive informed decision-making and enhance business outcomes.  ",
+        image: "./assets/profile-pic3.png",
+        status: "Accepted"
+      },
+      {
+        title: "Nandhitha",
+        details: "Analytically-driven data scientist with expertise in machine learning, statistical analysis, and data visualization. Experienced in extracting insights from complex datasets to drive informed decision-making and enhance business outcomes.  ",
+        image: "./assets/profile-pic3.png",
+        status: "Pending"
+      },
+      {
+        title: "Nandhitha",
+        details: "Analytically-driven data scientist with expertise in machine learning, statistical analysis, and data visualization. Experienced in extracting insights from complex datasets to drive informed decision-making and enhance business outcomes.  ",
+        image: "./assets/profile-pic3.png",
+        status: "Accepted"
+      },
+      {
+        title: "Nandhitha",
+        details: "Analytically-driven data scientist with expertise in machine learning, statistical analysis, and data visualization. Experienced in extracting insights from complex datasets to drive informed decision-making and enhance business outcomes.  ",
+        image: "./assets/profile-pic3.png",
+        status: "Declined"
+      },
+    ],
+  };
+
+let receiveCollab = {
+    data: [
+      {
+        title: "Nandhitha",
+        details: "Analytically-driven data scientist with expertise in machine learning, statistical analysis, and data visualization. Experienced in extracting insights from complex datasets to drive informed decision-making and enhance business outcomes.  ",
+        image: "./assets/profile-pic3.png",
+      },
+      {
+        title: "Nandhitha",
+        details: "Analytically-driven data scientist with expertise in machine learning, statistical analysis, and data visualization. Experienced in extracting insights from complex datasets to drive informed decision-making and enhance business outcomes.  ",
+        image: "./assets/profile-pic3.png",
+      },
+      {
+        title: "Nandhitha",
+        details: "Analytically-driven data scientist with expertise in machine learning, statistical analysis, and data visualization. Experienced in extracting insights from complex datasets to drive informed decision-making and enhance business outcomes.  ",
+        image: "./assets/profile-pic3.png",
+      },
+      {
+        title: "Nandhitha",
+        details: "Analytically-driven data scientist with expertise in machine learning, statistical analysis, and data visualization. Experienced in extracting insights from complex datasets to drive informed decision-making and enhance business outcomes.  ",
+        image: "./assets/profile-pic3.png",
+      },
+      {
+        title: "Nandhitha",
+        details: "Analytically-driven data scientist with expertise in machine learning, statistical analysis, and data visualization. Experienced in extracting insights from complex datasets to drive informed decision-making and enhance business outcomes.  ",
+        image: "./assets/profile-pic3.png",
+      },
+    ],
+  };
+
+
+  for (let i of sendCollab.data) {
+    // Create Card
+    let card = document.createElement("div");
+    card.classList.add("collab");
+    card.classList.add(i.category);
+  
+    // Image Container
+    // let imageContainer = document.createElement("div");
+    // imageContainer.classList.add("collab-preview");
+    let imgContainer = document.createElement("div");
+    imgContainer.className = "collab-preview";
+    let image = document.createElement("img");
+    image.setAttribute("src", i.image);
+    image.setAttribute("alt", "Image");
+    // imageContainer.appendChild(image);
+    // card.appendChild(imageContainer);
+    imgContainer.appendChild(image);
+    card.appendChild(imgContainer);
+  
+    // Info Container
+    let infoContainer = document.createElement("div");
+    infoContainer.classList.add("collab-info");
+  
+    // Product Name
+    let title = document.createElement("h2");
+    title.innerText = i.title;
+    infoContainer.appendChild(title);
+  
+    // Details
+    let details = document.createElement("h6");
+    details.innerText = i.details;
+    infoContainer.appendChild(details);
+  
+    // Resume
+    // let resume = document.createElement('object');
+    // resume.data = i.resume;
+    // resume.width = "800";
+    // resume.height = "500";
+    // infoContainer.appendChild(resume);
+  
+    let btnContainer = document.createElement("div");
+    btnContainer.classList.add("btn-container");
+    
+    // Button
+    let button = document.createElement("button");
+    button.classList.add("btn");
+    button.textContent = "Request";
+    btnContainer.appendChild(button);
+    infoContainer.appendChild(btnContainer);
+  
+    card.appendChild(infoContainer);
+    document.getElementById("collab-container-send").appendChild(card);
+  }
+
+  for (let i of receiveCollab.data) {
+    // Create Card
+    let card = document.createElement("div");
+    card.classList.add("collab");
+    card.classList.add(i.category);
+  
+    // Image Container
+    // let imageContainer = document.createElement("div");
+    // imageContainer.classList.add("collab-preview");
+    let imgContainer = document.createElement("div");
+    imgContainer.className = "collab-preview";
+    let image = document.createElement("img");
+    image.setAttribute("src", i.image);
+    image.setAttribute("alt", "Image");
+    // imageContainer.appendChild(image);
+    // card.appendChild(imageContainer);
+    imgContainer.appendChild(image);
+    card.appendChild(imgContainer);
+  
+    // Info Container
+    let infoContainer = document.createElement("div");
+    infoContainer.classList.add("collab-info");
+  
+    // Product Name
+    let title = document.createElement("h2");
+    title.innerText = i.title;
+    infoContainer.appendChild(title);
+  
+    // Details
+    let details = document.createElement("h6");
+    details.innerText = i.details;
+    infoContainer.appendChild(details);
+  
+    // Resume
+    // let resume = document.createElement('object');
+    // resume.data = i.resume;
+    // resume.width = "800";
+    // resume.height = "500";
+    // infoContainer.appendChild(resume);
+  
+    let btnContainer = document.createElement("div");
+    btnContainer.classList.add("btn-container");
+    
+    // Button
+    let buttonA = document.createElement("button");
+    buttonA.classList.add("btn");
+    buttonA.textContent = "Accept";
+    let buttonD = document.createElement("button");
+    buttonD.classList.add("btn");
+    buttonD.textContent = "Decline";
+    btnContainer.appendChild(buttonA);
+    btnContainer.appendChild(buttonD);
+    infoContainer.appendChild(btnContainer);
+  
+    card.appendChild(infoContainer);
+    document.getElementById("collab-container-receive").appendChild(card);
+  }
+
+
+  for (let i of sendCollab.data) {
+    // Create Card
+    let card = document.createElement("div");
+    card.classList.add("collab");
+    card.classList.add(i.category);
+  
+    // Image Container
+    // let imageContainer = document.createElement("div");
+    // imageContainer.classList.add("collab-preview");
+    let imgContainer = document.createElement("div");
+    imgContainer.className = "collab-preview";
+    let image = document.createElement("img");
+    image.setAttribute("src", i.image);
+    image.setAttribute("alt", "Image");
+    // imageContainer.appendChild(image);
+    // card.appendChild(imageContainer);
+    imgContainer.appendChild(image);
+    card.appendChild(imgContainer);
+  
+    // Info Container
+    let infoContainer = document.createElement("div");
+    infoContainer.classList.add("collab-info");
+  
+    // Product Name
+    let title = document.createElement("h2");
+    title.innerText = i.title;
+    infoContainer.appendChild(title);
+  
+    // Details
+    let details = document.createElement("h6");
+    details.innerText = i.details;
+    infoContainer.appendChild(details);
+  
+    // Resume
+    // let resume = document.createElement('object');
+    // resume.data = i.resume;
+    // resume.width = "800";
+    // resume.height = "500";
+    // infoContainer.appendChild(resume);
+    
+    let status = document.createElement("span");
+    status.innerText = "Status - [ " + i.status + " ]";
+    infoContainer.appendChild(status);
+  
+    card.appendChild(infoContainer);
+    document.getElementById("collab-container-status").appendChild(card);
+  }

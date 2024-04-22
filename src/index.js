@@ -90,7 +90,7 @@ usp.on('connection',(socket)=>{
   })
 });
 
-app.post('/createStudentHomePage', createPost.createStudentHomePage); //
+app.post('/studentHomePage', createPost.createStudentHomePage); //
 
 app.post('/editprofileDets', editProfile.editprofileDets); //
 
@@ -194,7 +194,7 @@ app.post("/signup", async(req,res)=>{
   saveUser();
   // user.save();
 
-  user.save();
+  // user.save();
   res.redirect('/login')
 });
 
