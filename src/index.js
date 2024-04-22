@@ -15,6 +15,7 @@ const InterestedForm = require('../models/interestedFormModels')
 const mongoURI = 'mongodb://localhost:27017/NEXUS'
 const userModel = require('../models/studentLoginModel');
 const cors = require('cors');
+const studentHomePage = require('../controllers/studentHomePageController');
 
 const app = express();
 app.use(express.json());
@@ -86,9 +87,7 @@ app.get('/adminPage', (req, res) => {
 app.get('/postPage',isAuth, (req, res) => {
   res.render('postPage');
 });
-app.get('/studentHomePage',isAuth, (req, res) => {
-    res.render('studentHomePage');
-});
+app.get('/studentHomePage',isAuth, studentHomePage.studHomPag);
 app.get('/searchPage',isAuth, (req, res) => {
     res.render('searchPage');
 });
