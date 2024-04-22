@@ -411,7 +411,7 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     width: 55%;
-    height: 70%;
+    height: 85%;
     font-family: "Unna", serif;
     display: flex;
     align-items: flex-start;
@@ -469,7 +469,34 @@ label{
   margin-left: 30px;
   margin-top: 25px;
   width: 80%; /* Increase the width of the form */
+  flex-basis: auto;
 }
 .input-container input {
   width: 100%; /* Use 100% width to fill the container */
+}
+.create {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #007bff; /* or any other color you prefer */
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* to make sure it's on top of other elements */
+  transition: background-color 0.3s;
+  text-decoration: none;
+  color: #000000; /* text color */
+  overflow: hidden;
+}
+.text-for-cp{
+  display: none;
+}
+.create:hover  .text-for-cp{
+  display: flex;
+  flex-direction: row;
 }

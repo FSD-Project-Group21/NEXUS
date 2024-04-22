@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const postSchema = require('../models/createPostModels');
 
-exports.CreatePost = async(req,res) => {
+exports.createStudentHomePage = async(req,res) => {
     try{
         const{
             projectName,
@@ -18,6 +18,7 @@ exports.CreatePost = async(req,res) => {
         });
 
         await newPost.save();
+        res.redirect('/studentHomePage');
     }
     catch(error){
         console.log(error);

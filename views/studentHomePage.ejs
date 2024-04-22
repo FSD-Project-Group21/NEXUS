@@ -43,7 +43,7 @@
         <div class="create-up" id="create-up">
             <div class="close-create-op"><button id="close-create"><i class="fa-solid fa-x" style="color: #000;"></i></button></div>
             <div class="form-for-post">
-                <form id="createPostForm" method="post" action="/profilePage"> <!---->
+                <form id="createPostForm" method="post" action="/createStudentHomePage"> <!---->
                   <label for="projectName">Project Name:</label>
                   <div class="input-container">
                     <input type="text" id="projectName" name="projectName" maxlength="100" required>
@@ -76,7 +76,7 @@
     </div>
 
     <div class="pin_container">
-        <div class="card card_small"  id="c1">
+        <!-- <div class="card card_small"  id="c1">
             <h2>NGI | Logo Design</h2>
             <p>  
                 NGI's logo design embodies the essence of innovation and sophistication, 
@@ -106,8 +106,8 @@
             <p>
                 The Pepsi Toolkit is a digital arsenal of creativity and innovation, 
                 a virtual 
-                <!-- treasure trove where imagination meets practicality in the  -->
-                <!-- realm of marketing and branding.              -->
+                treasure trove where imagination meets practicality in the 
+                realm of marketing and branding.
             </p>
             <div class="overlay"> 
                 <div class="reactions">
@@ -132,9 +132,9 @@
                 Amazon began selling music and videos in 1998, 
                 and began international operations by acquiring online sellers of books in 
                 the United.
-                <!-- Kingdom and Germany. In the subsequent year, it initiated the sale  -->
-                <!-- of a diverse range of products, including music, video games, consumer electronics,  -->
-                <!-- home improvement items, software, games, and toys. -->
+                Kingdom and Germany. In the subsequent year, it initiated the sale 
+                of a diverse range of products, including music, video games, consumer electronics, 
+                home improvement items, software, games, and toys.
             </p>
             <div class="overlay"> 
                 <div class="reactions">
@@ -178,9 +178,9 @@
             <p>
                 As the gridiron spectacle of Super Bowl LVIII unfolds, 
                 Nike emerges not 
-                <!-- just as a sports apparel  -->
-                <!-- giant but as 
-                the architect of a transcendent experience.          -->
+                just as a sports apparel 
+                giant but as 
+                the architect of a transcendent experience.         
             </p>
             <div class="overlay"> 
                 <div class="reactions">
@@ -382,9 +382,9 @@
             <p>
                 PIPERLAB: A dynamic hub of innovation and 
                 creativity.
-                <!-- moment suspended in time. In their monochromatic embrace, contrasts  -->
-                <!-- sharpen and emotions deepen, revealing a world of chiaroscuro where light  -->
-                <!-- and darkness dance in delicate balance.              -->
+                moment suspended in time. In their monochromatic embrace, contrasts 
+                sharpen and emotions deepen, revealing a world of chiaroscuro where light 
+                and darkness dance in delicate balance.             
             </p>
             <div class="overlay"> 
                 <div class="reactions">
@@ -422,10 +422,38 @@
                     </svg>
                 </button></a>
             </div>
+        </div> -->
+        <% if(Posts && len) { %>
+        <% for(var post=0; post<len; post++) { %>
+        <div class="card card_large" id="c3"> 
+            <img src="./assets/<%= Posts[post].image[0] %>" alt="">
+            <h2><%= Posts[post].projectName %></h2>
+            <p>
+                <%= Posts[post].description %>
+            </p>
+            <div class="overlay"> 
+                <div class="reactions">
+                    <button class="r-icons like"><i class="fa-regular fa-heart"></i></button>
+                    <button class="r-icons save"><i class="fa-regular fa-bookmark"></i></button>
+                    <a href="postPage#post-comment">
+                    <button class="r-icons comment"><i class="fa-regular fa-comment"></i></button></a>
+                </div><a href="postPage"><button class="cta">
+                    <span>View Post</span>
+                    <svg width="15px" height="10px" viewBox="0 0 13 10">
+                      <path d="M1,5 L11,5"></path>
+                      <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                </button></a>
+            </div>
         </div>
+        <% } %>
+        <% } else { %>
+            <p>Sorry, No Posts yet.</p>
+        <% } %>
     </div>
 </div>
-<button class="create" id="create"><img src="assets/create-icon.png" alt="post"> </button>
+<div class="text-for-cp">Create Post</div>
+<button class="create" id="create"><i class="fa-solid fa-plus"></i> </button>
     <script src="./js/studentHomePage.js"></script>
     <script src="https://kit.fontawesome.com/6953004357.js" crossorigin="anonymous"></script>
 </body>
