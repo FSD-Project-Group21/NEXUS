@@ -411,7 +411,7 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     width: 55%;
-    height: 70%;
+    height: 85%;
     font-family: "Unna", serif;
     display: flex;
     align-items: flex-start;
@@ -469,6 +469,7 @@ label{
   margin-left: 30px;
   margin-top: 25px;
   width: 80%; /* Increase the width of the form */
+  flex-basis: auto;
 }
 .input-container input {
   width: 100%; /* Use 100% width to fill the container */
