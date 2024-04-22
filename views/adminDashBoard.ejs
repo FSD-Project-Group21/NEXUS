@@ -23,34 +23,40 @@
   </nav>
   <section id="project-management">
     <h2>Project Management</h2>
+    <%if(projects.length>0){%>
     <table>
         <thead>
           <tr>
             <th>Project Name</th>
             <th>Description</th>
+            <th>Image</th>
+            <th>Category</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Project A</td>
-            <td>Lorem ipsum dolor sit amet</td>
-            <td>
-              <button>Edit</button>
-              <button>Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Project B</td>
-            <td>Consectetur adipiscing elit</td>
-            <td>
-              <button>Edit</button>
-              <button>Delete</button>
-            </td>
-          </tr>
+          <%for(let i=0;i<projects.length;i++){%>
+            <tr>
+                <td><%=projects[i]['projectName']%></td>
+                <td><%= projects[i]['description'] %></td>
+                <td><%= projects[i]['image'] %></td>
+                <td><%= projects[i]['category'] %></td>
+                <!-- Example button that triggers the delete request -->
+                <td>
+                  <form action="/deletepost" method="POST">
+                    <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
+                  <button type="submit">Delete Post</button>
+                </form>
+                <form action="/editpost" method="post" >
+                  <button>Edit Project</button>
+                </form>
+              </td>
+            </tr>
+          <% } %>
         </tbody>
         </table>
-      </section>
+      <%}%>
+    </section>
   <section id="user-management">
     <section id="user-management">
             <h2>User Management</h2>
@@ -72,10 +78,13 @@
                             <td><%= users[i]['gmail'] %></td>
                             <td><%= users[i]['phno'] %></td>
                             <!-- Example button that triggers the delete request -->
-                            <form action="/deleteuser" method="POST">
-                              <input type="hidden" name="gmail" value="<%= users[i]['gmail'] %>">
-                              <button type="submit">Delete User</button>
-                            </form>
+                            <td>
+                              <form action="/deleteuser" method="POST">
+                                <input type="hidden" name="gmail" value="<%= users[i]['gmail'] %>">
+                                <button type="submit">Delete User</button>
+                              </form>
+                              <button>Update Role</button>
+                            </td>
                             
   
                         </tr>
