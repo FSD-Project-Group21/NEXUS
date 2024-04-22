@@ -178,6 +178,11 @@ app.post('/logout',(req,res)=>{
       res.redirect("/")
   });
 });
+app.post('/deleteuser',async(req,res)=>{
+  const {gmail} = req.body;
+  let user = await userModel.deleteOne({gmail});
+  res.redirect("/adminDashboard");
+});
 
 const port = 5000;
 app.listen(port, () => {

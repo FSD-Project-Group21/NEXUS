@@ -72,9 +72,11 @@
                             <td><%= users[i]['gmail'] %></td>
                             <td><%= users[i]['phno'] %></td>
                             <!-- Example button that triggers the delete request -->
-                            <form id="deleteForm" action="/deleteUser/<%= users[i]['gamil'] %>?_method=DELETE" method="POST">
-                                <button type="submit" onclick="return confirm('Are you sure you want to delete this user?')">Delete User</button>
+                            <form action="/deleteuser" method="POST">
+                              <input type="hidden" name="gmail" value="<%= users[i]['gmail'] %>">
+                              <button type="submit">Delete User</button>
                             </form>
+                            
   
                         </tr>
                     <% } %>
