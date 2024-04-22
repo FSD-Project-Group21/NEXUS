@@ -4,7 +4,7 @@ const bcryptjs = require("bcryptjs")
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const mongoose = require("mongoose");
-// const collection = require("./config");
+// const collection = require("./config"); 
 const createPost = require("../controllers/createPostController"); 
 const editProfile = require("../controllers/editProfileController"); 
 const interestForm = require("../controllers/interestedFormController");
@@ -66,29 +66,25 @@ mongoose
     {
         res.redirect('/login');
     }
-  }
-  // const User = (req,res,next) => {
-  //   req.session.User = 
-  //   next();
-  // }
-  usp.on('connection',(socket)=>{
-    console.log("User connected");
-    console.log(socket.handshake.auth.token);
-    userId = socket.handshake.auth.token;
-    socket.on('disconnect',()=>{
-      console.log('user disconnected');
-    });
-    socket.on('newChat',(messageDetails)=>{
-      socket.broadcast.emit('loadNewChat',messageDetails);
-    });
-    socket.on('loadOldChats',async (data)=>{
-      var chats=await Chat.find({$or:[
-        {sender_id:data.sender_id,receiver_id:data.receiver_id},
-        {sender_id:data.receiver_id,receiver_id:data.sender_id}
-      ]});
-      socket.emit('loadChatshelper',{chats:chats,receiver_id:data.receiver_id});
-    })
+}
+usp.on('connection',(socket)=>{
+  console.log("User connected");
+  console.log(socket.handshake.auth.token);
+  userId = socket.handshake.auth.token;
+  socket.on('disconnect',()=>{
+    console.log('user disconnected');
   });
+  socket.on('newChat',(messageDetails)=>{
+    socket.broadcast.emit('loadNewChat',messageDetails);
+  });
+  socket.on('loadOldChats',async (data)=>{
+    var chats=await Chat.find({$or:[
+      {sender_id:data.sender_id,receiver_id:data.receiver_id},
+      {sender_id:data.receiver_id,receiver_id:data.sender_id}
+    ]});
+    socket.emit('loadChatshelper',{chats:chats,receiver_id:data.receiver_id});
+  })
+});
 
 app.post('/profilePage', createPost.CreatePost); //
 
@@ -104,6 +100,16 @@ app.get('/landingPage', (req, res) => {
 });
 app.get('/login', (req, res) => {
     res.render('loginPage');
+});
+app.get('/adminLogin', (req, res) => {
+  res.render('adminLogin');
+});
+app.get('/adminDashBoard', async(req, res) => {
+  const users = await userModel.find({});
+  res.render('adminDashBoard',{users});
+});
+app.get('/adminPage', (req, res) => {
+  res.render('adminPage');
 });
 app.get('/postPage',isAuth, (req, res) => {
   res.render('postPage');
@@ -137,17 +143,27 @@ app.post("/login", async(req,res)=>{
   const user = await userModel.findOne({gmail});
 
   if(!user){
-      return res.redirect("/postPage");
+      return res.redirect("/login");
   }
   const isMatch = await bcryptjs.compare(password,user.password1);
 
   if(!isMatch){
-      return res.redirect("/collabPage");
+      return res.redirect("/login");
   }
   
   req.session.isAuth=true;
   req.session.userId = user._id;
   res.redirect("/studentHomePage");
+});
+app.post("/adminlogin", async(req,res)=>{
+  const { gmail, password } = req.body;
+
+  if (gmail !== "nexus@gmail.com" || password !== "nexus") {
+    return res.redirect("/adminLogin");
+  }
+
+  req.session.isAuth = true;
+  res.redirect("/adminDashboard");
 });
 
 
@@ -156,7 +172,7 @@ app.post("/signup", async(req,res)=>{
 
   let user = await userModel.findOne({gmail});
   if(user){
-      return res.redirect('/signup');
+      return res.redirect('/login');
   }
   const hashpassword= await bcryptjs.hash(password1,12);
   user = new userModel({
@@ -165,6 +181,17 @@ app.post("/signup", async(req,res)=>{
     gmail, 
     password1:hashpassword
   });
+  
+  async function saveUser() {
+      try {
+        await user.save();
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  saveUser();
+  // user.save();
+
   user.save();
   res.redirect('/login')
 });
@@ -208,6 +235,9 @@ app.post('/interested-work', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+
+
 
 //messaging - save
 app.post('/save-chat',async (req,res)=>{
