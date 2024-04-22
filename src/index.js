@@ -90,7 +90,7 @@ usp.on('connection',(socket)=>{
   })
 });
 
-// app.post('/profilePage', createPost.CreatePost); //
+app.post('/studentHomePage', createPost.createStudentHomePage); //
 
 app.post('/editprofileDets', editProfile.editprofileDets); //
 
