@@ -424,7 +424,7 @@
             </div>
         </div> -->
         <% if(Posts && len) { %>
-        <% for(var post; post<len; post++) { %>
+        <% for(var post=0; post<len; post++) { %>
         <div class="card card_large" id="c3"> 
             <img src="./assets/<%= Posts[post].image[0] %>" alt="">
             <h2><%= Posts[post].projectName %></h2>
