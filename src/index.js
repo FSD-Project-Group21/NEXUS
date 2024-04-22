@@ -16,9 +16,9 @@ const mongoURI = 'mongodb://localhost:27017/NEXUS'
 const userModel = require('../models/studentLoginModel');
 const userController = require('../controllers/messageUserController');
 const cors = require('cors');
-
+const projModel = require('../models/createPostModels')
 const studentHomePage = require('../controllers/studentHomePageController');
-
+const projControl = require('../controllers/adminDashBoardController')
 const ejs = require('ejs');
 const Chat = require('../models/chatModel');
 // >>>>>>> 3b792c975126b2da3475d4d96219b5dd6f5c7b19
@@ -90,11 +90,15 @@ usp.on('connection',(socket)=>{
   })
 });
 
-// app.post('/profilePage', createPost.CreatePost); //
+app.post('/studentHomePage', createPost.createStudentHomePage); //
 
 app.post('/editprofileDets', function(req,res,next) {console.log('Hello'); next();}, editProfile.editprofileDets); //
 
 app.post('/interestedToWork', interestForm.interestedWorkForm ); //
+
+app.post('/deletepost', projControl.deleteUser);
+
+
 
 app.get("/", (req, res) => {
   res.render("landingPage");
@@ -110,7 +114,8 @@ app.get('/adminLogin', (req, res) => {
 });
 app.get('/adminDashBoard', async(req, res) => {
   const users = await userModel.find({});
-  res.render('adminDashBoard',{users});
+  const projects = await projModel.find({});
+  res.render('adminDashBoard',{users:users,projects:projects});
 });
 app.get('/adminPage', (req, res) => {
   res.render('adminPage');
@@ -119,8 +124,9 @@ app.get('/postPage',isAuth, (req, res) => {
   res.render('postPage');
 });
 app.get('/studentHomePage',isAuth, studentHomePage.studHomPag);
-app.get('/searchPage',isAuth, (req, res) => {
-    res.render('searchPage');
+app.get('/searchPage',isAuth, async(req, res) => {
+    const projects = await projModel.find({});
+    res.render('searchPage',{projects:projects});
 });
 app.get('/hirePage',isAuth, (req, res) => {
   res.render('hirePage');
@@ -254,5 +260,15 @@ app.post('/save-chat',async (req,res)=>{
     userController.saveChat(req,res);
   }catch(error){
     res.status(500).json({ message: error.message });
+  }
+});
+// Add a new route for search
+app.get('/search', async (req, res) => {
+  const { query } = req.query;
+  try {
+    const projects = await projModel.find({ projectName: { $regex: query, $options: 'i' } });
+    res.json(projects);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
