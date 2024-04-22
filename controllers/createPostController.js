@@ -18,7 +18,7 @@ exports.createStudentHomePage = async(req,res) => {
         });
 
         await newPost.save();
-        res.render('studentHomePage');
+        res.redirect('/studentHomePage');
     }
     catch(error){
         console.log(error);

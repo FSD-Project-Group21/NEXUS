@@ -16,8 +16,12 @@ const mongoURI = 'mongodb://localhost:27017/NEXUS'
 const userModel = require('../models/studentLoginModel');
 const userController = require('../controllers/messageUserController');
 const cors = require('cors');
+
+const studentHomePage = require('../controllers/studentHomePageController');
+
 const ejs = require('ejs');
 const Chat = require('../models/chatModel');
+// >>>>>>> 3b792c975126b2da3475d4d96219b5dd6f5c7b19
 
 const app = express();
 const http = require('http').createServer(app);
@@ -114,9 +118,7 @@ app.get('/adminPage', (req, res) => {
 app.get('/postPage',isAuth, (req, res) => {
   res.render('postPage');
 });
-app.get('/studentHomePage',isAuth, (req, res) => {
-    res.render('studentHomePage');
-});
+app.get('/studentHomePage',isAuth, studentHomePage.studHomPag);
 app.get('/searchPage',isAuth, (req, res) => {
     res.render('searchPage');
 });
