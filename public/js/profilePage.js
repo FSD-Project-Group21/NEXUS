@@ -24,29 +24,7 @@ function displayCont(j){
     }
 }
 //create post
-const projectNameInput = document.getElementById('projectName');
-const wordCountSpan = document.getElementById('wordCount-projectName');
 
-projectNameInput.addEventListener('input', function() {
-  const wordCount_proj= projectNameInput.value.length;
-  wordCountSpan.innerText = wordCount_proj + '/100';
-});
-const descriptionInput = document.getElementById('description');
-  const charCount = document.getElementById('wordCount-description');
-
-  descriptionInput.addEventListener('input', function() {
-    charCount.innerText = `${this.value.length}`; // Update character count
-  });
-  document.getElementById('image').addEventListener('change', function() {
-    const fileInput = this;
-    const fileName = fileInput.files[0].name;
-    const uploadBtn = document.getElementById('uploadBtnText');
-    uploadBtn.innerText = fileName;
-  });
-  function updateFileName(input) {
-    var fileName = input.files[0].name;
-    document.getElementById('fileName').innerText = fileName;
-  }
 
 //Settings
 
