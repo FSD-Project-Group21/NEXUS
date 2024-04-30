@@ -61,17 +61,17 @@
                     </div>
                     <div class="carousel-inner">
                       <div class="carousel-item active" data-bs-interval="10000">
-                        <img src="./assets/Amazon.png" class="d-block w-100" alt="...">
+                        <img src="./assets/<%= project.image[0]%>" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                         </div>
                       </div>
                       <div class="carousel-item" data-bs-interval="2000">
-                        <img src="./assets/amazon-ui-ux.png" class="d-block w-100" alt="...">
+                        <img src="./assets/<%= project.image[0]%>" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                         </div>
                       </div>
                       <div class="carousel-item">
-                        <img src="./assets/amazon-ui-ux-2.png" class="d-block w-100" alt="...">
+                        <img src="./assets/<%= project.image[0]%>" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                         </div>
                       </div>
@@ -93,12 +93,10 @@
                     <a href="#post-comment"><button class="f-icons comment-btn"><i class="fa-regular fa-comment"></i></button></a>
                 </div>
                 <div class="desc title">
-                    <h4 class="project-name">Amazon Tool Kit</h4>
+                    <h4 class="project-name"><%= project.projectName%></h4>
                     <div class="description">Description</div>
                     <p>
-                        Amazon went public in May 1997. It began selling music and videos in 1998, 
-                        and began international operations by acquiring online sellers of books in 
-                        the United Kingdom and Germany.
+                        <%= project.description%>
                     </p>
                 </div> 
             </div>

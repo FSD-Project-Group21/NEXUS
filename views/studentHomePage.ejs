@@ -437,13 +437,18 @@
                     <button class="r-icons save"><i class="fa-regular fa-bookmark"></i></button>
                     <a href="postPage#post-comment">
                     <button class="r-icons comment"><i class="fa-regular fa-comment"></i></button></a>
-                </div><a href="postPage"><button class="cta">
-                    <span>View Post</span>
-                    <svg width="15px" height="10px" viewBox="0 0 13 10">
-                      <path d="M1,5 L11,5"></path>
-                      <polyline points="8 1 12 5 8 9"></polyline>
-                    </svg>
-                </button></a>
+                </div>
+                <form action="/postPage" method="post">
+                    <!-- <h1><%= Posts[post]['_id']%></h1> -->
+                    <textarea name="obj_id" style="display: none;"><%= Posts[post]['_id'] %></textarea>
+                    <button class="cta">
+                        <span>View Post</span>
+                        <svg width="15px" height="10px" viewBox="0 0 13 10">
+                          <path d="M1,5 L11,5"></path>
+                          <polyline points="8 1 12 5 8 9"></polyline>
+                        </svg>
+                    </button>
+                </form>
             </div>
         </div>
         <% } %>
