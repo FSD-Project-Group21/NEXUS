@@ -16,11 +16,14 @@ const mongoURI = 'mongodb://localhost:27017/NEXUS'
 const userModel = require('../models/studentLoginModel');
 const userController = require('../controllers/messageUserController');
 const cors = require('cors');
-
+const projModel = require('../models/createPostModels')
 const studentHomePage = require('../controllers/studentHomePageController');
-
+const projControl = require('../controllers/adminDashBoardController')
 const ejs = require('ejs');
 const Chat = require('../models/chatModel');
+const viewcontroller = require('../controllers/projectPostController')
+const searchcontrol = require('../controllers/searchpageController')
+const userProfile = require('../models/profileModel')
 const { default: router } = require("../controllers/collabPostController");
 // >>>>>>> 3b792c975126b2da3475d4d96219b5dd6f5c7b19
 
@@ -91,11 +94,21 @@ usp.on('connection',(socket)=>{
   })
 });
 
-// app.post('/profilePage', createPost.CreatePost); //
+app.post('/studentHomePage', createPost.createStudentHomePage); //
 
-app.post('/editprofileDets', editProfile.editprofileDets); //
+app.post('/editprofileDets', function(req,res,next) {console.log('Hello'); next();}, editProfile.editprofileDets); //
 
 app.post('/interestedToWork', interestForm.interestedWorkForm ); //
+
+app.post('/deletepost', projControl.deleteUser);
+
+app.post('/postPage', viewcontroller.viewthepost);
+
+app.post('/savedposts',viewcontroller.viewsavedposts)
+
+// app.post('/searchPage', searchcontrol.findthepost);
+
+app.post('/sendreport',viewcontroller.reportposts);
 
 app.get("/", (req, res) => {
   res.render("landingPage");
@@ -111,7 +124,8 @@ app.get('/adminLogin', (req, res) => {
 });
 app.get('/adminDashBoard', async(req, res) => {
   const users = await userModel.find({});
-  res.render('adminDashBoard',{users});
+  const projects = await projModel.find({});
+  res.render('adminDashBoard',{users:users,projects:projects});
 });
 app.get('/adminPage', (req, res) => {
   res.render('adminPage');
@@ -120,8 +134,11 @@ app.get('/postPage',isAuth, (req, res) => {
   res.render('postPage');
 });
 app.get('/studentHomePage',isAuth, studentHomePage.studHomPag);
-app.get('/searchPage',isAuth, (req, res) => {
-    res.render('searchPage');
+app.get('/searchPage',isAuth, async(req, res) => {
+    const projects = await projModel.find({});
+    const obj_id = req.body.searchquery;
+    let posts = await projModel.find({ obj_id});
+    res.render('searchPage',{projects:projects,posts:posts});
 });
 app.get('/hirePage',isAuth, (req, res) => {
   res.render('hirePage');
@@ -133,8 +150,12 @@ app.get('/notificationPage',isAuth, (req, res) => {
 app.get('/collabPage',isAuth, (req, res) => {
     res.render('collabPage');
 });
-app.get('/profilePage',isAuth, (req, res) => {
-    res.render('profilePage');
+app.get('/profilePage',isAuth, async(req, res) => {
+    const profile = await userProfile.findOne({id:req.session.userId});
+    res.render('profilePage',{profile:profile});
+    // const obj_id = req.body.obj_id;
+    // let project = await projModel.findOne({_id: obj_id});
+    // res.render('profilePage',{project:project});
 });
 
   
@@ -156,6 +177,28 @@ app.post("/login", async(req,res)=>{
   
   req.session.isAuth=true;
   req.session.userId = user._id;
+  console.log(user._id);
+  let userid = user._id;
+  let userdetails = await userModel.findOne({_id:userid});
+  let profile = await userProfile.findOne({id:userid});
+  if(!profile){
+    profile = new userProfile({
+      id:userid,
+      fullname:userdetails.fullname,
+      bio:"write your bio here...",
+      profileImg:"/assets/User-Profile-Image.png",
+      interestedToWork:false,
+    })
+    async function saveProfile() {
+      try {
+        await profile.save();
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    saveProfile();
+    // profile.save();
+  }
   res.redirect("/studentHomePage");
 });
 app.post("/adminlogin", async(req,res)=>{
@@ -182,9 +225,11 @@ app.post("/signup", async(req,res)=>{
     fullname ,
     phno,
     gmail, 
-    password1:hashpassword
+    password1:hashpassword,
+    about: "",
+    image: "profile_img.png"
   });
-  
+
   async function saveUser() {
       try {
         await user.save();
@@ -194,7 +239,9 @@ app.post("/signup", async(req,res)=>{
     }
   saveUser();
   // user.save();
-
+  // let userprofile = new userProfile({
+  //   id:,
+  // })
   // user.save();
   res.redirect('/login')
 });
@@ -212,7 +259,7 @@ app.post('/logout',(req,res)=>{
       res.redirect("/")
   });
 });
-app.post('/deleteuser',async(req,res)=>{
+app.post('/deleteuser' ,async(req,res)=>{
   const {gmail} = req.body;
   let user = await userModel.deleteOne({gmail});
   res.redirect("/adminDashboard");
@@ -258,3 +305,6 @@ app.post('/save-chat',async (req,res)=>{
     res.status(500).json({ message: error.message });
   }
 });
+// Add a new route for search
+
+

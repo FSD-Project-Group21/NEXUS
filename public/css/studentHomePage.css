@@ -500,3 +500,15 @@ label{
   display: flex;
   flex-direction: row;
 }
+.form-for-post{
+  width: 100%;
+  padding-left: 30px;
+  padding-top: 70px;
+  display: flex;
+  /* justify-content: center; */
+  /* text-align: center; */
+}
+.heading
+{
+  text-align: center;
+}

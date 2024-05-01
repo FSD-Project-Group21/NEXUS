@@ -43,18 +43,52 @@
     </div>
   </div>
 </div>
+
     <main>
     <div class="bg">
-      <div class="overall-search">
-        <div class="search">
-            <input placeholder="What are you looking for?" type="text">
-            <div class="search-button">
-                <button type="submit" id="search-icon">
-                    <img class="search-bar-icon" src="./assets/search-button.png">
-                </button>
-            </div>
-        </div>
+      <form action="/searchPage" method="post">
+        <div class="overall-search">
+          <div class="search">
+              <input placeholder="What are you looking for?" type="text" name="searchquery">
+              <div class="search-button">
+                  <button type="submit" id="search-icon">
+                      <img class="search-bar-icon" src="./assets/search-button.png">
+                  </button>
+              </div>
+          </div>
+      </form>
      </div>
+     <!-- <div class="chumma">
+      <% if (posts.length > 0) { %>
+        <div class="content">
+          <div class="top">
+            <a href="searchpage" class="back"><i class="fa-solid fa-arrow-left"></i> Go To Search</a>
+          </div>
+          <% for (let i = 0; i < posts.length; i++) { %>
+            
+              <div class="projects">
+                <div class="collab">
+                  <div class="collab-preview">
+                    <img src="./assets/<%= projects[i].image %>" alt="Image">
+                  </div>
+                  <div class="collab-info">
+                    <h2><%= posts[i].projectName %></h2>
+                    <h6><%= posts[i].description %></h6>
+                    <div class="butn-container">
+                      <button class="butn">View Details</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          <% } %>
+        </div>
+      <% } else{ %>
+        <h1>
+          nope
+        </h1>
+      <% } %>
+    </div> -->
      <!-- categories should close when tiles content open -->
      <div class="categories "> 
         <button class="graphic-design _tile ">
@@ -107,288 +141,125 @@
         <div class="not-found-text">RESULTS NOT FOUND</div> 
       </div>
     </span>
-        <div class="graphic-cont _tile-cont hide">
-            <div class="content">
-            <div class="top">
-                
-                <a href="searchpage" class="back"><i class="fa-solid fa-arrow-left"></i>
-                Go To Search</a>
-                
-            </div>
-            <div class="projects">
+    <div class="graphic-cont _tile-cont hide">
+      <% if (projects.length > 0) { %>
+        <div class="content">
+          <div class="top">
+            <a href="searchpage" class="back"><i class="fa-solid fa-arrow-left"></i> Go To Search</a>
+          </div>
+          <% for (let i = 0; i < projects.length; i++) { %>
+            <% if (projects[i].category === 'graphic') { %>
+              <div class="projects">
                 <div class="collab">
-                    <div class="collab-preview">
-                      <img src="./assets/coffee-img.avif" alt="Image">
-                    </div>
-                    <div class="collab-info">
-                      <h2>Branding Package for a Coffee Shop</h2>
-                      <h6>Design a complete branding package for a fictional coffee shop, including logo, packaging design for coffee bags, menu design, and signage.</h6>
-                      <div class="butn-container">
-                        <button class="butn">View Details</button>
-                        <!-- <button class="butn">Request</button> -->
-                      </div>
+                  <div class="collab-preview">
+                    <img src="./assets/<%= projects[i].image %>" alt="Image">
+                  </div>
+                  <div class="collab-info">
+                    <h2><%= projects[i].projectName %></h2>
+                    <h6><%= projects[i].description %></h6>
+                    <div class="butn-container">
+                      <form action="/postPage" method="post">
+                        <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
+                        <button>View Details</button>
+                    </form>
                     </div>
                   </div>
-    
-                  <div class="collab">
-                    <div class="collab-preview">
-                      <img src="./assets/music-img.jpeg" alt="Image">
-                    </div>
-                    <div class="collab-info">
-                      <h2>Event Poster Series for a Music Festival</h2>
-                      <h6>Create a series of event posters for a virtual music festival featuring different genres of music. Each poster should have a unique design while maintaining visual consistency across the series.</h6>
-                      <div class="btn-container">
-                        <button class="butn">View Details</button>
-                        <!-- <button class="butn">Request</button> -->
-                      </div>
-                    </div>
-                  </div>
-    
-                  <div class="collab">
-                    <div class="collab-preview">
-                      <img src="./assets/coffee-img.avif" alt="Image">
-                    </div>
-                    <div class="collab-info">
-                      <h2>Branding Package for a Coffee Shop</h2>
-                      <h6>Design a complete branding package for a fictional coffee shop, including logo, packaging design for coffee bags, menu design, and signage.</h6>
-                      <div class="btn-container">
-                        <button class="butn">View Details</button>
-                        <!-- <button class="butn">Request</button> -->
-                      </div>
-                    </div>
-                  </div>
-    
-                  <div class="collab">
-                    <div class="collab-preview">
-                      <img src="./assets/music-img.jpeg" alt="Image">
-                    </div>
-                    <div class="collab-info">
-                      <h2>Event Poster Series for a Music Festival</h2>
-                      <h6>Create a series of event posters for a virtual music festival featuring different genres of music. Each poster should have a unique design while maintaining visual consistency across the series.</h6>
-                      <div class="btn-container">
-                        <button class="butn">View Details</button>
-                        <!-- <button class="butn">Request</button> -->
-                      </div>
-                    </div>
-                    </div>
                 </div>
-            </div>
-            </div>
+              </div>
+            <% } %>
+          <% } %>
         </div>
-        <div class="architecture-cont _tile-cont hide">
-            <div class="content">
-                <div class="top">
-                    
-                    <a href="searchpage" class="back"><i class="fa-solid fa-arrow-left"></i>
-                      Go To Search</a>
-                    
+      <% } %>
+    </div>
+    
+    <div class="architecture-cont _tile-cont hide">
+      <div class="content">
+        <div class="top">
+          <a href="searchpage" class="back"><i class="fa-solid fa-arrow-left"></i> Go To Search</a>
+        </div>
+        <div class="projects">
+          <% for (let i = 0; i < projects.length; i++) { %>
+            <% if (projects[i].category === 'architecture') { %>
+              <div class="collab">
+                <div class="collab-preview">
+                  <img src="./assets/<%= projects[i].image %>" alt="Image">
                 </div>
-                <div class="projects">
-                    <div class="collab">
-                        <div class="collab-preview">
-                          <img src="./assets/home-img.jpeg" alt="Image">
-                        </div>
-                        <div class="collab-info">
-                          <h2>Sustainable Housing Design</h2>
-                          <h6>Design an eco-friendly housing complex that incorporates sustainable features such as passive solar design, green roofs, rainwater harvesting, and renewable energy systems.
-                          </h6>
-                          <div class="butn-container">
-                            <button class="butn">View Details</button>
-                            <!-- <button class="butn">Request</button> -->
-                          </div>
-                        </div>
-                      </div>
-        
-                      <div class="collab">
-                        <div class="collab-preview">
-                          <img src="./assets/renovation-img1.gif" alt="Image">
-                        </div>
-                        <div class="collab-info">
-                          <h2>Community Center Renovation</h2>
-                          <h6>Develop renovation plans for an existing community center to improve functionality and aesthetics. The design should prioritize accessibility, flexibility of use, and integration with the surrounding environment.
-                          </h6>
-                          <div class="btn-container">
-                            <button class="butn">View Details</button>
-                            <!-- <button class="butn">Request</button> -->
-                          </div>
-                        </div>
-                      </div>
-        
-                      <div class="collab">
-                        <div class="collab-preview">
-                          <img src="./assets/home-img.jpeg" alt="Image">
-                        </div>
-                        <div class="collab-info">
-                            <h2>Sustainable Housing Design</h2>
-                            <h6>Design an eco-friendly housing complex that incorporates sustainable features such as passive solar design, green roofs, rainwater harvesting, and renewable energy systems.
-                            </h6>
-                            <div class="butn-container">
-                              <button class="butn">View Details</button>
-                              <!-- <button class="butn">Request</button> -->
-                            </div>
-                          </div>
-                      </div>
-        
-                      <div class="collab">
-                        <div class="collab-preview">
-                          <img src="./assets/renovation-img1.gif" alt="Image">
-                        </div>
-                        <div class="collab-info">
-                            <h2>Community Center Renovation</h2>
-                            <h6>Develop renovation plans for an existing community center to improve functionality and aesthetics. The design should prioritize accessibility, flexibility of use, and integration with the surrounding environment.
-                            </h6>
-                            <div class="btn-container">
-                              <button class="butn">View Details</button>
-                              <!-- <button class="butn">Request</button> -->
-                            </div>
-                          </div>
-                        </div>
-                    </div>
+                <div class="collab-info">
+                  <h2><%= projects[i].projectName %></h2>
+                  <h6><%= projects[i].description %></h6>
+                  <div class="butn-container">
+                    <form action="/postPage" method="post">
+                      <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
+                      <button class="cta">View Details</button>
+                  </form>
+                  </div>
                 </div>
-                </div></div>
-        <div class="dataScience-cont _tile-cont hide">
-            <div class="content">
-                <div class="top">
-                    
-                    <a href="searchpage" class="back"><i class="fa-solid fa-arrow-left"></i>
-                      Go To Search</a>
-                    
+              </div>
+            <% } %>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="dataScience-cont _tile-cont hide">
+      <div class="content">
+        <div class="top">
+          <a href="searchpage" class="back"><i class="fa-solid fa-arrow-left"></i> Go To Search</a>
+        </div>
+        <div class="projects">
+          <% for (let i = 0; i < projects.length; i++) { %>
+            <% if (projects[i].category === 'data-science') { %>
+              <div class="collab">
+                <div class="collab-preview">
+                  <img src="./assets/<%= projects[i].image %>" alt="Image">
                 </div>
-                <div class="projects">
-                    <div class="collab">
-                        <div class="collab-preview">
-                            <img src="/assets/predictive-maintenance-img.jpeg" alt="predictive">
-                        </div>
-                        <div class="collab-info">
-                          <h2>Predictive Maintenance for Industrial Equipment</h2>
-                          <h6>Build a predictive maintenance model using machine learning algorithms to forecast equipment failures and optimize maintenance schedules for industrial machinery.
-                          </h6>
-                          <div class="butn-container">
-                            <button class="butn">View Details</button>
-                            <!-- <button class="butn">Request</button> -->
-                          </div>
-                        </div>
-                      </div>
-        
-                      <div class="collab">
-                        <div class="collab-preview">
-                            <img src="/assets/customer-segmentation-img.jpeg" alt="customer">
-                        </div>
-                        <div class="collab-info">
-                          <h2>Customer Segmentation for E-Commerce Business</h2>
-                          <h6>Perform customer segmentation analysis for an e-commerce platform to identify distinct customer groups based on demographic, behavioral, and transactional data. Use clustering algorithms to segment customers and provide insights for targeted marketing strategies.
-                          </h6>
-                          <div class="btn-container">
-                            <button class="butn">View Details</button>
-                            <!-- <button class="butn">Request</button> -->
-                          </div>
-                        </div>
-                      </div>
-        
-                      <div class="collab">
-                        <div class="collab-preview">
-                            <img src="/assets/predictive-maintenance-img.jpeg" alt="predictive">
-                        </div>
-                        <div class="collab-info">
-                          <h2>Predictive Maintenance for Industrial Equipment</h2>
-                          <h6>Build a predictive maintenance model using machine learning algorithms to forecast equipment failures and optimize maintenance schedules for industrial machinery.
-                          </h6>
-                          <div class="butn-container">
-                            <button class="butn">View Details</button>
-                            <!-- <button class="butn">Request</button> -->
-                          </div>
-                        </div>
-                      </div>
-        
-                      <div class="collab">
-                        <div class="collab-preview">
-                            <img src="/assets/customer-segmentation-img.jpeg" alt="customer">
-                        </div>
-                        <div class="collab-info">
-                          <h2>Customer Segmentation for E-Commerce Business</h2>
-                          <h6>Perform customer segmentation analysis for an e-commerce platform to identify distinct customer groups based on demographic, behavioral, and transactional data. Use clustering algorithms to segment customers and provide insights for targeted marketing strategies.
-                          </h6>
-                          <div class="btn-container">
-                            <button class="butn">View Details</button>
-                            <!-- <button class="butn">Request</button> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                <div class="collab-info">
+                  <h2><%= projects[i].projectName %></h2>
+                  <h6><%= projects[i].description %></h6>
+                  <div class="butn-container">
+                    <form action="/postPage" method="post">
+                      <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
+                      <button class="cta">View Details</button>
+                  </form>
+                  </div>
                 </div>
-                </div></div>
-        <div class="business-cont _tile-cont hide">
-            <div class="content">
-                <div class="top">
-                    
-                    <a href="searchpage" class="back"><i class="fa-solid fa-arrow-left"></i>
-                      Go To Search</a>
-                    
+              </div>
+            <% } %>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="business-cont _tile-cont hide">
+      <div class="content">
+        <div class="top">
+          <a href="searchpage" class="back"><i class="fa-solid fa-arrow-left"></i> Go To Search</a>
+        </div>
+        <div class="projects">
+          <% for (let i = 0; i < projects.length; i++) { %>
+            <% if (projects[i].category === 'Buisness') { %>
+              <div class="collab">
+                <div class="collab-preview">
+                  <img src="./assets/<%= projects[i].image %>" alt="<%= projects[i].altText %>">
                 </div>
-                <div class="projects">
-                    <div class="collab">
-                        <div class="collab-preview">
-                            <img src="/assets/startup-img.webp" alt="startup">
-                        </div>
-                        <div class="collab-info">
-                          <h2>Market Entry Strategy for a Tech Startup</h2>
-                          <h6>Develop a market entry strategy for a tech startup looking to expand into a new geographic market or industry vertical. Conduct market research, competitor analysis, and identify target customer segments to formulate a strategic plan for market entry.
-                          </h6>
-                          <div class="butn-container">
-                            <button class="butn">View Details</button>
-                            <!-- <button class="butn">Request</button> -->
-                          </div>
-                        </div>
-                      </div>
-        
-                      <div class="collab">
-                        <div class="collab-preview">
-                            <img src="/assets/small-business-img.jpeg" alt="small-home">
-                        </div>
-                        <div class="collab-info">
-                          <h2>Financial Forecasting for a Small Business</h2>
-                          <h6>Build a financial forecasting model for a small business to predict future revenues, expenses, and cash flow. Use historical financial data and key performance indicators to develop accurate forecasts and support strategic decision-making.
-                          </h6>
-                          <div class="btn-container">
-                            <button class="butn">View Details</button>
-                            <!-- <button class="butn">Request</button> -->
-                          </div>
-                        </div>
-                      </div>
-        
-                      <div class="collab">
-                        <div class="collab-preview">
-                            <img src="/assets/startup-img.webp" alt="startup">
-                        </div>
-                        <div class="collab-info">
-                          <h2>Market Entry Strategy for a Tech Startup</h2>
-                          <h6>Develop a market entry strategy for a tech startup looking to expand into a new geographic market or industry vertical. Conduct market research, competitor analysis, and identify target customer segments to formulate a strategic plan for market entry.
-                          </h6>
-                          <div class="butn-container">
-                            <button class="butn">View Details</button>
-                            <!-- <button class="butn">Request</button> -->
-                          </div>
-                        </div>
-                      </div>
-        
-                      <div class="collab">
-                        <div class="collab-preview">
-                            <img src="/assets/small-business-img.jpeg" alt="small-home">
-                        </div>
-                        <div class="collab-info">
-                          <h2>Financial Forecasting for a Small Business</h2>
-                          <h6>Build a financial forecasting model for a small business to predict future revenues, expenses, and cash flow. Use historical financial data and key performance indicators to develop accurate forecasts and support strategic decision-making.
-                          </h6>
-                          <div class="btn-container">
-                            <button class="butn">View Details</button>
-                            <!-- <button class="butn">Request</button> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                <div class="collab-info">
+                  <h2><%= projects[i].projectName %></h2>
+                  <h6><%= projects[i].description %></h6>
+                  <div class="butn-container">
+                    <form action="/postPage" method="post">
+                      <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
+                      <button class="cta">View Details</button>
+                  </form>
+                  </div>
                 </div>
-                </div></div>
-     </div>
+              </div>
+            <% } %>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    
+  </div>
 
 </main>
 <script src="https://kit.fontawesome.com/6953004357.js" crossorigin="anonymous"></script>

@@ -40,14 +40,28 @@
             </div>
         </div>
     </div>
+    <div class="report-popup-container" id="report-popup-container">
+        <div class="report-popup" id="report-popup">
+            <h2>Report</h2>
+            <p>Are you sure you want to Report?</p>
+            <div class="report-options">
+                <form action="/sendreport" method="post">
+                    <textarea name="report" style="display: none;"><%= project['_id'] %></textarea>
+                    <button id="yesreport">Yes</button>
+                </form>
+              <button id="close-report-popup">No</button>
+          </div>
+        </div>
+      </div>
     <div class="main-container">
         <div class="post">
             <div class="head">
                 <div class="details">
                     <div  class="image">
-                        <img id="user-profile" src="./assets/profile-pic2.png" alt="">
+                    <img id="user-profile" src="./assets/profile-pic2.png" alt="">
                     </div>
                     <div class="name">Hemanth</div>
+                    <button class="report-button"><i class="fa-solid fa-flag"></i></button>
                 </div>
                 <!-- <div class="follow"><i class="fa-thin fa-plus icon">&nbsp <span>Follow</i></div>  -->
             </div>
@@ -61,17 +75,17 @@
                     </div>
                     <div class="carousel-inner">
                       <div class="carousel-item active" data-bs-interval="10000">
-                        <img src="./assets/Amazon.png" class="d-block w-100" alt="...">
+                        <img src="./assets/<%= project.image[0]%>" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                         </div>
                       </div>
                       <div class="carousel-item" data-bs-interval="2000">
-                        <img src="./assets/amazon-ui-ux.png" class="d-block w-100" alt="...">
+                        <img src="./assets/<%= project.image[0]%>" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                         </div>
                       </div>
                       <div class="carousel-item">
-                        <img src="./assets/amazon-ui-ux-2.png" class="d-block w-100" alt="...">
+                        <img src="./assets/<%= project.image[0]%>" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                         </div>
                       </div>
@@ -89,16 +103,17 @@
             <div class="features">
                 <div class="controls">
                     <button class="f-icons like-btn"><i class="fa-regular fa-heart"></i></button>
-                    <button class="f-icons save-btn"><i class="fa-regular fa-bookmark"></i></button>
+                    <form action="/savedposts" method="post">
+                        <textarea name="obj_id" style="display: none;"><%= project['_id'] %></textarea>
+                        <button class="f-icons save-btn"><i class="fa-regular fa-bookmark"></i></button>
+                    </form>
                     <a href="#post-comment"><button class="f-icons comment-btn"><i class="fa-regular fa-comment"></i></button></a>
                 </div>
                 <div class="desc title">
-                    <h4 class="project-name">Amazon Tool Kit</h4>
+                    <h4 class="project-name"><%= project.projectName%></h4>
                     <div class="description">Description</div>
                     <p>
-                        Amazon went public in May 1997. It began selling music and videos in 1998, 
-                        and began international operations by acquiring online sellers of books in 
-                        the United Kingdom and Germany.
+                        <%= project.description%>
                     </p>
                 </div> 
             </div>

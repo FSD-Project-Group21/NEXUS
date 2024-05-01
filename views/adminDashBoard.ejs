@@ -6,54 +6,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NEXUS Admin Dashboard</title>
   <link rel="stylesheet" href="./css/adminDashBoard.css">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+  
 </head>
 <body>
   <header>
     <h1>Admin Dashboard</h1>
   </header>
   <nav>
-    <div class="nav-bar">
-      <a href="#project-management">Project Management</a>
-      <a href="#user-management">User Management</a>
-      <a href="#collaboration-hub">Collaboration Hub</a>
+    <div class="section">
+      <button id="proj-management" class="project-management _icon openIcon">Project Management</button>
+      <button class="user-management _icon">User Management</button>
+      <button class="settings _icon">Settings</button>
+      <!-- <a href="#project-management"></a> -->
+      <!-- <a href="#user-management">User Management</a> -->
+      <!-- <a href="#collaboration-hub">Collaboration Hub</a>
       <a href="#connection-hub">Connection Hub</a>
       <a href="#employment-platform">Employment Platform</a>
-      <a href="#settings">Settings</a>
+      <a href="#settings">Settings</a> -->
     </div>
   </nav>
-  <section id="project-management">
+  <div class="project-management _icon-cont ">
+  <!-- <section id="project-management"> -->
     <h2>Project Management</h2>
+    <%if(projects.length>0){%>
     <table>
         <thead>
           <tr>
             <th>Project Name</th>
             <th>Description</th>
+            <th>Image</th>
+            <th>Category</th>
+            <th>Reports</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Project A</td>
-            <td>Lorem ipsum dolor sit amet</td>
-            <td>
-              <button>Edit</button>
-              <button>Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Project B</td>
-            <td>Consectetur adipiscing elit</td>
-            <td>
-              <button>Edit</button>
-              <button>Delete</button>
-            </td>
-          </tr>
+          <%for(let i=0;i<projects.length;i++){%>
+            <tr>
+                <td><%=projects[i]['projectName']%></td>
+                <td><%= projects[i]['description'] %></td>
+                <td><%= projects[i]['image'] %></td>
+                <td><%= projects[i]['category'] %></td>
+                <td><%= projects[i]['reports'] %></td>                <!-- Example button that triggers the delete request -->
+                <td>
+                  <form action="/deletepost" method="POST">
+                    <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
+                  <button type="submit">Delete Post</button>
+                </form>
+              </td>
+            </tr>
+          <% } %>
         </tbody>
         </table>
-      </section>
-  <section id="user-management">
+        <% } %>
+      </div>
+  <div class="user-management _icon-cont hide">
     <section id="user-management">
-            <h2>User Management</h2>
+      <div class="heading"> <h2>User Management</h2></div>
             <%if(users.length>0){%>
             <table>
                 <thead>
@@ -72,10 +82,12 @@
                             <td><%= users[i]['gmail'] %></td>
                             <td><%= users[i]['phno'] %></td>
                             <!-- Example button that triggers the delete request -->
-                            <form action="/deleteuser" method="POST">
-                              <input type="hidden" name="gmail" value="<%= users[i]['gmail'] %>">
-                              <button type="submit">Delete User</button>
-                            </form>
+                            <td>
+                              <form action="/deleteuser" method="POST">
+                                <input type="hidden" name="gmail" value="<%= users[i]['gmail'] %>">
+                                <button type="submit">Delete User</button>
+                              </form>
+                            </td>
                             
   
                         </tr>
@@ -85,120 +97,16 @@
             <%}%>
     </section>
     
-  </section>    
-  <section id="collaboration-hub">
-    <h2>Collaboration Hub</h2><h3>Collaboration Groups</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Members</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Group A</td>
-          <td>Lorem ipsum dolor sit amet</td>
-          <td>5</td>
-          <td>
-            <button>Edit</button>
-            <button>Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Group B</td>
-          <td>Consectetur adipiscing elit</td>
-          <td>10</td>
-          <td>
-            <button>Edit</button>
-            <button>Delete</button>
-          </td>
-        </tr>
-        <!-- Add more group rows as needed -->
-      </tbody>
-    </table>
-  </section>
-  <section id="connection-hub">
-    <h2>Connection Hub</h2>
-    <h3>Connections</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>User</th>
-          <th>Project</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>John Doe</td>
-          <td>Project A</td>
-          <td>
-            <button>Delete Connection</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Jane Smith</td>
-          <td>Project B</td>
-          <td>
-            <button>Delete Connection</button>
-          </td>
-        </tr>
-        <!-- Add more connection rows as needed -->
-      </tbody>
-    </table>
-  </section>
-  <section id="employment-platform">
-    <h2>Employment Platform</h2>
-    <h3>Job Postings</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Location</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Job Title A</td>
-          <td>Lorem ipsum dolor sit amet</td>
-          <td>Location A</td>
-          <td>
-            <button>Edit</button>
-            <button>Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Job Title B</td>
-          <td>Consectetur adipiscing elit</td>
-          <td>Location B</td>
-          <td>
-            <button>Edit</button>
-            <button>Delete</button>
-          </td>
-        </tr>
-        <!-- Add more job posting rows as needed -->
-      </tbody>
-    </table>
-  </section>
-  <section id="settings">
-    <h2>Settings</h2>
-    <h3>Admin Account Settings</h3>
-    <label for="username">Username:</label>
-    <input type="text" id="username" value="Nexus" disabled> 
-    <label for="password">Current Password:</label>
-    <input type="password" id="old-password" placeholder="Enter current password">
-    <label for="password">New Password:</label>
-    <input type="password" id="password" placeholder="Enter new password">
-    <button onclick="updatePassword()">Update Password</button>
+  </div>    
+  
+  <div class="settings _icon-cont hide">
+    <div class="heading"> <h2>Settings</h2></div>
+    <div class="sub-heading"> <h3>Admin Account Settings</h3></div>
     <form action="/logout" method="post">
         <button>Logout</button>
     </form>
-  </section>
+  </div>
+</div>
   <script src="./js/adminDashBoard.js"></script>
 </body>
 </html>

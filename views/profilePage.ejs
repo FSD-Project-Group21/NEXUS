@@ -43,7 +43,7 @@
       </div>
     </div>
 </div>
-  <div class="popup-form" id="popup-form">
+  <div class="popup-int-form" id="popup-int-form">
     <div class="workup" id="workup">
         <div class="interested-form">
           <form id="interested-form" method="post" action="/interestedToWork">
@@ -64,9 +64,8 @@
             <label class="interested-label" for="description">About:</label>
             <textarea required id="description" name="description"></textarea>
 
-            <span id="category-msg">PLEASE FILL ALL THE FIELDS!</span>
 
-            <button  id="close-workup">Submit</button>
+            <button  id="close-icon">Submit</button>
 
 
           </form>
@@ -78,7 +77,7 @@
     <div class="editit" id="editit">
         <h2>Edits</h2>
         <p>Edit profile here</p>
-        <form class="edit-form" method="post" action="/editprofileDets">
+        <form class="edit-form" action="/editprofileDets" method="post">
           <label class="edit-label" for="name">Name:</label>
           <input type="text" id="name" name="name">
           <label class="edit-label" for="about">About:</label>
@@ -86,8 +85,8 @@
           <label class="edit-label" for="pfp">Profile Picture:</label>
           <input type="file" id="pfp-img" name="image" accept="image/*" required onchange="updateFileName(this)">
           <div class="edit-buttons">
-            <button id="Save-edits">Save</button>
-            <button id="Cancel-edits">Cancel</button>
+            <button type="submit" id="Save-edits">Save</button>
+            <button type="button" id="Cancel-edits">Cancel</button>
           </div>
         </form>
     </div>
@@ -99,13 +98,13 @@
       <div class="top-section">
         <div class="profile-section">
           <div class="profile-picture">
-            <img id="profile-main-pic" src="assets/profile-pic.jpeg" alt="dp" class="circular-image">
+            <img id="profile-main-pic" src='<%=profile['profileImg'] %>' alt="dp" class="circular-image">
           </div>
           <!-- <form action="/interestes-work"> -->
             <div class="toggle-and-text">
               <div class="work">interested to work</div>
               <label class="toggle-switch">
-                <input id="toggle-checkbox" type="checkbox">
+                <input id="toggle-checkbox" value="<%= profile['interestedToWork'] %>" type="checkbox">
                 <div class="toggle-switch-background">
                   <div class="toggle-switch-handle"></div>
                 </div>
@@ -115,22 +114,22 @@
         </div>
         <div class="text-section">
           <div class="name-edit">
-            <h4 class="Name">ANUSHKA SHETTY</h4>
+            <h4 class="Name"><%= profile['fullname'] %></h4>
             <button  id="edit" class="edit"><i class="fa-solid fa-pen"></i></button>
           </div>
-          <div class="bio">
-            Business Administration Student @ University of Business Studies <br>
+          <div class="bio"><%= profile['bio']%>
+            <!-- Business Administration Student @ University of Business Studies <br>
             As a business student, I am passionate about understanding the dynamics of the business world and developing skills in areas such as marketing, finance, and management. I aspire to leverage my education and skills to pursue a career that allows me to make a positive impact in the business community. <br>
-            Outside of academics, I enjoy networking, attending business conferences, and staying updated with the latest trends in the business world.
+            Outside of academics, I enjoy networking, attending business conferences, and staying updated with the latest trends in the business world. -->
         </div>
         
           <div class="project-collab">
             <div class="projects">
-              <div class="number"><h3>6</h3></div>
+              <div class="number"><h3><%=profile['NoOfProjects']%></h3></div>
               <div class="name"><h5>Projects</h5></div>
             </div>
             <div class="collaborations">
-              <div class="number"><h3>3</h3></div>
+              <div class="number"><h3><%=profile['NoOfCollaborations']%></h3></div>
               <div class="name"><h5>Collaborations</h5></div>
             </div>
           </div>
@@ -145,64 +144,114 @@
         
         <div class="post-cont _icon-cont">
           <h1 class="create-post-header">My Posts</h1>
-          <div class="slider">
-            <div class="indicator">
-              <span class="next-btn active"></span>
-              <span class="next-btn"></span>
-              <span class="next-btn"></span>
-              <span class="next-btn"></span>
-            </div>
-            <div class="posts">
-          <div class="slide-row" id="slide">
-            <div class="slide-col">
-              <div class="user-text">
-                <h4>Branding Package for a Coffee Shop</h4>
+          <div class="grid-container">
+            <div class="grid-item">
+              <img src="/assets/nice-coffee.jpeg" alt="coffee">
+              <div class="post-text-delete">
+                <div class="post-text">
+                  <h4>Branding Package for a Coffee Shop</h4>
+                  <h5>Category: Graphic Designer</h5>
+                 <br> Design a complete branding package for a fictional coffee shop, including logo, packaging design for coffee bags, menu design, and signage.
+                </div>
+                 <div class="delete"><i class="fa-solid fa-trash"></i></div>
+                </div>
+              
+              </div>
+              
+            
+
+            <div class="grid-item">
+              <img src="/assets/music-img.jpeg" alt="music">
+              <div class="post-text-delete">
+              <div class="post-text">
+                <h4>Event Poster Series for a Music Festival</h4>
                 <h5>Category: Graphic Designer</h5>
-                <p>
-                Design a complete branding package for a fictional coffee shop, including logo, packaging design for coffee bags, menu design, and signage.</p>
+                 <br>Create a series of event posters for a virtual music festival featuring different genres of music. Each poster should have a unique design while maintaining visual consistency across the series.
+               </div>
+               <div class="delete"><i class="fa-solid fa-trash"></i></div>
               </div>
-              <div class="user-img">
-                <img src="/assets/nice-coffee.jpeg" alt="coffee">
-              </div>
+              
             </div>
-            <div class="slide-col">
-              <div class="user-text">
+            <div class="grid-item">
+               <img src="/assets/home-img.jpeg" alt="home">
+               <div class="post-text-delete">
+               <div class="post-text">
                 <h4>Sustainable Housing Design</h4>
                 <h5>Category: Architecture</h5>
-                <p>Design an eco-friendly housing complex that incorporates sustainable features such as passive solar design, green roofs, rainwater harvesting, and renewable energy systems.</p>
+                <br>Design an eco-friendly housing complex that incorporates sustainable features such as passive solar design, green roofs, rainwater harvesting, and renewable energy systems.
               </div>
-              <div class="user-img">
-                <img src="/assets/nice-architecture.avif" alt="home">
-              </div>
+              <div class="delete"><i class="fa-solid fa-trash"></i></div>
             </div>
-            <div class="slide-col">
-              <div class="user-text">
+              
+            </div>
+            <div class="grid-item">
+              <img src="/assets/renovation-img1.gif" alt="renovation">
+              <div class="post-text-delete">
+              <div class="post-text">
+                <h4>Community Center Renovation</h4>
+                <h5>Category: Architecture</h5>
+                
+                <br> Develop renovation plans for an existing community center to improve functionality and aesthetics. The design should prioritize accessibility, flexibility of use, and integration with the surrounding environment.
+               </div>
+               <div class="delete"><i class="fa-solid fa-trash"></i></div>
+              </div>
+              
+            </div>
+            <div class="grid-item">
+              <img src="/assets/predictive-maintenance-img.jpeg" alt="predictive">
+              <div class="post-text-delete">
+              <div class="post-text">
                 <h4>Predictive Maintenance for Industrial Equipment</h4>
                 <h5>Category: Data Science</h5>
-                <p>Perform customer segmentation analysis for an e-commerce platform to identify distinct customer groups based on demographic, behavioral, and transactional data. Use clustering algorithms to segment customers and provide insights for targeted marketing strategies. </p>
+                 <br>Build a predictive maintenance model using machine learning algorithms to forecast equipment failures and optimize.
+               </div>
+               <div class="delete"><i class="fa-solid fa-trash"></i></div>
               </div>
-              <div class="user-img">
-                <img src="/assets/nice-ds.jpeg" alt="predictive">
-              </div>
+              
             </div>
-            <div class="slide-col">
-              <div class="user-text">
+            <div class="grid-item">
+              <img src="/assets/customer-segmentation-img.jpeg" alt="customer">
+              <div class="post-text-delete">
+              <div class="post-text">
+                <h4>Customer Segmentation for E-Commerce Business</h4>
+                <h5>Category: Data Science</h5>
+                <br>Perform customer segmentation analysis for an e-commerce platform to identify distinct customer groups based on demographic, behavioral, and transactional data.
+            </div>
+            <div class="delete"><i class="fa-solid fa-trash"></i></div>
+          </div>
+              
+          </div>
+            <div class="grid-item">
+              <img src="/assets/startup-img.webp" alt="startup">
+              <div class="post-text-delete">
+              <div class="post-text">
                 <h4>Market Entry Strategy for a Tech Startup</h4>
                 <h5>Category: Business</h5>
-                <p>Develop a market entry strategy for a tech startup looking to expand into a new geographic market or industry vertical. Conduct market research, competitor analysis, and identify target customer segments to formulate a strategic plan for market entry.</p>
-              </div>
-              <div class="user-img">
-                <img src="/assets/nice-business.webp" alt="startup">
-              </div>
+                <br> Develop a market entry strategy for a tech startup looking to expand into a new geographic market or industry vertical. Conduct market research, competitor analysis, and identify target.
             </div>
+            <div class="delete"><i class="fa-solid fa-trash"></i></div>
           </div>
-        </div>
-      </div>
+              
+          </div>
+            <div class="grid-item">
+              <img src="/assets/small-business-img.jpeg" alt="small-home">
+              <div class="post-text-delete">
+              <div class="post-text">
+                <h4>Financial Forecasting for a Small Business</h4>
+                <h5>Category: Business</h5>
+                 <br>Build a financial forecasting model for a small business to predict future revenues, expenses, and cash flow. Use historical financial data and key performance indicators to develop accurate forecasts.
+            </div>
+            <div class="delete"><i class="fa-solid fa-trash"></i></div>
+          </div>
+              
+          </div>
+            
+          </div>
     </div>
 
          <div class="save-cont _icon-cont hide">
           <h1 class="create-post-header">My Saved</h1>
-          <div class="grid-container">
+          <div class="grid-container-saved">
             <div class="grid-item">
               <img src="/assets/nice-coffee.jpeg" alt="coffee">
               <div class="post-text">
@@ -273,9 +322,9 @@
           </div>
           
         </div>
-        <div class="create-cont _icon-cont hide">
+        <!-- <div class="create-cont _icon-cont hide">
           <h1 class="create-post-header">Create a New Post</h1>
-                  </div>
+                  </div> -->
         
       </div>
     </main>
