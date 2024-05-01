@@ -14,6 +14,7 @@ const collabcont0 = document.querySelector(".collab-container0");
 const collabcont1 = document.querySelector(".collab-container1");
 const collabcont2 = document.querySelector(".collab-container2");
 
+
 collab0.addEventListener("click", () => {
   collab0.classList.add("collab-active");
   collab1.classList.remove("collab-active");
@@ -45,14 +46,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const popupContainer = document.getElementById("popup-container");
   const popup = document.getElementById("popup");
   const closeButton = document.getElementById("close-popup");
+  const dropdownList = document.querySelector('.list');
 
-  settingsButton.addEventListener("click", function () {
-    popupContainer.style.display = "flex";
-    setTimeout(function () {
-      popup.style.transform = "scale(1)";
-      popup.style.opacity = "1";
-    }, 100);
-  });
+    settingsButton.addEventListener('click', function() {
+        if (dropdownList.style.display === 'block') {
+          dropdownList.style.display = 'none';
+        } else {
+          dropdownList.style.display = 'block';
+        }
+      });
+
+  // settingsButton.addEventListener("click", function () {
+  //   popupContainer.style.display = "flex";
+  //   setTimeout(function () {
+  //     popup.style.transform = "scale(1)";
+  //     popup.style.opacity = "1";
+  //   }, 100);
+  // });
 
   closeButton.addEventListener("click", function () {
     popup.style.transform = "scale(0.5)";
