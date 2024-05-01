@@ -53,45 +53,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // sliderrr
 
-var btn = document.getElementsByClassName("next-btn");
-var slide = document.getElementById("slide");
-
-btn[0].onclick = function(){
-    slide.style.transform = "translateX(0px)";
-    for(i=0;i<4;i++){
-        btn[i].classList.remove("active");
-    }
-    this.classList.add("active");
-}
-btn[1].onclick = function(){
-    slide.style.transform = "translateX(-25%)";
-    for(i=0;i<4;i++){
-        btn[i].classList.remove("active");
-    }
-    this.classList.add("active");
-}
-btn[2].onclick = function(){
-    slide.style.transform = "translateX(-50%)";
-    for(i=0;i<4;i++){
-        btn[i].classList.remove("active");
-    }
-    this.classList.add("active");
-}
-btn[3].onclick = function(){
-    slide.style.transform = "translateX(-75%)";
-    for(i=0;i<4;i++){
-        btn[i].classList.remove("active");
-    }
-    this.classList.add("active");
-}
 document.addEventListener('DOMContentLoaded', function() {
-    const checkBox = document.getElementById('toggle-checkbox'); // Changed the selector to match the ID in the HTML
-    const popupForm = document.getElementById('popup-form');
+    const checkBox = document.getElementById('toggle-checkbox');
+    const popupForm = document.getElementById('popup-int-form');
     const workup = document.getElementById('workup');
-    const saveButton = document.getElementById('close-workup'); // Renamed to closeButton for clarity
+    const saveButton = document.getElementById('close-workup');
     const closeButton = document.getElementById('close-icon');
 
-    checkBox.addEventListener('change', function() { // Changed the event to 'change' to listen for checkbox state changes
+    checkBox.addEventListener('change', function() {
         if (checkBox.checked) {
             popupForm.style.display = 'flex';
             setTimeout(function() {
@@ -112,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             popupForm.style.display = 'none';
         }, 300);
-        checkBox.checked=false;
+        checkBox.checked = false;
     });
 
     saveButton.addEventListener('click', function(event) {
