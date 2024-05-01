@@ -102,7 +102,11 @@ app.post('/deletepost', projControl.deleteUser);
 
 app.post('/postPage', viewcontroller.viewthepost);
 
+app.post('/savedposts',viewcontroller.viewsavedposts)
+
 // app.post('/searchPage', searchcontrol.findthepost);
+
+app.post('/sendreport',viewcontroller.reportposts);
 
 app.get("/", (req, res) => {
   res.render("landingPage");
@@ -144,8 +148,10 @@ app.get('/notificationPage',isAuth, (req, res) => {
 app.get('/collabPage',isAuth, (req, res) => {
     res.render('collabPage');
 });
-app.get('/profilePage',isAuth, (req, res) => {
-    res.render('profilePage');
+app.get('/profilePage',isAuth, async(req, res) => {
+  const obj_id = req.body.obj_id;
+    let project = await projModel.findOne({_id: obj_id});
+    res.render('profilePage',{project:project});
 });
 
   
@@ -225,7 +231,7 @@ app.post('/logout',(req,res)=>{
       res.redirect("/")
   });
 });
-app.post('/deleteuser',async(req,res)=>{
+app.post('/deleteuser' ,async(req,res)=>{
   const {gmail} = req.body;
   let user = await userModel.deleteOne({gmail});
   res.redirect("/adminDashboard");

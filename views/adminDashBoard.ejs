@@ -49,7 +49,7 @@
                 <td><%= projects[i]['description'] %></td>
                 <td><%= projects[i]['image'] %></td>
                 <td><%= projects[i]['category'] %></td>
-                <!-- Example button that triggers the delete request -->
+                <td><%= projects[i]['reports'] %></td>                <!-- Example button that triggers the delete request -->
                 <td>
                   <form action="/deletepost" method="POST">
                     <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
@@ -63,6 +63,7 @@
           <% } %>
         </tbody>
         </table>
+      <% } %>
       </section>
   <section id="user-management">
     <section id="user-management">

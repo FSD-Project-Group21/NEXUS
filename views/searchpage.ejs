@@ -157,8 +157,10 @@
                     <h2><%= projects[i].projectName %></h2>
                     <h6><%= projects[i].description %></h6>
                     <div class="butn-container">
-                      <button class="butn">View Details</button>
-                      <!-- <button class="butn">Request</button> -->
+                      <form action="/postPage" method="post">
+                        <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
+                        <button>View Details</button>
+                    </form>
                     </div>
                   </div>
                 </div>
@@ -185,8 +187,10 @@
                   <h2><%= projects[i].projectName %></h2>
                   <h6><%= projects[i].description %></h6>
                   <div class="butn-container">
-                    <button class="butn">View Details</button>
-                    <!-- <button class="butn">Request</button> -->
+                    <form action="/postPage" method="post">
+                      <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
+                      <button class="cta">View Details</button>
+                  </form>
                   </div>
                 </div>
               </div>
@@ -212,8 +216,10 @@
                   <h2><%= projects[i].projectName %></h2>
                   <h6><%= projects[i].description %></h6>
                   <div class="butn-container">
-                    <button class="butn">View Details</button>
-                    <!-- <button class="butn">Request</button> -->
+                    <form action="/postPage" method="post">
+                      <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
+                      <button class="cta">View Details</button>
+                  </form>
                   </div>
                 </div>
               </div>
@@ -239,8 +245,10 @@
                   <h2><%= projects[i].projectName %></h2>
                   <h6><%= projects[i].description %></h6>
                   <div class="butn-container">
-                    <button class="butn">View Details</button>
-                    <!-- <button class="butn">Request</button> -->
+                    <form action="/postPage" method="post">
+                      <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
+                      <button class="cta">View Details</button>
+                  </form>
                   </div>
                 </div>
               </div>

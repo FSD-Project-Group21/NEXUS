@@ -48,6 +48,10 @@
                         <img id="user-profile" src="./assets/profile-pic2.png" alt="">
                     </div>
                     <div class="name">Hemanth</div>
+                    <form action="/sendreport" method="post">
+                        <textarea name="report" style="display: none;"><%= project['_id'] %></textarea>
+                        <button><i class="fa-solid fa-flag"></i></button>
+                    </form>
                 </div>
                 <!-- <div class="follow"><i class="fa-thin fa-plus icon">&nbsp <span>Follow</i></div>  -->
             </div>
@@ -89,7 +93,10 @@
             <div class="features">
                 <div class="controls">
                     <button class="f-icons like-btn"><i class="fa-regular fa-heart"></i></button>
-                    <button class="f-icons save-btn"><i class="fa-regular fa-bookmark"></i></button>
+                    <form action="/savedposts" method="post">
+                        <textarea name="obj_id" style="display: none;"><%= project['_id'] %></textarea>
+                        <button class="f-icons save-btn"><i class="fa-regular fa-bookmark"></i></button>
+                    </form>
                     <a href="#post-comment"><button class="f-icons comment-btn"><i class="fa-regular fa-comment"></i></button></a>
                 </div>
                 <div class="desc title">
