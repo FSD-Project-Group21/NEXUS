@@ -77,13 +77,13 @@
     <div class="editit" id="editit">
         <h2>Edits</h2>
         <p>Edit profile here</p>
-        <form class="edit-form" action="/editprofileDets" method="post">
+        <form class="edit-form" action="/editprofileDets" method="post" enctype="multipart/form-data">
           <label class="edit-label" for="name">Name:</label>
           <input type="text" id="name" name="name">
           <label class="edit-label" for="about">About:</label>
           <textarea required id="about" name="about"></textarea>
-          <label class="edit-label" for="pfp">Profile Picture:</label>
-          <input type="file" id="pfp-img" name="image" accept="image/*" required onchange="updateFileName(this)">
+          <label class="edit-label">Profile Picture:</label>
+          <input type="file" id="pfp-img" name="image" required>
           <div class="edit-buttons">
             <button type="submit" id="Save-edits">Save</button>
             <button type="button" id="Cancel-edits">Cancel</button>

@@ -40,6 +40,19 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 // app.use(express.json());
+const path = require("path");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.join("public", "uploads"));
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + "-" + file.originalname);
+    },
+  });
+  
+const upload = multer({ storage: storage });
 
 mongoose
     .connect(mongoURI, {
@@ -96,7 +109,7 @@ usp.on('connection',(socket)=>{
 
 app.post('/studentHomePage', createPost.createStudentHomePage); //
 
-app.post('/editprofileDets', function(req,res,next) {console.log('Hello'); next();}, editProfile.editprofileDets); //
+app.post('/editprofileDets',upload.single('image'),editProfile.editprofileDets); //
 
 app.post('/interestedToWork', interestForm.interestedWorkForm ); //
 

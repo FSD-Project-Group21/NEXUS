@@ -165,38 +165,38 @@ document.addEventListener('DOMContentLoaded', function() {
             editform.style.display = 'none';
         }, 300);
     });
-    saveEdits.addEventListener('click', function(event) {
-        event.preventDefault();
-        // Update name
-        const nameInput = document.getElementById('name').value;
-        if (nameInput !== '') {
-            nameElement.textContent = nameInput;
-        }
+    // saveEdits.addEventListener('click', function(event) {
+    //     event.preventDefault();
+    //     // Update name
+    //     const nameInput = document.getElementById('name').value;
+    //     if (nameInput !== '') {
+    //         nameElement.textContent = nameInput;
+    //     }
 
-        // Update about
-        const aboutInput = document.getElementById('about').value;
-        if (aboutInput !== '') {
-            aboutElement.textContent = aboutInput;
-        }
+    //     // Update about
+    //     const aboutInput = document.getElementById('about').value;
+    //     if (aboutInput !== '') {
+    //         aboutElement.textContent = aboutInput;
+    //     }
 
-        // Update profile picture (optional)
-        const imageInput = document.getElementById('pfp-img').files[0];
-        if (imageInput) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                imageElement.src = e.target.result;
-            };
-            reader.readAsDataURL(imageInput);
-        }
+    //     // Update profile picture (optional)
+    //     const imageInput = document.getElementById('pfp-img').files[0];
+    //     if (imageInput) {
+    //         const reader = new FileReader();
+    //         reader.onload = function(e) {
+    //             imageElement.src = e.target.result;
+    //         };
+    //         reader.readAsDataURL(imageInput);
+    //     }
 
-        // Hide the edit form
-        document.getElementById('edit-container').style.display = 'none';
-    });
-    function updateFileName(input) {
-        const fileName = input.files[0].name;
-        const label = input.nextElementSibling;
-        label.innerText = fileName;
-    }
+    //     // Hide the edit form
+    //     document.getElementById('edit-container').style.display = 'none';
+    // });
+    // function updateFileName(input) {
+    //     const fileName = input.files[0].name;
+    //     const label = input.nextElementSibling;
+    //     label.innerText = fileName;
+    // }
 
 
     // saveEdits.addEventListener('click', function(event) {
