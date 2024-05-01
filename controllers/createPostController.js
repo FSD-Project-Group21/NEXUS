@@ -3,6 +3,7 @@ const postSchema = require('../models/createPostModels');
 
 exports.createStudentHomePage = async(req,res) => {
     try{
+        let studentId = req.session.userId;
         const{
             projectName,
             description,
@@ -11,6 +12,7 @@ exports.createStudentHomePage = async(req,res) => {
         } = req.body;
 
         const newPost = new postSchema({
+            studentId,
             projectName,
             description,
             image,
