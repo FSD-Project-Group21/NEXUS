@@ -59,9 +59,9 @@
                 <div class="details">
                     <div class="image-name">
                     <div  class="image">
-                    <img id="user-profile" src="./assets/profile-pic2.png" alt="">
+                    <img id="user-profile" src="<%= project['userimage'] %>" alt="">
                     </div>
-                    <div class="name">Hemanth
+                    <div class="name"><%=project['fullname']%>
                     </div>
                 </div>
                 <div class="report">
@@ -155,7 +155,7 @@
                 </div>
                 <div class="new-comment">
                     <div class="new-comment-details">
-                        <img src="./assets/profile-pic2.png" alt=""/>
+                        <img src="<%= project['userimage'] %>" alt=""/>
                         <input id="input-comment" type="text" placeholder="Add a Comment...."/>
                     </div>
                     <button id="send-comment"><i class="fa-regular fa-paper-plane"></i></button>

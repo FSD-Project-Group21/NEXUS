@@ -4,13 +4,15 @@ const profileModel = require('../models/profileModel');
 
 exports.viewthepost = async(req,res)=>{
     const obj_id = req.body.obj_id;
-    const id = req.session.userId;
+    // const id = req.session.userId;
     // console.log(obj_id);
     let projectData = await postSchema.findOne({_id: obj_id});
-    let user = await profileModel.findOne({_id:id});
+    let id = projectData.studentId
+    let user = await profileModel.findOne({id:id});
     let fullname = user.fullname;
     let userimage = user.profileImg;
     let project = {
+        _id:projectData._id,
         fullname:fullname,
         userimage:userimage,
         projectName:projectData.projectName,
