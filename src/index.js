@@ -24,6 +24,7 @@ const Chat = require('../models/chatModel');
 const viewcontroller = require('../controllers/projectPostController')
 const searchcontrol = require('../controllers/searchpageController')
 const userProfile = require('../models/profileModel')
+const { default: router } = require("../controllers/collabPostController");
 // >>>>>>> 3b792c975126b2da3475d4d96219b5dd6f5c7b19
 
 const app = express();
@@ -36,7 +37,7 @@ var usp = io.of('/user-namespace');
 app.use(express.json());
 app.set("view engine", "ejs");
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 // app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 // app.use(express.json());
@@ -290,7 +291,10 @@ app.post('/interested-work', async (req, res) => {
   }
 });
 
+// Import the backend API from the collab page controller
+const collabRouter = require('../controllers/collabPostController');
 
+app.use(collabRouter);
 
 
 //messaging - save
