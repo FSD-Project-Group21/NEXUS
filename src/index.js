@@ -177,7 +177,11 @@ app.get('/profilePage',isAuth, async(req, res) => {
 });
 
   
-
+app.post('/deleteuser' ,async(req,res)=>{
+  const {gmail} = req.body;
+  let user = await userModel.deleteOne({gmail});
+  res.redirect("/adminDashboard");
+});
 
 app.post("/login", async(req,res)=>{
   const {gmail , password} = req.body;
@@ -272,11 +276,7 @@ app.post('/logout',(req,res)=>{
       res.redirect("/")
   });
 });
-app.post('/deleteuser' ,async(req,res)=>{
-  const {gmail} = req.body;
-  let user = await userModel.deleteOne({gmail});
-  res.redirect("/adminDashboard");
-});
+
 
 const port = 5000;
 http.listen(port, () => {
