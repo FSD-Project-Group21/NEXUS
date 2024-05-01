@@ -11,6 +11,10 @@ connect.then(() => {
 });
 
 const postSchema = new mongoose.Schema({
+    studentId:{
+        type: mongoose.Schema.ObjectId,
+        ref:'users',
+    },
     projectName: {
         type: String,
         required: true

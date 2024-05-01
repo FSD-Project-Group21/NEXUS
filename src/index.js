@@ -1,5 +1,4 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
 const bcryptjs = require("bcryptjs")
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
@@ -23,6 +22,8 @@ const ejs = require('ejs');
 const Chat = require('../models/chatModel');
 const viewcontroller = require('../controllers/projectPostController')
 const searchcontrol = require('../controllers/searchpageController')
+const userProfile = require('../models/profileModel')
+const { default: router } = require("../controllers/collabPostController");
 // >>>>>>> 3b792c975126b2da3475d4d96219b5dd6f5c7b19
 
 const app = express();
@@ -35,7 +36,7 @@ var usp = io.of('/user-namespace');
 app.use(express.json());
 app.set("view engine", "ejs");
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 // app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 // app.use(express.json());
@@ -149,9 +150,11 @@ app.get('/collabPage',isAuth, (req, res) => {
     res.render('collabPage');
 });
 app.get('/profilePage',isAuth, async(req, res) => {
-  const obj_id = req.body.obj_id;
-    let project = await projModel.findOne({_id: obj_id});
-    res.render('profilePage',{project:project});
+    const profile = await userProfile.findOne({id:req.session.userId});
+    res.render('profilePage',{profile:profile});
+    // const obj_id = req.body.obj_id;
+    // let project = await projModel.findOne({_id: obj_id});
+    // res.render('profilePage',{project:project});
 });
 
   
@@ -173,6 +176,28 @@ app.post("/login", async(req,res)=>{
   
   req.session.isAuth=true;
   req.session.userId = user._id;
+  console.log(user._id);
+  let userid = user._id;
+  let userdetails = await userModel.findOne({_id:userid});
+  let profile = await userProfile.findOne({id:userid});
+  if(!profile){
+    profile = new userProfile({
+      id:userid,
+      fullname:userdetails.fullname,
+      bio:"write your bio here...",
+      profileImg:"/assets/User-Profile-Image.png",
+      interestedToWork:false,
+    })
+    async function saveProfile() {
+      try {
+        await profile.save();
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    saveProfile();
+    // profile.save();
+  }
   res.redirect("/studentHomePage");
 });
 app.post("/adminlogin", async(req,res)=>{
@@ -203,7 +228,7 @@ app.post("/signup", async(req,res)=>{
     about: "",
     image: "profile_img.png"
   });
-  
+
   async function saveUser() {
       try {
         await user.save();
@@ -213,7 +238,9 @@ app.post("/signup", async(req,res)=>{
     }
   saveUser();
   // user.save();
-
+  // let userprofile = new userProfile({
+  //   id:,
+  // })
   // user.save();
   res.redirect('/login')
 });
@@ -263,7 +290,10 @@ app.post('/interested-work', async (req, res) => {
   }
 });
 
+// Import the backend API from the collab page controller
+const collabRouter = require('../controllers/collabPostController');
 
+app.use(collabRouter);
 
 
 //messaging - save

@@ -6,7 +6,8 @@ const fs = require('fs');
 const profileSchema = new Schema({
     id:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'users'
+        ref:'users',
+        unique:true,
     },
     fullname: {
         type: String,
@@ -17,8 +18,7 @@ const profileSchema = new Schema({
         required: true
     },
     profileImg:{
-        data: Buffer,
-        contentType: String,
+        type: String,
     },
     interestedToWork:{
         type: Boolean,
@@ -26,7 +26,7 @@ const profileSchema = new Schema({
     },
     NoOfProjects:{
         type: Number,
-        default:0,
+           default:0,
     },
     NoOfCollaborations:{
         type: Number,
