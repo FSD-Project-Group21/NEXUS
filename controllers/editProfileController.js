@@ -1,23 +1,21 @@
 const mongoose = require('mongoose');
 const editSchema = require('../models/editProfileModels');
-const newbio = require('../models/studentLoginModel');
+// const newbio = require('../models/studentLoginModel');
+const profileModel = require('../models/profileModel');
+const path = require("path");
 
-exports.editprofileDets = async(req,res) => {
+exports.editprofileDets = async(req,res,next) => {
     try{
-        const{
+        let{
             name,
             about,
             image
         } = req.body;
-        console.log('Hi');
-        console.log(req.session.userId);
-        const client = await newbio.findOne({ _id: req.session.userId });
-        client.name = name;
-        client.about = about;
-        client.image = image;
+        image = path.join("uploads", req.file.filename);
 
-        await client.updateOne();
-    
+        await profileModel.findOneAndUpdate({id:req.session.userId},{$set:{fullname:name,bio:about,profileImg:image}},{new:true});
+        let profile = await profileModel.findOne({id:req.session.userId});
+        res.render('profilePage',{profile:profile});
     }
     catch(error){
         console.log(error);

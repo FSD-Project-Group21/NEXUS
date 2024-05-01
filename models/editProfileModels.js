@@ -22,7 +22,7 @@ const editSchema = new mongoose.Schema({
     },
 
     image: {
-        type: Array,
+        type: String,
         required: true
     },
 });

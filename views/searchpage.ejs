@@ -33,6 +33,12 @@
           <a href="/profilePage" class="icon-link "><img class="profile icon"  src="/assets/profile.png"></a> 
       </div>        
 </div>
+<div class="dropdown">
+  <div class="list">
+    <div class="item">Delete Profile</div>
+    <div class="item">Log Out</div>
+  </div>
+</div>
 <div class="popup-container" id="popup-container">
   <div class="popup" id="popup">
       <h2>LogOut</h2>
@@ -160,7 +166,7 @@
                     <div class="butn-container">
                       <form action="/postPage" method="post">
                         <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
-                        <button>View Details</button>
+                        <button id="view-detials">View Details</button>
                     </form>
                     </div>
                   </div>
@@ -190,7 +196,7 @@
                   <div class="butn-container">
                     <form action="/postPage" method="post">
                       <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
-                      <button class="cta">View Details</button>
+                      <button class="cta" id="view-detials">View Details</button>
                   </form>
                   </div>
                 </div>
@@ -219,7 +225,7 @@
                   <div class="butn-container">
                     <form action="/postPage" method="post">
                       <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
-                      <button class="cta">View Details</button>
+                      <button class="cta" >View Details</button>
                   </form>
                   </div>
                 </div>

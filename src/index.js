@@ -1,5 +1,4 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
 const bcryptjs = require("bcryptjs")
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
@@ -41,7 +40,28 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 // app.use(express.json());
+const path = require("path");
+const multer = require("multer");
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.join("public", "uploads"));
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + "-" + file.originalname);
+    },
+  });
+  const storagePdf = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.join("public", "uploadsPdf"));
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + "-" + file.originalname);
+    },
+  });
+  
+const upload = multer({ storage: storage });
+const uploadsPdf = multer({ storage: storagePdf });
 mongoose
     .connect(mongoURI, {
     useNewUrlParser : true,
@@ -63,6 +83,7 @@ mongoose
       resave:false, // Forces the session to be saved back to the session store, even if the session was never modified during the request
       saveUninitialized:false, //Forces a session that is "uninitialized" to be saved to the store. A session is uninitialized when it is new but not modified
       store: store,
+      cookie: { maxAge: 1800000 },
       userId:0
       })
   );
@@ -96,9 +117,9 @@ usp.on('connection',(socket)=>{
 
 app.post('/studentHomePage', createPost.createStudentHomePage); //
 
-app.post('/editprofileDets', function(req,res,next) {console.log('Hello'); next();}, editProfile.editprofileDets); //
+app.post('/editprofileDets',upload.single('image'),editProfile.editprofileDets); //
 
-app.post('/interestedToWork', interestForm.interestedWorkForm ); //
+app.post('/interestedToWork',uploadsPdf.single('resume'), interestForm.interestedWorkForm ); //
 
 app.post('/deletepost', projControl.deleteUser);
 
@@ -153,13 +174,14 @@ app.get('/collabPage',isAuth, (req, res) => {
 app.get('/profilePage',isAuth, async(req, res) => {
     const profile = await userProfile.findOne({id:req.session.userId});
     res.render('profilePage',{profile:profile});
-    // const obj_id = req.body.obj_id;
-    // let project = await projModel.findOne({_id: obj_id});
-    // res.render('profilePage',{project:project});
 });
 
   
-
+app.post('/deleteuser' ,async(req,res)=>{
+  const {gmail} = req.body;
+  let user = await userModel.deleteOne({gmail});
+  res.redirect("/adminDashboard");
+});
 
 app.post("/login", async(req,res)=>{
   const {gmail , password} = req.body;
@@ -204,10 +226,16 @@ app.post("/login", async(req,res)=>{
 app.post("/adminlogin", async(req,res)=>{
   const { gmail, password } = req.body;
 
-  if (gmail !== "nexus@gmail.com" || password !== "nexus") {
-    return res.redirect("/adminLogin");
-  }
+  // if (gmail !== "nexus@gmail.com" || password !== "nexus") {
+  //   return res.redirect("/adminLogin");
+  // }
+  
+  const user = await userModel.findOne({role:'Admin'});
+  const isMatch = await bcryptjs.compare(password,user.password1);
 
+  if(!isMatch){
+    res.redirect("/adminLogin");
+  }
   req.session.isAuth = true;
   res.redirect("/adminDashboard");
 });
@@ -238,11 +266,6 @@ app.post("/signup", async(req,res)=>{
       }
     }
   saveUser();
-  // user.save();
-  // let userprofile = new userProfile({
-  //   id:,
-  // })
-  // user.save();
   res.redirect('/login')
 });
 
@@ -259,11 +282,7 @@ app.post('/logout',(req,res)=>{
       res.redirect("/")
   });
 });
-app.post('/deleteuser' ,async(req,res)=>{
-  const {gmail} = req.body;
-  let user = await userModel.deleteOne({gmail});
-  res.redirect("/adminDashboard");
-});
+
 
 const port = 5000;
 http.listen(port, () => {
@@ -279,18 +298,6 @@ app.get('/interested-forms', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-app.post('/interested-work', async (req, res) => {
-  try {
-    // console.log(req);
-    interestForm.interestedWorkForm(req.body,res);
-    // interestForm(req,res);
-    // res.json(forms);
-    console.log('im here');
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
 // Import the backend API from the collab page controller
 const collabRouter = require('../controllers/collabPostController');
 
@@ -305,6 +312,5 @@ app.post('/save-chat',async (req,res)=>{
     res.status(500).json({ message: error.message });
   }
 });
-// Add a new route for search
 
 

@@ -1,16 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
     const settingsButton = document.querySelector('.settings');
+    const dropdownList = document.querySelector('.list');
     const popupContainer = document.getElementById('popup-container');
     const popup = document.getElementById('popup');
     const closeButton = document.getElementById('close-popup');
+    
 
     settingsButton.addEventListener('click', function() {
-        popupContainer.style.display = 'flex';
-        setTimeout(function() {
-            popup.style.transform = 'scale(1)';
-            popup.style.opacity = '1';
-        }, 100);
-    });
+        if (dropdownList.style.display === 'block') {
+          dropdownList.style.display = 'none';
+        } else {
+          dropdownList.style.display = 'block';
+        }
+      });
+    // settingsButton.addEventListener('click', function() {
+    //     popupContainer.style.display = 'flex';
+    //     setTimeout(function() {
+    //         popup.style.transform = 'scale(1)';
+    //         popup.style.opacity = '1';
+    //     }, 100);
+    // });
 
     closeButton.addEventListener('click', function() {
         popup.style.transform = 'scale(0.5)';

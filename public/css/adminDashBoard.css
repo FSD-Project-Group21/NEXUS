@@ -32,12 +32,12 @@ body {
 .sub-heading{
   padding-left: 20px;
 }
-.icons{
+/* .icons{
   margin-top: 20px;
   width: 60%;
   display: grid;
   grid-template-columns: 1fr  1fr;
-}
+} */
 ._icon{
   display: flex;
   align-items: center;
@@ -45,7 +45,7 @@ body {
   padding-bottom: 10px;
 }
 .openIcon{
-  border-bottom: 2px solid black !important;
+  border-bottom: 2px solid rgb(121, 190, 234) !important;
 }
 .hide{
   display: none;
@@ -67,12 +67,19 @@ table {
     background-color: #cdd9e7;
   }
 
-#proj-management{
+#proj-management , #user-management , #settings ,#delete-post , #delete-user , #logout{
   margin-top: 10px;
   padding: 5px 10px;
-  background-color: #007bff;
+  background-color: #121f58;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
+
+.logout{
+  padding-left: 725px;
+}
+
+
+

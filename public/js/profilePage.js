@@ -33,14 +33,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const popupContainer = document.getElementById('popup-container');
     const popup = document.getElementById('popup');
     const closeButton = document.getElementById('close-popup');
+    const dropdownList = document.querySelector('.list');
 
     settingsButton.addEventListener('click', function() {
-        popupContainer.style.display = 'flex';
-        setTimeout(function() {
-            popup.style.transform = 'scale(1)';
-            popup.style.opacity = '1';
-        }, 100);
-    });
+        if (dropdownList.style.display === 'block') {
+          dropdownList.style.display = 'none';
+        } else {
+          dropdownList.style.display = 'block';
+        }
+      });
+
+    // settingsButton.addEventListener('click', function() {
+    //     popupContainer.style.display = 'flex';
+    //     setTimeout(function() {
+    //         popup.style.transform = 'scale(1)';
+    //         popup.style.opacity = '1';
+    //     }, 100);
+    // });
 
     closeButton.addEventListener('click', function() {
         popup.style.transform = 'scale(0.5)';
@@ -82,62 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
             popupForm.style.display = 'none';
         }, 300);
         checkBox.checked = false;
-    });
-
-    saveButton.addEventListener('click', function(event) {
-        event.preventDefault();
-        // const studentName = document.getElementsByClassName('Name').innerText;
-        const studentName = "nanditha";
-        const img = document.getElementById('profile-main-pic');
-        const role = document.getElementById('category-role').value;
-        const resume = document.getElementById('resume').value;
-        const description = document.getElementById('description').value;
-        const roleMsg = document.getElementById('category-msg');
-        const fileMsg = document.getElementById('file-msg');
-        const abtMsg = document.getElementById('about-msg');
-
-        const imgSrc = img.src;
-
-        if (role !== '' && resume !== '' && description !== '') {
-            workup.style.transform = 'scale(0.5)';
-            workup.style.opacity = '0';
-            setTimeout(function() {
-                popupForm.style.display = 'none';
-            }, 300);
-        } else {
-            console.log('Please fill in all required fields.');
-        }
-        if(role.value==='' || description===''|| resume==='')
-        {
-            roleMsg.style.display='flex';
-        }
-        const data = {
-            studentName:studentName,
-            category: role,
-            resume: resume,
-            details:description,
-            image:imgSrc,
-            isSaved:false,
-            isHired:false
-          };
-          postData(data)
-          
-          // Send the POST request using fetch
-          
-    });
-    async function postData(data) {
-        fetch("http://localhost:5000/interested-work", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          })
-            .then((response) => response.json())
-            .then((data) => console.log("Success:", data))
-            .catch((error) => console.error("Error:", error));
-    }
-        
+    }); 
 })
 //edit form 
 document.addEventListener('DOMContentLoaded', function() {
@@ -165,38 +119,38 @@ document.addEventListener('DOMContentLoaded', function() {
             editform.style.display = 'none';
         }, 300);
     });
-    saveEdits.addEventListener('click', function(event) {
-        event.preventDefault();
-        // Update name
-        const nameInput = document.getElementById('name').value;
-        if (nameInput !== '') {
-            nameElement.textContent = nameInput;
-        }
+    // saveEdits.addEventListener('click', function(event) {
+    //     event.preventDefault();
+    //     // Update name
+    //     const nameInput = document.getElementById('name').value;
+    //     if (nameInput !== '') {
+    //         nameElement.textContent = nameInput;
+    //     }
 
-        // Update about
-        const aboutInput = document.getElementById('about').value;
-        if (aboutInput !== '') {
-            aboutElement.textContent = aboutInput;
-        }
+    //     // Update about
+    //     const aboutInput = document.getElementById('about').value;
+    //     if (aboutInput !== '') {
+    //         aboutElement.textContent = aboutInput;
+    //     }
 
-        // Update profile picture (optional)
-        const imageInput = document.getElementById('pfp-img').files[0];
-        if (imageInput) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                imageElement.src = e.target.result;
-            };
-            reader.readAsDataURL(imageInput);
-        }
+    //     // Update profile picture (optional)
+    //     const imageInput = document.getElementById('pfp-img').files[0];
+    //     if (imageInput) {
+    //         const reader = new FileReader();
+    //         reader.onload = function(e) {
+    //             imageElement.src = e.target.result;
+    //         };
+    //         reader.readAsDataURL(imageInput);
+    //     }
 
-        // Hide the edit form
-        document.getElementById('edit-container').style.display = 'none';
-    });
-    function updateFileName(input) {
-        const fileName = input.files[0].name;
-        const label = input.nextElementSibling;
-        label.innerText = fileName;
-    }
+    //     // Hide the edit form
+    //     document.getElementById('edit-container').style.display = 'none';
+    // });
+    // function updateFileName(input) {
+    //     const fileName = input.files[0].name;
+    //     const label = input.nextElementSibling;
+    //     label.innerText = fileName;
+    // }
 
 
     // saveEdits.addEventListener('click', function(event) {

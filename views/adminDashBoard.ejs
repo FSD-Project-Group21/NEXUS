@@ -16,8 +16,8 @@
   <nav>
     <div class="section">
       <button id="proj-management" class="project-management _icon openIcon">Project Management</button>
-      <button class="user-management _icon">User Management</button>
-      <button class="settings _icon">Settings</button>
+      <button id="user-management" class="user-management _icon">User Management</button>
+      <button id="settings" class="settings _icon">Settings</button>
       <!-- <a href="#project-management"></a> -->
       <!-- <a href="#user-management">User Management</a> -->
       <!-- <a href="#collaboration-hub">Collaboration Hub</a>
@@ -52,7 +52,7 @@
                 <td>
                   <form action="/deletepost" method="POST">
                     <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
-                  <button type="submit">Delete Post</button>
+                  <button id="delete-post" type="submit">Delete Post</button>
                 </form>
               </td>
             </tr>
@@ -62,7 +62,7 @@
         <% } %>
       </div>
   <div class="user-management _icon-cont hide">
-    <section id="user-management">
+    <!-- <section id="user-management"> -->
       <div class="heading"> <h2>User Management</h2></div>
             <%if(users.length>0){%>
             <table>
@@ -85,7 +85,7 @@
                             <td>
                               <form action="/deleteuser" method="POST">
                                 <input type="hidden" name="gmail" value="<%= users[i]['gmail'] %>">
-                                <button type="submit">Delete User</button>
+                                <button id="delete-user" type="submit">Delete User</button>
                               </form>
                             </td>
                             
@@ -95,16 +95,19 @@
                 </tbody>
             </table>
             <%}%>
-    </section>
+    <!-- </section> -->
     
   </div>    
   
   <div class="settings _icon-cont hide">
     <div class="heading"> <h2>Settings</h2></div>
-    <div class="sub-heading"> <h3>Admin Account Settings</h3></div>
-    <form action="/logout" method="post">
-        <button>Logout</button>
+    <!-- <div class="sub-heading"> <h3>Admin Account Settings</h3></div> -->
+    <div class="logout">
+      <form action="/logout" method="post" >
+        <button id="logout" >Logout</button>
     </form>
+    </div>
+    
   </div>
 </div>
   <script src="./js/adminDashBoard.js"></script>

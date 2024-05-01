@@ -33,6 +33,12 @@
           <a href="/profilePage" class="icon-link open"><img class="profile icon"  src="/assets/profile.png"></a> 
       </div>        
   </div>
+  <div class="dropdown">
+    <div class="list">
+      <div class="item">Delete Profile</div>
+      <div class="item">Log Out</div>
+    </div>
+  </div>
   <div class="popup-container" id="popup-container">
     <div class="popup" id="popup">
         <h2>LogOut</h2>
@@ -46,11 +52,11 @@
   <div class="popup-int-form" id="popup-int-form">
     <div class="workup" id="workup">
         <div class="interested-form">
-          <form id="interested-form" method="post" action="/interestedToWork">
+          <form id="interested-form" method="post" action="/interestedToWork" enctype="multipart/form-data">
             <div class="close-button">
               <button id="close-icon"><i class="fa-solid fa-x" style="color: #000;"></i></button></div>
               <label for="category-role">Category:</label>
-              <select id="category-role" name="category-role" required>
+              <select id="category-role" name="category" required>
                 <option value="" disabled selected>Select Category</option>
                 <option value="graphic">Graphic Designer</option>
                 <option value="architecture">Architecture</option>
@@ -62,7 +68,7 @@
             <input required  type="file" id="resume" name="resume">
 
             <label class="interested-label" for="description">About:</label>
-            <textarea required id="description" name="description"></textarea>
+            <textarea required id="description" name="details"></textarea>
 
 
             <button  id="close-icon">Submit</button>
@@ -77,13 +83,13 @@
     <div class="editit" id="editit">
         <h2>Edits</h2>
         <p>Edit profile here</p>
-        <form class="edit-form" action="/editprofileDets" method="post">
+        <form class="edit-form" action="/editprofileDets" method="post" enctype="multipart/form-data">
           <label class="edit-label" for="name">Name:</label>
           <input type="text" id="name" name="name">
           <label class="edit-label" for="about">About:</label>
           <textarea required id="about" name="about"></textarea>
-          <label class="edit-label" for="pfp">Profile Picture:</label>
-          <input type="file" id="pfp-img" name="image" accept="image/*" required onchange="updateFileName(this)">
+          <label class="edit-label">Profile Picture:</label>
+          <input type="file" id="pfp-img" name="image" required>
           <div class="edit-buttons">
             <button type="submit" id="Save-edits">Save</button>
             <button type="button" id="Cancel-edits">Cancel</button>
@@ -104,7 +110,11 @@
             <div class="toggle-and-text">
               <div class="work">interested to work</div>
               <label class="toggle-switch">
-                <input id="toggle-checkbox" value="<%= profile['interestedToWork'] %>" type="checkbox">
+                <%if(profile['interestedToWork']){%>
+                  <input id="toggle-checkbox" value="<%= profile['interestedToWork'] %>" type="checkbox" checked>
+                <%}else{%>
+                  <input id="toggle-checkbox" value="<%= profile['interestedToWork'] %>" type="checkbox">
+                <%}%>
                 <div class="toggle-switch-background">
                   <div class="toggle-switch-handle"></div>
                 </div>
