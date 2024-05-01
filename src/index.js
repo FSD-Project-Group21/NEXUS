@@ -51,9 +51,17 @@ const storage = multer.diskStorage({
       cb(null, Date.now() + "-" + file.originalname);
     },
   });
+  const storagePdf = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.join("public", "uploadsPdf"));
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + "-" + file.originalname);
+    },
+  });
   
 const upload = multer({ storage: storage });
-
+const uploadsPdf = multer({ storage: storagePdf });
 mongoose
     .connect(mongoURI, {
     useNewUrlParser : true,
@@ -111,7 +119,7 @@ app.post('/studentHomePage', createPost.createStudentHomePage); //
 
 app.post('/editprofileDets',upload.single('image'),editProfile.editprofileDets); //
 
-app.post('/interestedToWork', interestForm.interestedWorkForm ); //
+app.post('/interestedToWork',uploadsPdf.single('resume'), interestForm.interestedWorkForm ); //
 
 app.post('/deletepost', projControl.deleteUser);
 
@@ -166,9 +174,6 @@ app.get('/collabPage',isAuth, (req, res) => {
 app.get('/profilePage',isAuth, async(req, res) => {
     const profile = await userProfile.findOne({id:req.session.userId});
     res.render('profilePage',{profile:profile});
-    // const obj_id = req.body.obj_id;
-    // let project = await projModel.findOne({_id: obj_id});
-    // res.render('profilePage',{project:project});
 });
 
   
@@ -251,11 +256,6 @@ app.post("/signup", async(req,res)=>{
       }
     }
   saveUser();
-  // user.save();
-  // let userprofile = new userProfile({
-  //   id:,
-  // })
-  // user.save();
   res.redirect('/login')
 });
 
@@ -292,18 +292,6 @@ app.get('/interested-forms', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-app.post('/interested-work', async (req, res) => {
-  try {
-    // console.log(req);
-    interestForm.interestedWorkForm(req.body,res);
-    // interestForm(req,res);
-    // res.json(forms);
-    console.log('im here');
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
 // Import the backend API from the collab page controller
 const collabRouter = require('../controllers/collabPostController');
 
@@ -318,6 +306,5 @@ app.post('/save-chat',async (req,res)=>{
     res.status(500).json({ message: error.message });
   }
 });
-// Add a new route for search
 
 

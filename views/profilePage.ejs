@@ -46,11 +46,11 @@
   <div class="popup-int-form" id="popup-int-form">
     <div class="workup" id="workup">
         <div class="interested-form">
-          <form id="interested-form" method="post" action="/interestedToWork">
+          <form id="interested-form" method="post" action="/interestedToWork" enctype="multipart/form-data">
             <div class="close-button">
               <button id="close-icon"><i class="fa-solid fa-x" style="color: #000;"></i></button></div>
               <label for="category-role">Category:</label>
-              <select id="category-role" name="category-role" required>
+              <select id="category-role" name="category" required>
                 <option value="" disabled selected>Select Category</option>
                 <option value="graphic">Graphic Designer</option>
                 <option value="architecture">Architecture</option>
@@ -62,7 +62,7 @@
             <input required  type="file" id="resume" name="resume">
 
             <label class="interested-label" for="description">About:</label>
-            <textarea required id="description" name="description"></textarea>
+            <textarea required id="description" name="details"></textarea>
 
 
             <button  id="close-icon">Submit</button>
@@ -104,7 +104,11 @@
             <div class="toggle-and-text">
               <div class="work">interested to work</div>
               <label class="toggle-switch">
-                <input id="toggle-checkbox" value="<%= profile['interestedToWork'] %>" type="checkbox">
+                <%if(profile['interestedToWork']){%>
+                  <input id="toggle-checkbox" value="<%= profile['interestedToWork'] %>" type="checkbox" checked>
+                <%}else{%>
+                  <input id="toggle-checkbox" value="<%= profile['interestedToWork'] %>" type="checkbox">
+                <%}%>
                 <div class="toggle-switch-background">
                   <div class="toggle-switch-handle"></div>
                 </div>

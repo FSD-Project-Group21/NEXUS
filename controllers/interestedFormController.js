@@ -1,26 +1,29 @@
 const mongoose = require('mongoose');
 const editSchema = require('../models/interestedFormModels');
+const users = require('../models/profileModel');
+const path = require("path");
+const profileModel = require('../models/profileModel');
 
-exports.interestedWorkForm = async(req,res) => {
+exports.interestedWorkForm = async(req,res,next) => {
     try{
-        const studentName = req.studentName;
-        const category = req.category;
-        const resume = req.resume;
-        const details = req.details;
-        const image = req.image;
-        const isSaved = req.isSaved;
-        const isHired = req.isHired;
+        const id = req.session.userId;
+        const userProfile = await users.findOne({id:id});
+        let studentName = userProfile.fullname;
+        let category = req.body.category;
+        let resume = path.join("uploadsPdf", req.file.originalname);
+        let details = req.body.details;
+        const image = userProfile.profileImg;
 
         const newEdit = new editSchema({
             studentName,
             category,
             resume,
             details,
-            image,
-            isSaved,
-            isHired
+            image
         });
-
+        await profileModel.findOneAndUpdate({id:req.session.userId},{$set:{interestedToWork:true}},{new:true});
+        let profile = await profileModel.findOne({id:req.session.userId});
+        res.render('profilePage',{profile:profile});
         await newEdit.save();
     }
     catch(error){

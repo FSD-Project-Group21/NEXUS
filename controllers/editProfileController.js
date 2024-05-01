@@ -3,7 +3,6 @@ const editSchema = require('../models/editProfileModels');
 // const newbio = require('../models/studentLoginModel');
 const profileModel = require('../models/profileModel');
 const path = require("path");
-const { nextTick } = require('process');
 
 exports.editprofileDets = async(req,res,next) => {
     try{

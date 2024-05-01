@@ -82,62 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             popupForm.style.display = 'none';
         }, 300);
         checkBox.checked = false;
-    });
-
-    saveButton.addEventListener('click', function(event) {
-        event.preventDefault();
-        // const studentName = document.getElementsByClassName('Name').innerText;
-        const studentName = "nanditha";
-        const img = document.getElementById('profile-main-pic');
-        const role = document.getElementById('category-role').value;
-        const resume = document.getElementById('resume').value;
-        const description = document.getElementById('description').value;
-        const roleMsg = document.getElementById('category-msg');
-        const fileMsg = document.getElementById('file-msg');
-        const abtMsg = document.getElementById('about-msg');
-
-        const imgSrc = img.src;
-
-        if (role !== '' && resume !== '' && description !== '') {
-            workup.style.transform = 'scale(0.5)';
-            workup.style.opacity = '0';
-            setTimeout(function() {
-                popupForm.style.display = 'none';
-            }, 300);
-        } else {
-            console.log('Please fill in all required fields.');
-        }
-        if(role.value==='' || description===''|| resume==='')
-        {
-            roleMsg.style.display='flex';
-        }
-        const data = {
-            studentName:studentName,
-            category: role,
-            resume: resume,
-            details:description,
-            image:imgSrc,
-            isSaved:false,
-            isHired:false
-          };
-          postData(data)
-          
-          // Send the POST request using fetch
-          
-    });
-    async function postData(data) {
-        fetch("http://localhost:5000/interested-work", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          })
-            .then((response) => response.json())
-            .then((data) => console.log("Success:", data))
-            .catch((error) => console.error("Error:", error));
-    }
-        
+    }); 
 })
 //edit form 
 document.addEventListener('DOMContentLoaded', function() {
