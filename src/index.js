@@ -226,10 +226,16 @@ app.post("/login", async(req,res)=>{
 app.post("/adminlogin", async(req,res)=>{
   const { gmail, password } = req.body;
 
-  if (gmail !== "nexus@gmail.com" || password !== "nexus") {
-    return res.redirect("/adminLogin");
-  }
+  // if (gmail !== "nexus@gmail.com" || password !== "nexus") {
+  //   return res.redirect("/adminLogin");
+  // }
+  
+  const user = await userModel.findOne({role:'Admin'});
+  const isMatch = await bcryptjs.compare(password,user.password1);
 
+  if(!isMatch){
+    res.redirect("/adminLogin");
+  }
   req.session.isAuth = true;
   res.redirect("/adminDashboard");
 });
