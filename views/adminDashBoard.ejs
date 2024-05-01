@@ -54,9 +54,6 @@
                     <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
                   <button type="submit">Delete Post</button>
                 </form>
-                <form action="/editpost" method="post" >
-                  <button>Edit Project</button>
-                </form>
               </td>
             </tr>
           <% } %>
@@ -90,7 +87,6 @@
                                 <input type="hidden" name="gmail" value="<%= users[i]['gmail'] %>">
                                 <button type="submit">Delete User</button>
                               </form>
-                              <button>Update Role</button>
                             </td>
                             
   
