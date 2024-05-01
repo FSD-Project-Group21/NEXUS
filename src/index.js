@@ -1,5 +1,4 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
 const bcryptjs = require("bcryptjs")
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
