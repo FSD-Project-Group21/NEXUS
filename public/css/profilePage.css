@@ -720,7 +720,7 @@ textarea {
   overflow: hidden;
 }
 /* work popup */
-#popup-form{
+#popup-int-form{
   position: fixed;
   top: 0;
   left: 0;
@@ -799,7 +799,7 @@ textarea {
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Ensure the popup appears above other elements */
+  z-index: 10000000; /* Ensure the popup appears above other elements */
   /* font-size: 20px;
   color: red; */
 }
