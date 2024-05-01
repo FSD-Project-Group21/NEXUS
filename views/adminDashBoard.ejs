@@ -29,7 +29,8 @@
       <a href="#settings">Settings</a> -->
     </div>
   </nav>
-  <section id="project-management">
+  <div class="project-management _icon-cont ">
+  <!-- <section id="project-management"> -->
     <h2>Project Management</h2>
     <%if(projects.length>0){%>
     <table>
@@ -63,8 +64,9 @@
           <% } %>
         </tbody>
         </table>
-      </section>
-  <section id="user-management">
+        <% } %>
+      </div>
+  <div class="user-management _icon-cont hide">
     <section id="user-management">
       <div class="heading"> <h2>User Management</h2></div>
             <%if(users.length>0){%>

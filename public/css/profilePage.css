@@ -372,10 +372,29 @@ main{
   object-fit: contain;
 }
 .post-text{
-  flex: 1;
+  
+  /* flex: 1; */
   overflow: scroll;
   padding-left: 3%;
   font-family: Google-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.post-text-delete{
+  width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.delete{
+  /* margin-right: 0; */
+  justify-items: right;
+  justify-content: end;
+
+}
+.delete i{
+  font-size: 30px;
+  /* justify-content: end; */
+  margin-right: 0;
 }
 h4{
   font-family: "Unna", serif;
@@ -396,7 +415,17 @@ h5{
   display: grid;
   /* width: 73.625rem; */
   grid-template-rows: repeat(4, 0.5fr); /* 3 rows with equal height */
-  grid-template-columns: repeat(2, 1fr); /* 3 columns with equal width */
+  /* grid-template-columns: repeat(2, 1fr);  */
+  gap: 2.25rem; /* Gap between grid items */
+  padding-top: 2.45rem;
+  padding-bottom: 2.45rem;
+  
+}
+.grid-container-saved {
+  display: grid;
+  /* width: 73.625rem; */
+  grid-template-rows: repeat(4, 0.5fr); /* 3 rows with equal height */
+  grid-template-columns: repeat(2, 1fr); 
   gap: 2.25rem; /* Gap between grid items */
   padding-top: 2.45rem;
   padding-bottom: 2.45rem;
@@ -562,9 +591,9 @@ textarea {
 .post-cont{
   /* background-color: #888; */
 
-  height: 65vh;
+  height: 100%;
   
-  width: 100%;
+  width: 1000px;
   position: relative;
   padding: 0 10% 10% 10%;
 }
@@ -826,3 +855,9 @@ textarea {
 #category-msg{
   display: none;
 }
+
+/* delete */
+/* .delete{
+  margin-bottom: 0;
+  margin-right: 0;
+} */
