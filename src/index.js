@@ -21,6 +21,8 @@ const studentHomePage = require('../controllers/studentHomePageController');
 const projControl = require('../controllers/adminDashBoardController')
 const ejs = require('ejs');
 const Chat = require('../models/chatModel');
+const viewcontroller = require('../controllers/projectPostController')
+const searchcontrol = require('../controllers/searchpageController')
 // >>>>>>> 3b792c975126b2da3475d4d96219b5dd6f5c7b19
 
 const app = express();
@@ -98,7 +100,13 @@ app.post('/interestedToWork', interestForm.interestedWorkForm ); //
 
 app.post('/deletepost', projControl.deleteUser);
 
+app.post('/postPage', viewcontroller.viewthepost);
 
+app.post('/savedposts',viewcontroller.viewsavedposts)
+
+// app.post('/searchPage', searchcontrol.findthepost);
+
+app.post('/sendreport',viewcontroller.reportposts);
 
 app.get("/", (req, res) => {
   res.render("landingPage");
@@ -126,7 +134,9 @@ app.get('/postPage',isAuth, (req, res) => {
 app.get('/studentHomePage',isAuth, studentHomePage.studHomPag);
 app.get('/searchPage',isAuth, async(req, res) => {
     const projects = await projModel.find({});
-    res.render('searchPage',{projects:projects});
+    const obj_id = req.body.searchquery;
+    let posts = await projModel.find({ obj_id});
+    res.render('searchPage',{projects:projects,posts:posts});
 });
 app.get('/hirePage',isAuth, (req, res) => {
   res.render('hirePage');
@@ -138,8 +148,10 @@ app.get('/notificationPage',isAuth, (req, res) => {
 app.get('/collabPage',isAuth, (req, res) => {
     res.render('collabPage');
 });
-app.get('/profilePage',isAuth, (req, res) => {
-    res.render('profilePage');
+app.get('/profilePage',isAuth, async(req, res) => {
+  const obj_id = req.body.obj_id;
+    let project = await projModel.findOne({_id: obj_id});
+    res.render('profilePage',{project:project});
 });
 
   
@@ -219,7 +231,7 @@ app.post('/logout',(req,res)=>{
       res.redirect("/")
   });
 });
-app.post('/deleteuser',async(req,res)=>{
+app.post('/deleteuser' ,async(req,res)=>{
   const {gmail} = req.body;
   let user = await userModel.deleteOne({gmail});
   res.redirect("/adminDashboard");
@@ -263,12 +275,5 @@ app.post('/save-chat',async (req,res)=>{
   }
 });
 // Add a new route for search
-app.get('/search', async (req, res) => {
-  const { query } = req.query;
-  try {
-    const projects = await projModel.find({ projectName: { $regex: query, $options: 'i' } });
-    res.json(projects);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
+
+

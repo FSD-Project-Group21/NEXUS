@@ -40,6 +40,7 @@
             <th>Description</th>
             <th>Image</th>
             <th>Category</th>
+            <th>Reports</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -50,7 +51,7 @@
                 <td><%= projects[i]['description'] %></td>
                 <td><%= projects[i]['image'] %></td>
                 <td><%= projects[i]['category'] %></td>
-                <!-- Example button that triggers the delete request -->
+                <td><%= projects[i]['reports'] %></td>                <!-- Example button that triggers the delete request -->
                 <td>
                   <form action="/deletepost" method="POST">
                     <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
@@ -104,118 +105,10 @@
     </section>
     
   </div>    
-  <div class="collaboration-hub _icon-cont hide">
-    <div class="heading"><h2>Collaboration Hub</h2></div>
-    <div class="sub-heading"><h3>Collaboration Groups</h3></div>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Members</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Group A</td>
-          <td>Lorem ipsum dolor sit amet</td>
-          <td>5</td>
-          <td>
-            <button>Edit</button>
-            <button>Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Group B</td>
-          <td>Consectetur adipiscing elit</td>
-          <td>10</td>
-          <td>
-            <button>Edit</button>
-            <button>Delete</button>
-          </td>
-        </tr>
-        <!-- Add more group rows as needed -->
-      </tbody>
-    </table>
-  </div>
-  <div class="connection-hub _icon-cont hide">
-    <div class="heading"><h2>Connection Hub</h2></div>
-    <div class="sub-heading"><h3>Connections</h3></div>
-    <table>
-      <thead>
-        <tr>
-          <th>User</th>
-          <th>Project</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>John Doe</td>
-          <td>Project A</td>
-          <td>
-            <button>Delete Connection</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Jane Smith</td>
-          <td>Project B</td>
-          <td>
-            <button>Delete Connection</button>
-          </td>
-        </tr>
-        <!-- Add more connection rows as needed -->
-      </tbody>
-    </table>
-  </div>
-  <div class="employment-platform _icon-cont hide">
-    <div class="heading">
-    <h2>
-      Employment Platform</h2></div>
-      <div class="sub-heading"><h3>Job Postings</h3></div>
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Location</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Job Title A</td>
-          <td>Lorem ipsum dolor sit amet</td>
-          <td>Location A</td>
-          <td>
-            <button>Edit</button>
-            <button>Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Job Title B</td>
-          <td>Consectetur adipiscing elit</td>
-          <td>Location B</td>
-          <td>
-            <button>Edit</button>
-            <button>Delete</button>
-          </td>
-        </tr>
-        <!-- Add more job posting rows as needed -->
-      </tbody>
-    </table>
-  </div>
+  
   <div class="settings _icon-cont hide">
     <div class="heading"> <h2>Settings</h2></div>
     <div class="sub-heading"> <h3>Admin Account Settings</h3></div>
-    <label for="username">Username:</label>
-    <input type="text" id="username" value="Nexus" disabled> 
-    <label for="password">Current Password:</label>
-    <input type="password" id="old-password" placeholder="Enter current password">
-    <label for="password">New Password:</label>
-    <input type="password" id="password" placeholder="Enter new password">
-    <button onclick="updatePassword()">Update Password</button>
     <form action="/logout" method="post">
         <button>Logout</button>
     </form>

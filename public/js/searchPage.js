@@ -95,3 +95,13 @@ searchIcon.addEventListener('click', function() {
 tile.classList.toggle('open');
   cat.classList.add("hide");
 });
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     const searchButton = document.getElementById('search-icon');
+//     const chummsContainer = document.querySelector('.chumma');
+
+//     searchButton.addEventListener('click', function () {
+
+//         chummsContainer.style.display = 'flex'
+//     });
+// });

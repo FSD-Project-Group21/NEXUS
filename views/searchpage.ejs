@@ -45,16 +45,49 @@
 </div>
     <main>
     <div class="bg">
-      <div class="overall-search">
-        <div class="search">
-            <input placeholder="What are you looking for?" type="text">
-            <div class="search-button">
-                <button type="submit" id="search-icon">
-                    <img class="search-bar-icon" src="./assets/search-button.png">
-                </button>
-            </div>
-        </div>
+      <form action="/searchPage" method="post">
+        <div class="overall-search">
+          <div class="search">
+              <input placeholder="What are you looking for?" type="text" name="searchquery">
+              <div class="search-button">
+                  <button type="submit" id="search-icon">
+                      <img class="search-bar-icon" src="./assets/search-button.png">
+                  </button>
+              </div>
+          </div>
+      </form>
      </div>
+     <!-- <div class="chumma">
+      <% if (posts.length > 0) { %>
+        <div class="content">
+          <div class="top">
+            <a href="searchpage" class="back"><i class="fa-solid fa-arrow-left"></i> Go To Search</a>
+          </div>
+          <% for (let i = 0; i < posts.length; i++) { %>
+            
+              <div class="projects">
+                <div class="collab">
+                  <div class="collab-preview">
+                    <img src="./assets/<%= projects[i].image %>" alt="Image">
+                  </div>
+                  <div class="collab-info">
+                    <h2><%= posts[i].projectName %></h2>
+                    <h6><%= posts[i].description %></h6>
+                    <div class="butn-container">
+                      <button class="butn">View Details</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          <% } %>
+        </div>
+      <% } else{ %>
+        <h1>
+          nope
+        </h1>
+      <% } %>
+    </div> -->
      <!-- categories should close when tiles content open -->
      <div class="categories "> 
         <button class="graphic-design _tile ">
@@ -124,8 +157,10 @@
                     <h2><%= projects[i].projectName %></h2>
                     <h6><%= projects[i].description %></h6>
                     <div class="butn-container">
-                      <button class="butn">View Details</button>
-                      <!-- <button class="butn">Request</button> -->
+                      <form action="/postPage" method="post">
+                        <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
+                        <button>View Details</button>
+                    </form>
                     </div>
                   </div>
                 </div>
@@ -152,8 +187,10 @@
                   <h2><%= projects[i].projectName %></h2>
                   <h6><%= projects[i].description %></h6>
                   <div class="butn-container">
-                    <button class="butn">View Details</button>
-                    <!-- <button class="butn">Request</button> -->
+                    <form action="/postPage" method="post">
+                      <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
+                      <button class="cta">View Details</button>
+                  </form>
                   </div>
                 </div>
               </div>
@@ -179,8 +216,10 @@
                   <h2><%= projects[i].projectName %></h2>
                   <h6><%= projects[i].description %></h6>
                   <div class="butn-container">
-                    <button class="butn">View Details</button>
-                    <!-- <button class="butn">Request</button> -->
+                    <form action="/postPage" method="post">
+                      <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
+                      <button class="cta">View Details</button>
+                  </form>
                   </div>
                 </div>
               </div>
@@ -206,8 +245,10 @@
                   <h2><%= projects[i].projectName %></h2>
                   <h6><%= projects[i].description %></h6>
                   <div class="butn-container">
-                    <button class="butn">View Details</button>
-                    <!-- <button class="butn">Request</button> -->
+                    <form action="/postPage" method="post">
+                      <textarea name="obj_id" style="display: none;"><%= projects[i]['_id'] %></textarea>
+                      <button class="cta">View Details</button>
+                  </form>
                   </div>
                 </div>
               </div>
