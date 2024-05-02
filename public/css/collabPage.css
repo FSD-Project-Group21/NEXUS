@@ -454,3 +454,42 @@
   color: #000000; /* text color */
   overflow: hidden;
 }
+.delete-popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  backdrop-filter: blur(5px); /* Apply blur effect to background */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999; /* Ensure the popup appears above other elements */
+}
+
+.delete-popup {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index:10000;  /* Ensure the popup appears above other elements */
+  transform: scale(0.5);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+
+#close-delete-popup {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#close-delete-popup:hover,#delete:hover {
+  background-color: #0056b3;
+}

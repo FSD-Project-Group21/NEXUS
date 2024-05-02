@@ -32,8 +32,8 @@
     </div>
     <div class="dropdown">
         <div class="list">
-          <div class="item">Delete Profile</div>
-          <div class="item">Log Out</div>
+          <div class="item"><button class="deleteacc">Delete Account</button></div>
+          <div class="item"><button class="logoutbutton">Log Out</button></div>
         </div>
       </div>
     <div class="popup-container" id="popup-container">
@@ -43,6 +43,16 @@
             <div class="logout-options">
                 <form action="/logout" method="post"> <button id="logout">Yes</button> </form>
                 <button id="close-popup">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="delete-popup-container" id="delete-popup-container">
+        <div class="delete-popup" id="delete-popup">
+            <h2>Delete</h2>
+            <p>Are you sure you want to Delete your account?</p>
+            <div class="delete-options">
+                <form action="/deletetheuser" method="post"> <button id="delete">Yes</button> </form>
+                <button id="close-delete-popup">No</button>
             </div>
         </div>
     </div>

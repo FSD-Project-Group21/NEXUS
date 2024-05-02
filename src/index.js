@@ -125,11 +125,14 @@ app.post('/deletepost', projControl.deleteUser);
 
 app.post('/postPage', viewcontroller.viewthepost);
 
-app.post('/savedposts',viewcontroller.viewsavedposts)
+app.post('/savedposts',viewcontroller.viewsavedposts);
+
+// app.post('/deletetheuser',studentHomePage.deletetheUser)
 
 // app.post('/searchPage', searchcontrol.findthepost);
 
 app.post('/sendreport',viewcontroller.reportposts);
+
 
 app.get("/", (req, res) => {
   res.render("landingPage");
@@ -143,7 +146,7 @@ app.get('/login', (req, res) => {
 app.get('/adminLogin', (req, res) => {
   res.render('adminLogin');
 });
-app.get('/adminDashBoard', async(req, res) => {
+app.get('/adminDashBoard',isAuth, async(req, res) => {
   const users = await userModel.find({});
   const projects = await projModel.find({});
   res.render('adminDashBoard',{users:users,projects:projects});
@@ -176,6 +179,11 @@ app.get('/profilePage',isAuth, async(req, res) => {
     res.render('profilePage',{profile:profile});
 });
 
+app.post('/deletetheuser',async(req,res)=>{
+  const userid = req.session.userId;
+  let deleted = await userModel.deleteOne({_id: userid});
+  res.redirect('/login')
+})
   
 app.post('/deleteuser' ,async(req,res)=>{
   const {gmail} = req.body;

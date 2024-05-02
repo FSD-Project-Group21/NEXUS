@@ -108,3 +108,47 @@ document.addEventListener("DOMContentLoaded", function () {
         loadMoreBtn.style.display = "none";
     }
 });
+document.addEventListener('DOMContentLoaded',function(){
+    const logoutButton = document.querySelector('.logoutbutton');
+    const popupContainer = document.getElementById('popup-container');
+    const popup = document.getElementById('popup');
+    const closePopupButton = document.getElementById('close-popup');
+
+    logoutButton.addEventListener('click', function() {
+        popupContainer.style.display = 'flex';
+        setTimeout(function() {
+            popup.style.transform = 'scale(1)';
+            popup.style.opacity = '1';
+        }, 100);
+    });
+
+    closePopupButton.addEventListener('click', function() {
+        popup.style.transform = 'scale(0.5)';
+        popup.style.opacity = '0';
+        setTimeout(function() {
+            popupContainer.style.display = 'none';
+        }, 300);
+    });
+})
+document.addEventListener('DOMContentLoaded',function(){
+    const deleteButton = document.querySelector('.deleteacc');
+    const popupContainer = document.getElementById('delete-popup-container');
+    const popup = document.getElementById('delete-popup');
+    const closePopupButton = document.getElementById('close-delete-popup');
+
+    deleteButton.addEventListener('click', function() {
+        popupContainer.style.display = 'flex';
+        setTimeout(function() {
+            popup.style.transform = 'scale(1)';
+            popup.style.opacity = '1';
+        }, 100);
+    });
+
+    closePopupButton.addEventListener('click', function() {
+        popup.style.transform = 'scale(0.5)';
+        popup.style.opacity = '0';
+        setTimeout(function() {
+            popupContainer.style.display = 'none';
+        }, 300);
+    });
+})
