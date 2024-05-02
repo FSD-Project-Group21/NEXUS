@@ -88,9 +88,9 @@
         <% for(var post=0; post<len; post++) { %>
         <div class="card card_large" id="c3"> 
             <img src="./assets/<%= Posts[post].image[0] %>" alt="">
-            <h2><%= Posts[post].projectName %></h2>
+            <h2><%= Posts[post]['projectName'] %></h2>
             <p>
-                <%= Posts[post].description %>
+                <%= Posts[post]['description'] %>
             </p>
             <div class="overlay"> 
                 <div class="reactions">
