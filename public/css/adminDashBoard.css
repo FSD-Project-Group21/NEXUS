@@ -67,7 +67,7 @@ table {
     background-color: #cdd9e7;
   }
 
-#proj-management , #user-management , #settings ,#delete-post , #delete-user , #logout{
+#proj-management , #user-management , #settings ,#delete-post , #delete-user , #logout,#updateRole{
   margin-top: 10px;
   padding: 5px 10px;
   background-color: #121f58;

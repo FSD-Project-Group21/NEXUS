@@ -127,6 +127,8 @@ app.post('/postPage', viewcontroller.viewthepost);
 
 app.post('/savedposts',viewcontroller.viewsavedposts);
 
+app.post('/updateuser',projControl.updateUser)
+
 // app.post('/deletetheuser',studentHomePage.deletetheUser)
 
 // app.post('/searchPage', searchcontrol.findthepost);

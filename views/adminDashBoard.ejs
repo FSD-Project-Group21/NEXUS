@@ -87,6 +87,10 @@
                                 <input type="hidden" name="gmail" value="<%= users[i]['gmail'] %>">
                                 <button id="delete-user" type="submit">Delete User</button>
                               </form>
+                              <form action="/updateuser" method="POST">
+                                <input type="text" name="newrole" required>
+                                <button id="updateRole" type="submit">Update Role</button>
+                              </form>
                             </td>
                             
   
