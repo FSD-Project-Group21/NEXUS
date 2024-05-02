@@ -7,7 +7,7 @@ exports.viewthepost = async(req,res)=>{
     // const id = req.session.userId;
     // console.log(obj_id);
     let projectData = await postSchema.findOne({_id: obj_id});
-    let id = projectData.studentId
+    let id = projectData.studentId;
     let user = await profileModel.findOne({id:id});
     let fullname = user.fullname;
     let userimage = user.profileImg;
@@ -33,7 +33,20 @@ exports.reportposts = async (req, res) => {
 
     try {
         // Find the project by ID and increment the reports field by 1
-        const project = await postSchema.findByIdAndUpdate(projectId, { $inc: { reports: 1 } }, { new: true });
+        const projectData = await postSchema.findByIdAndUpdate(projectId, { $inc: { reports: 1 } }, { new: true });
+        let id = projectData.studentId;
+        let user = await profileModel.findOne({id:id});
+        let fullname = user.fullname;
+        let userimage = user.profileImg;
+        let project = {
+            _id:projectData._id,
+            fullname:fullname,
+            userimage:userimage,
+            projectName:projectData.projectName,
+            description:projectData.description,
+            image:projectData.image,
+            category:projectData.category
+        };
         res.render('postPage',{project:project})
     } catch (err) {
         console.error(err);

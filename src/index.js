@@ -278,7 +278,7 @@ app.post("/signup", async(req,res)=>{
 });
 
 app.get('/messagePage',isAuth, async(req, res) => {
-  const users = await userModel.find({_id:{$nin:[req.session.userId]}});
+  const users = await profileModel.find({id:{$nin:[req.session.userId]}});
   const currUserId = req.session.userId;
   res.render('messagePage',{users,currUserId});
 });
@@ -308,6 +308,7 @@ app.get('/interested-forms', async (req, res) => {
 });
 // Import the backend API from the collab page controller
 const collabRouter = require('../controllers/collabPostController');
+const profileModel = require("../models/profileModel");
 
 app.use(collabRouter);
 

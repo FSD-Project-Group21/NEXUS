@@ -69,10 +69,10 @@
                         <div class="contacts-list">
                             <%if(users.length>0){%>
                                 <%for(let i=0;i<users.length;i++){%>
-                                    <button class="contact-chat"  id="contact-<%=users[i]['_id']%>" data-id="<%=users[i]['_id']%>">
+                                    <button class="contact-chat"  id="contact-<%=users[i]['id']%>" data-id="<%=users[i]['id']%>">
                                         <div class="contact">
                                             <div class="contact-profile">
-                                                <img src="./assets/harry_styles.jpg" alt="profile">
+                                                <img src="<%=users[i]['profileImg']%>" alt="profile">
                                             </div>
                                             <div class="contact-details">
                                                 <h5><%=users[i]['fullname']%></h5>
@@ -205,12 +205,12 @@
             </div>
             <%if(users.length>0){%>
                 <%for(let i=0;i<users.length;i++){%>
-                    <div class="texts hide" id="contact-<%=users[i]['_id']%>-texts">
+                    <div class="texts hide" id="contact-<%=users[i]['id']%>-texts">
                         <div class="chat">
                             <div class="chat-bar">
                                 <div class="chat-info">
                                     <div class="chat-profile">
-                                        <img src="./assets/harry_styles.jpg" alt="profile">
+                                        <img src="<%= users[i]['profileImg']%>" alt="profile">
                                     </div>
                                     <div class="chat-details">
                                         <div class="name">

@@ -62,7 +62,7 @@
             <p>Are you sure you want to Report?</p>
             <div class="report-options">
                 <form action="/sendreport" method="post">
-                    <textarea name="report" style="display: none;"><%= project['_id'] %></textarea>
+                    <textarea name="report" style="display: none;"><%=project['_id']%></textarea>
                     <button id="yesreport">Yes</button>
                 </form>
               <button id="close-report-popup">No</button>
