@@ -578,3 +578,7 @@ label{
 #close-delete-popup:hover,#delete:hover {
   background-color: #0056b3;
 }
+.deleteacc,.logoutbutton{
+  border: none !important;
+  width: 100%;
+}
