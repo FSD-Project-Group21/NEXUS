@@ -40,13 +40,35 @@ router.post(
       // Save the new post to the database
       await newPost.save();
 
-      res.status(201).json({ message: "Post created successfully" });
+      res.redirect('/collabPage');
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Internal server error" });
     }
   }
 );
+
+
+router.post("/api/collab-request", async (req, res) => {
+  try {
+    const { projectId } = req.body;
+
+    const userId = req.session.userId;
+
+    // Create a new instance of the projectUserCollab model
+    const newRequest = new projectUserCollabModel({
+      projectId: projectId,
+      userId: userId,
+      status: "Pending",
+    });
+
+    await newRequest.save();
+    res.status(201).json({ message: "Request sent successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 router.get("/api/get-all-posts", async (req, res) => {
   try {
@@ -57,7 +79,7 @@ router.get("/api/get-all-posts", async (req, res) => {
       { projectId: 1, _id: 0 }
     );
 
-    const posts = await projectCollabModel
+    const postsNoRequests = await projectCollabModel
       .find({
         _id: {
           $nin: user_projects.map((project) => project.projectId),
@@ -68,13 +90,29 @@ router.get("/api/get-all-posts", async (req, res) => {
       })
       .exec();
 
+    const postsRequests = await projectCollabModel
+      .find({
+        _id: {
+          $in: user_projects.map((project) => project.projectId),
+        },
+        owner: {
+          $ne: userId,
+        },
+      })
+      .exec();
+
+    const posts = {
+      postsNoRequests: postsNoRequests,
+      postsRequests: postsRequests,
+    };
+
     res.json(posts);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
-
+//===================================================================================================================
 router.post("/api/handle-request", async (req, res) => {
   try {
     const { projectId, userId, status } = req.body;
@@ -97,7 +135,7 @@ router.get("/api/get-my-posts", async (req, res) => {
 
     const posts = await projectCollabModel.find({ owner: userId });
 
-    const requests = await projectUserCollabModel.aggregate([
+    const requestsPending = await projectUserCollabModel.aggregate([
       {
         $match: { projectId: { $in: posts.map((post) => post._id) } },
       },
@@ -130,33 +168,51 @@ router.get("/api/get-my-posts", async (req, res) => {
       },
     ]);
 
+    const requestsNotPending = await projectUserCollabModel.aggregate([
+      {
+        $match: { projectId: { $in: posts.map((post) => post._id) } },
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "userId",
+          foreignField: "_id",
+          as: "user",
+        },
+      },
+      {
+        $lookup: {
+          from: "projects_collabs",
+          localField: "projectId",
+          foreignField: "_id",
+          as: "project",
+        },
+      },
+      {
+        $unwind: "$user",
+      },
+      {
+        $unwind: "$project",
+      },
+      {
+        $match: {
+        status: {$in:['Accepted','Rejected']},
+        },
+      },
+    ]);  
+
+    const requests = {
+      requestsPending: requestsPending,
+      requestsNotPending: requestsNotPending,
+    };
+
     res.json(requests);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
-
-router.post("/api/collab-request", async (req, res) => {
-  try {
-    const { projectId } = req.body;
-
-    const userId = req.session.userId;
-
-    // Create a new instance of the projectUserCollab model
-    const newRequest = new projectUserCollabModel({
-      projectId: projectId,
-      userId: userId,
-      status: "Pending",
-    });
-
-    await newRequest.save();
-    res.status(201).json({ message: "Request sent successfully" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
+//=========================================================================================================================
 
 router.get("/api/get-my-requests", async (req, res) => {
   try {

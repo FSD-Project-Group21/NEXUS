@@ -334,6 +334,19 @@
   
 }
 
+.btn-unresponsive {
+  background-color: #d59292;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  padding: 7px 20px;
+  bottom: 30px;
+  right: 30px;
+  letter-spacing: 1px;
+  margin-top:5px;
+}
+
 .collab-btn{
   background: none !important;
   border: 0;
