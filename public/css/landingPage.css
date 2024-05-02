@@ -513,9 +513,9 @@ canvas {
 }
 .navig {
   /* font-size: 23px; */
-  cursor: pointer;
-  border: none;
-  outline: none;
+  /* cursor: pointer; */
+  /* border: none; */
+  /* outline: none; */
   background: transparent;
   color: white;
   position: relative;
@@ -523,4 +523,7 @@ canvas {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+  padding-top: 50px;
+  padding-right: 150px;
+  font-size: 30px;
 }

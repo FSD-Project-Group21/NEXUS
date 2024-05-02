@@ -67,7 +67,7 @@ table {
     background-color: #cdd9e7;
   }
 
-#proj-management , #user-management , #settings{
+#proj-management , #user-management , #settings ,#delete-post , #delete-user , #logout{
   margin-top: 10px;
   padding: 5px 10px;
   background-color: #121f58;
@@ -75,6 +75,10 @@ table {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.logout{
+  padding-left: 725px;
 }
 
 

@@ -14,6 +14,7 @@ const collabcont0 = document.querySelector(".collab-container0");
 const collabcont1 = document.querySelector(".collab-container1");
 const collabcont2 = document.querySelector(".collab-container2");
 
+
 collab0.addEventListener("click", () => {
   collab0.classList.add("collab-active");
   collab1.classList.remove("collab-active");
@@ -45,14 +46,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const popupContainer = document.getElementById("popup-container");
   const popup = document.getElementById("popup");
   const closeButton = document.getElementById("close-popup");
+  const dropdownList = document.querySelector('.list');
 
-  settingsButton.addEventListener("click", function () {
-    popupContainer.style.display = "flex";
-    setTimeout(function () {
-      popup.style.transform = "scale(1)";
-      popup.style.opacity = "1";
-    }, 100);
-  });
+    settingsButton.addEventListener('click', function() {
+        if (dropdownList.style.display === 'block') {
+          dropdownList.style.display = 'none';
+        } else {
+          dropdownList.style.display = 'block';
+        }
+      });
+
+  // settingsButton.addEventListener("click", function () {
+  //   popupContainer.style.display = "flex";
+  //   setTimeout(function () {
+  //     popup.style.transform = "scale(1)";
+  //     popup.style.opacity = "1";
+  //   }, 100);
+  // });
 
   closeButton.addEventListener("click", function () {
     popup.style.transform = "scale(0.5)";
@@ -90,14 +100,14 @@ document.addEventListener("DOMContentLoaded", function () {
 addEventListener("load", async function (event) {
   const response1 = await fetch("http://localhost:5000/api/get-all-posts");
   let postProject = await response1.json();
-
+  
   const response2 = await fetch("http://localhost:5000/api/get-my-posts");
   let recieveRequests = await response2.json();
 
   const response3 = await fetch("http://localhost:5000/api/get-my-requests");
   let myRequests = await response3.json();
 
-  for (let i of postProject) {
+  for (let i of postProject.postsNoRequests) {
     // Create Card
     let card = document.createElement("div");
     card.classList.add("collab");
@@ -153,7 +163,64 @@ addEventListener("load", async function (event) {
     document.getElementById("collab-container-send").appendChild(card);
   }
 
-  for (let x of recieveRequests) {
+  
+  for (let i of postProject.postsRequests) {
+    // Create Card
+    let card = document.createElement("div");
+    card.classList.add("collab");
+    card.classList.add(i.category);
+
+    // Image Container
+    // let imageContainer = document.createElement("div");
+    // imageContainer.classList.add("collab-preview");
+    let imgContainer = document.createElement("div");
+    imgContainer.className = "collab-preview";
+    let image = document.createElement("img");
+    image.setAttribute("src", i.image);
+    image.setAttribute("alt", "Image");
+    // imageContainer.appendChild(image);
+    // card.appendChild(imageContainer);
+    imgContainer.appendChild(image);
+    card.appendChild(imgContainer);
+
+    // Info Container
+    let infoContainer = document.createElement("div");
+    infoContainer.classList.add("collab-info");
+
+    // Product Name
+    let title = document.createElement("h2");
+    title.innerText = i.projectName;
+    infoContainer.appendChild(title);
+
+    // Details
+    let details = document.createElement("h6");
+    details.innerText = i.description;
+    infoContainer.appendChild(details);
+
+    // Resume
+    // let resume = document.createElement('object');
+    // resume.data = i.resume;
+    // resume.width = "800";
+    // resume.height = "500";
+    // infoContainer.appendChild(resume);
+
+    let btnContainer = document.createElement("div");
+    btnContainer.classList.add("btn-container");
+
+    // Button
+    let button = document.createElement("button");
+    button.id = i._id;
+    button.classList.add("btn-unresponsive");
+    // button.classList.add("btna");
+    button.textContent = "Requested";
+    btnContainer.appendChild(button);
+    infoContainer.appendChild(btnContainer);
+
+    card.appendChild(infoContainer);
+    document.getElementById("collab-container-send").appendChild(card);
+  }
+
+  for (let x of recieveRequests.requestsPending) {
     let i = x.project;
     let u = x.user;
 
@@ -225,6 +292,77 @@ addEventListener("load", async function (event) {
     document.getElementById("collab-container-receive").appendChild(card);
   }
 
+  for (let x of recieveRequests.requestsNotPending) {
+    let i = x.project;
+    let u = x.user;
+
+    // Create Card
+    let card = document.createElement("div");
+    card.classList.add("collab");
+    card.classList.add(i.category);
+
+    // Image Container
+    // let imageContainer = document.createElement("div");
+    // imageContainer.classList.add("collab-preview");
+    let imgContainer = document.createElement("div");
+    imgContainer.className = "collab-preview";
+    let image = document.createElement("img");
+    image.setAttribute("src", i.image);
+    image.setAttribute("alt", "Image");
+    // imageContainer.appendChild(image);
+    // card.appendChild(imageContainer);
+    imgContainer.appendChild(image);
+    card.appendChild(imgContainer);
+
+    // Info Container
+    let infoContainer = document.createElement("div");
+    infoContainer.classList.add("collab-info");
+
+    // Product Name
+    let title = document.createElement("h2");
+    title.innerText = i.projectName;
+    infoContainer.appendChild(title);
+
+    // User Name
+    let user = document.createElement("h3");
+    user.innerText = "Requested By : " + u.fullname;
+    infoContainer.appendChild(user);
+
+    // Details
+    let details = document.createElement("h6");
+    details.innerText = i.description;
+    infoContainer.appendChild(details);
+
+    // Resume
+    // let resume = document.createElement('object');
+    // resume.data = i.resume;
+    // resume.width = "800";
+    // resume.height = "500";
+    // infoContainer.appendChild(resume);
+
+    let btnContainer = document.createElement("div");
+    btnContainer.classList.add("btn-container");
+
+    // Button
+    let buttonA = document.createElement("button");
+    buttonA.setAttribute("project", i._id);
+    buttonA.setAttribute("user", u._id);
+    buttonA.classList.add("btn-unresponsive");
+    // buttonA.classList.add("btnb");
+    buttonA.textContent = "Accepted/Rejected";
+    // let buttonD = document.createElement("button");
+    // buttonD.setAttribute("project", i._id);
+    // buttonD.setAttribute("user", u._id);
+    // buttonD.classList.add("btn");
+    // buttonD.classList.add("btnb");
+    // buttonD.textContent = "Decline";
+    btnContainer.appendChild(buttonA);
+    // btnContainer.appendChild(buttonD);
+    infoContainer.appendChild(btnContainer);
+
+    card.appendChild(infoContainer);
+    document.getElementById("collab-container-receive").appendChild(card);
+  }
   for (let x of myRequests) {
     let i = x.project;
 
@@ -273,6 +411,35 @@ addEventListener("load", async function (event) {
 
     card.appendChild(infoContainer);
     document.getElementById("collab-container-status").appendChild(card);
+  }
+
+  if (
+    postProject.postsNoRequests.length === 0 &&
+    postProject.postsRequests.length === 0
+  ) {
+    let noRequestsText = document.createElement("p");
+    noRequestsText.innerText = "Sorry, There Are No New Collab Listings";
+    document
+      .getElementById("collab-container-send")
+      .appendChild(noRequestsText);
+  }
+
+  if (recieveRequests.requestsPending.length === 0 &&
+    recieveRequests.requestsNotPending.length === 0
+  ) {
+    let noRequestsText = document.createElement("p");
+    noRequestsText.innerText = "You Have Not Received Any Collab Requests";
+    document
+      .getElementById("collab-container-receive")
+      .appendChild(noRequestsText);
+  }
+
+  if (myRequests.length === 0) {
+    let noRequestsText = document.createElement("p");
+    noRequestsText.innerText = "You Have Not Sent Any Collab Requests";
+    document
+      .getElementById("collab-container-status")
+      .appendChild(noRequestsText);
   }
 
   let buttons = document.querySelectorAll(".btna");
