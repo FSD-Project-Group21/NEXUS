@@ -24,7 +24,6 @@ const viewcontroller = require('../controllers/projectPostController')
 const searchcontrol = require('../controllers/searchpageController')
 const userProfile = require('../models/profileModel')
 const { default: router } = require("../controllers/collabPostController");
-const Admin1 = require('../models/adminModel');
 // >>>>>>> 3b792c975126b2da3475d4d96219b5dd6f5c7b19
 
 const app = express();
@@ -78,7 +77,7 @@ mongoose
         uri: 'mongodb://localhost:27017/NEXUS',
         collection: 'mysessions'
     });
-    
+
   app.use(session({
       secret:'key that will sign the cookie',
       resave:false, // Forces the session to be saved back to the session store, even if the session was never modified during the request
@@ -88,8 +87,6 @@ mongoose
       userId:0
       })
   );
-
-
   const isAuth = (req,res,next) => {
     if(req.session.isAuth){
         next();
@@ -99,7 +96,6 @@ mongoose
         res.redirect('/login');
     }
 }
-
 usp.on('connection',(socket)=>{
   console.log("User connected");
   console.log(socket.handshake.auth.token);
@@ -193,15 +189,15 @@ app.post("/login", async(req,res)=>{
   const user = await userModel.findOne({gmail});
 
   if(!user){
-    return res.send('<script>alert("User Does not exist signup"); window.location="/login";</script>');
+      return res.redirect("/login");
   }
   const isMatch = await bcryptjs.compare(password,user.password1);
 
   if(!isMatch){
-    return res.send('<script>alert("Invalid Credentials"); window.location="/login";</script>');
+      return res.redirect("/login");
   }
   
-  req.session.isAuth = true;
+  req.session.isAuth=true;
   req.session.userId = user._id;
   console.log(user._id);
   let userid = user._id;
@@ -227,23 +223,20 @@ app.post("/login", async(req,res)=>{
   }
   res.redirect("/studentHomePage");
 });
-
 app.post("/adminlogin", async(req,res)=>{
   const { gmail, password } = req.body;
-  // console.log(gmail)
-  const admin = await Admin1.findOne({ gmail });
-  console.log(admin.gmail)
-  console.log(admin.password)
-  if (!admin) {
-    return res.send('<script>alert("admin Does not exist"); window.location="/adminLogin";</script>');
+
+  // if (gmail !== "nexus@gmail.com" || password !== "nexus") {
+  //   return res.redirect("/adminLogin");
+  // }
+  
+  const user = await userModel.findOne({role:'Admin'});
+  const isMatch = await bcryptjs.compare(password,user.password1);
+
+  if(!isMatch){
+    res.redirect("/adminLogin");
   }
-
-  // const isMatch = await bcryptjs.compare(password, admin.password);
-
-    if (password !== admin.password) {
-      return res.send('<script>alert("Invalid Credentials"); window.location="/adminLogin";</script>');;
-    }
-
+  req.session.isAuth = true;
   res.redirect("/adminDashboard");
 });
 
@@ -253,7 +246,7 @@ app.post("/signup", async(req,res)=>{
 
   let user = await userModel.findOne({gmail});
   if(user){
-    return res.send('<script>alert("User already exists"); window.location="/login";</script>');
+      return res.redirect('/login');
   }
   const hashpassword= await bcryptjs.hash(password1,12);
   user = new userModel({
@@ -319,5 +312,4 @@ app.post('/save-chat',async (req,res)=>{
     res.status(500).json({ message: error.message });
   }
 });
-
 
