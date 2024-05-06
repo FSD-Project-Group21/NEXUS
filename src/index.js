@@ -294,10 +294,6 @@ app.post('/logout',(req,res)=>{
 });
 
 
-const port = 5000;
-http.listen(port, () => {
-  console.log(`Server is running on Port : ${port}`);
-});
 
 // Route to fetch data from MongoDB and send it as JSON
 app.get('/interested-forms', async (req, res) => {
@@ -324,3 +320,8 @@ app.post('/save-chat',async (req,res)=>{
   }
 });
 
+
+const port = 5000;
+http.listen(port, () => {
+  console.log(`Server is running on Port : ${port}`);
+});

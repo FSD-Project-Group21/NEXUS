@@ -39,7 +39,6 @@ router.post(
 
       // Save the new post to the database
       await newPost.save();
-
       res.redirect('/collabPage');
     } catch (error) {
       console.error(error);

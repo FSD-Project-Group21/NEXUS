@@ -34,7 +34,7 @@
         <thead>
           <tr>
             <th>Project Name</th>
-            <th>Description</th>
+            
             <th>Image</th>
             <th>Category</th>
             <th>Reports</th>
@@ -45,7 +45,7 @@
           <%for(let i=0;i<projects.length;i++){%>
             <tr>
                 <td><%=projects[i]['projectName']%></td>
-                <td><%= projects[i]['description'] %></td>
+                
                 <td><%= projects[i]['image'] %></td>
                 <td><%= projects[i]['category'] %></td>
                 <td><%= projects[i]['reports'] %></td>                <!-- Example button that triggers the delete request -->
@@ -76,7 +76,7 @@
                 </thead>
                 <tbody>
                     <%for(let i=0;i<users.length;i++){%>
-
+                      <%if(users[i]['role']==="student"){%>
                         <tr>
                             <td><%=users[i]['fullname']%></td>
                             <td><%= users[i]['gmail'] %></td>
@@ -95,6 +95,7 @@
                             
   
                         </tr>
+                      <%}%>
                     <% } %>
                 </tbody>
             </table>

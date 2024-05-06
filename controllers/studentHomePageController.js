@@ -7,6 +7,7 @@ exports.studHomPag = async(req,res) => {
     const len = Posts.length;
     if(Posts) {
         res.render('studentHomePage', { Posts: Posts, len: len });
+
     }
     else {
         res.render('studentHomePage', { Posts: '' });

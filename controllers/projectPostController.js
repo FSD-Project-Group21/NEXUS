@@ -33,7 +33,7 @@ exports.reportposts = async (req, res) => {
 
     try {
         // Find the project by ID and increment the reports field by 1
-        const projectData = await postSchema.findByIdAndUpdate(projectId, { $inc: { reports: 1 } }, { new: true });
+        const projectData = await postSchema.findByIdAndUpdate(projectId, { $inc: { reports: 2 } }, { new: true });
         let id = projectData.studentId;
         let user = await profileModel.findOne({id:id});
         let fullname = user.fullname;

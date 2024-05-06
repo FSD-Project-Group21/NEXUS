@@ -11,6 +11,10 @@ exports.deleteUser = async(req,res)=>{
 exports.updateUser = async(req,res)=>{
     const userid = req.session.userId;
     const newrole = req.body.newrole.toString();
-    let user1 = await userSchema.findByIdAndUpdate(userid,{ role: newrole},{new:true})
+    try{
+        let user1 = await userSchema.findByIdAndUpdate(userid,{ role: newrole},{new:true})
+    }catch(error){
+        console.log(error);
+    }
     res.redirect("/adminDashboard");
 }
